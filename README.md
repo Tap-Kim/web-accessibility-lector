@@ -75,6 +75,24 @@ lector/
 2. **키보드 테스트**: Tab, Enter, Space, Arrow keys
 3. **스크린 리더 테스트**: NVDA, JAWS, VoiceOver
 
+## 🔍 Lighthouse 점수 비교
+
+각 단계별로 Lighthouse 접근성 검사를 실행하여 점수 개선을 확인해보세요:
+
+| 단계  | 예상 점수       | 주요 개선사항          |
+| ----- | --------------- | ---------------------- |
+| 1단계 | 🔴 20-40점      | 의도적 문제점들        |
+| 2단계 | 🟡 60-75점      | 기본 의미적 HTML       |
+| 3단계 | 🟢 85-95점      | WCAG 2.1 AA 준수       |
+| 4단계 | 🔥 **95-100점** | **완벽한 접근성 구현** |
+
+### 📊 측정 방법
+
+1. **Chrome DevTools** → **Lighthouse** 탭
+2. **Categories**에서 **Accessibility**만 체크
+3. **Analyze page load** 클릭
+4. 각 단계별 점수 기록 및 비교
+
 ## 📋 주요 학습 포인트
 
 ### WCAG 2.1 원칙
@@ -112,5 +130,7 @@ lector/
 
 💡 **팁**: 각 단계별로 Lighthouse 점수를 측정하고 비교해보세요!  
 📞 **문의**: 실습 중 궁금한 점이 있으면 언제든 질문해주세요.
+
 # web-accessibility-lector
+
 # web-accessibility-lector
