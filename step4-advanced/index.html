@@ -3,25 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="완전한 접근성을 갖춘 쇼핑몰 - 모든 사용자에게 동등한 쇼핑 경험을 제공합니다"
-    />
-    <meta name="keywords" content="접근성, 쇼핑몰, 스크린리더, 키보드, WCAG" />
-    <meta name="theme-color" content="#0056b3" />
+    <!-- TODO: 검색엔진 최적화와 접근성을 위한 메타 정보들이 부족합니다 -->
     <title>고급 접근성 쇼핑몰 - 모든 사용자를 위한 완벽한 쇼핑 경험</title>
 
-    <!-- 접근성 개선을 위한 추가 메타태그 -->
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <!-- TODO: 모바일 접근성과 PWA 지원을 위한 메타태그들이 필요합니다 -->
 
     <link rel="stylesheet" href="style.css" />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>"
-    />
+    <!-- TODO: 브라우저 탭에 표시될 아이콘이 필요합니다 -->
   </head>
   <body>
     <!-- 접근성 도구 모음 -->
@@ -37,7 +25,7 @@
         aria-pressed="false"
         title="고대비 모드 전환"
       >
-        <span aria-hidden="true">🌓</span>
+        <!-- <span aria-hidden="true">🌓</span> -->
         <span class="btn-text">고대비</span>
       </button>
       <button
@@ -46,7 +34,7 @@
         aria-pressed="false"
         title="큰 글씨 모드 전환"
       >
-        <span aria-hidden="true">🔍</span>
+        <!-- <span aria-hidden="true">🔍</span> -->
         <span class="btn-text">큰글씨</span>
       </button>
       <button
@@ -55,7 +43,7 @@
         aria-pressed="false"
         title="포커스 표시 강화"
       >
-        <span aria-hidden="true">🎯</span>
+        <!-- <span aria-hidden="true">🎯</span> -->
         <span class="btn-text">포커스</span>
       </button>
       <button
@@ -64,7 +52,7 @@
         aria-pressed="false"
         title="스크린 리더 최적화 모드"
       >
-        <span aria-hidden="true">👁️</span>
+        <!-- <span aria-hidden="true">👁️</span> -->
         <span class="btn-text">리더모드</span>
       </button>
     </div>
@@ -79,10 +67,12 @@
     </nav>
 
     <!-- 헤더 영역 -->
-    <header class="header" role="banner">
+    <!-- TODO: 페이지 최상단 영역을 나타내는 랜드마크 태그와 역할이 필요합니다 -->
+    <div class="header">
       <div class="header-container">
         <div class="logo">
-          <button onclick="goHome()" aria-label="홈으로 이동" class="logo-btn">
+          <!-- TODO: 홈 이동 버튼의 목적을 설명하는 접근성 레이블이 필요합니다 -->
+          <button onclick="goHome()" class="logo-btn">
             <svg
               height="44"
               viewBox="0 0 14 44"
@@ -96,97 +86,72 @@
           </button>
         </div>
 
-        <nav
-          id="primary-nav"
-          class="primary-nav"
-          role="navigation"
-          aria-label="주요 내비게이션"
-        >
-          <ul class="nav-list">
+        <!-- TODO: 주요 메뉴 네비게이션의 시맨틱 태그와 식별자, 역할, 레이블이 필요합니다 -->
+        <div id="primary-nav" class="primary-nav">
+          <!-- TODO: 메뉴 항목들을 감싸는 목록 구조가 필요합니다 -->
+          <div class="nav-list">
             <li>
-              <button
-                onclick="showProducts()"
-                aria-current="page"
-                aria-describedby="nav-help-1"
-              >
-                상품
-              </button>
+              <!-- TODO: 현재 페이지 상태와 도움말 연결 속성이 필요합니다 -->
+              <button onclick="showProducts()">상품</button>
+              <!-- TODO: 단축키 도움말을 식별하는 ID가 유지되어야 합니다 -->
               <div id="nav-help-1" class="nav-help visually-hidden">
                 전체 상품 목록을 확인할 수 있습니다. Alt+1 단축키 사용 가능
               </div>
             </li>
             <li>
-              <button
-                onclick="showCart()"
-                aria-label="장바구니 (0개 상품)"
-                aria-describedby="nav-help-2"
-              >
+              <!-- TODO: 장바구니 개수 정보와 도움말 연결이 필요합니다 -->
+              <button onclick="showCart()">
                 장바구니
-                <span
-                  id="cart-count"
-                  class="cart-count"
-                  aria-live="polite"
-                  aria-atomic="true"
-                  >0</span
-                >
+                <!-- TODO: 동적으로 변경되는 개수 정보를 실시간으로 알리는 속성이 필요합니다 -->
+                <span id="cart-count" class="cart-count">0</span>
               </button>
+              <!-- TODO: 장바구니 단축키 도움말 ID가 유지되어야 합니다 -->
               <div id="nav-help-2" class="nav-help visually-hidden">
                 장바구니에 담긴 상품을 확인할 수 있습니다. Alt+2 단축키 사용
                 가능
               </div>
             </li>
             <li>
-              <button onclick="showMyPage()" aria-describedby="nav-help-3">
-                마이페이지
-              </button>
+              <!-- TODO: 마이페이지 도움말 연결 속성이 필요합니다 -->
+              <button onclick="showMyPage()">마이페이지</button>
+              <!-- TODO: 마이페이지 도움말 식별자가 유지되어야 합니다 -->
               <div id="nav-help-3" class="nav-help visually-hidden">
                 개인 정보와 주문 내역을 확인할 수 있습니다. Alt+3 단축키 사용
                 가능
               </div>
             </li>
-          </ul>
-        </nav>
+          </div>
+        </div>
 
         <div class="search-area">
+          <!-- TODO: 검색창 확장/축소 상태와 연결 요소, 도움말 연결 속성이 필요합니다 -->
           <button
             id="search"
             onclick="toggleSearch()"
             class="search-btn"
             aria-label="검색창 열기"
-            aria-expanded="false"
-            aria-controls="search-form"
-            aria-describedby="search-instructions"
           >
             <span aria-hidden="true">🔍</span>
             <span class="btn-text">검색</span>
           </button>
+          <!-- TODO: 검색 단축키 도움말을 식별하는 ID가 유지되어야 합니다 -->
           <div id="search-instructions" class="visually-hidden">
             검색 버튼을 누르거나 Ctrl+K를 눌러 검색창을 열 수 있습니다
           </div>
 
-          <div
-            id="search-form"
-            class="search-form"
-            hidden
-            role="search"
-            aria-labelledby="search-title"
-          >
-            <h3 id="search-title" class="search-title">상품 검색</h3>
+          <!-- TODO: 검색 폼의 역할과 제목 연결이 필요합니다 -->
+          <div id="search-form" class="search-form" hidden>
+            <!-- TODO: 검색 제목을 나타내는 시맨틱 태그와 식별자가 유지되어야 합니다 -->
+            <div id="search-title" class="search-title">상품 검색</div>
             <div class="search-input-group">
               <label for="search-input" class="visually-hidden"
                 >검색어 입력</label
               >
+              <!-- TODO: 검색 입력의 도움말, 자동완성, 제안 목록 등의 고급 기능들이 필요합니다 -->
               <input
                 type="search"
                 id="search-input"
                 placeholder="검색할 상품명을 입력하세요"
-                aria-describedby="search-help search-suggestions"
-                autocomplete="off"
-                spellcheck="false"
-                aria-autocomplete="list"
-                aria-owns="search-suggestions"
-                role="combobox"
-                aria-expanded="false"
               />
               <button
                 type="button"
@@ -198,12 +163,14 @@
                 검색
               </button>
             </div>
+            <!-- TODO: 검색 도움말을 식별하는 ID가 유지되어야 합니다 -->
             <div id="search-help" class="search-help">
               Enter 키를 누르거나 검색 버튼을 클릭하세요. ESC 키로 검색창을 닫을
               수 있습니다.
             </div>
 
-            <!-- 검색 자동완성 -->
+            <!-- TODO: 키보드로 조작 가능한 검색 자동완성 기능이 필요합니다 -->
+            <!-- 
             <ul
               id="search-suggestions"
               class="search-suggestions"
@@ -211,29 +178,21 @@
               aria-label="검색 제안"
               hidden
             >
-              <!-- 동적으로 생성됨 -->
             </ul>
+            -->
           </div>
         </div>
       </div>
-    </header>
+    </div>
 
     <!-- 메인 콘텐츠 -->
-    <main id="main-content" role="main">
-      <!-- 브레드크럼 내비게이션 -->
-      <nav aria-label="브레드크럼 내비게이션" class="breadcrumb-nav">
-        <ol class="breadcrumb-list">
-          <li><a href="#" onclick="goHome()" aria-current="page">홈</a></li>
-        </ol>
-      </nav>
+    <!-- TODO: 페이지 핵심 콘텐츠 영역을 나타내는 랜드마크와 역할이 필요합니다 -->
+    <div id="main-content">
+      <!-- TODO: 사용자 현재 위치를 알려주는 네비게이션이 필요합니다 -->
 
       <!-- 메인 배너 -->
-      <section
-        class="banner"
-        aria-labelledby="banner-title"
-        role="banner"
-        tabindex="0"
-      >
+      <!-- TODO: 배너 섹션과 제목 연결, 배너 역할, 키보드 포커스 속성이 필요합니다 -->
+      <div class="banner">
         <div class="banner-content">
           <h1 id="banner-title">🎉 새해 특가 이벤트</h1>
           <p class="banner-description">
@@ -243,40 +202,31 @@
             <small>(전 품목 무료배송, 당일발송)</small>
           </p>
           <div class="banner-actions">
-            <button
-              onclick="showSale()"
-              class="sale-btn primary-cta"
-              aria-describedby="sale-description"
-            >
+            <!-- TODO: 특가 상품 버튼과 설명을 연결하는 속성이 필요합니다 -->
+            <button onclick="showSale()" class="sale-btn primary-cta">
               특가 상품 보기
               <span aria-hidden="true">🏃‍♂️</span>
             </button>
-            <button
-              onclick="showCoupon()"
-              class="coupon-btn secondary-cta"
-              aria-describedby="coupon-description"
-            >
+            <!-- TODO: 쿠폰 버튼과 설명을 연결하는 속성이 필요합니다 -->
+            <button onclick="showCoupon()" class="coupon-btn secondary-cta">
               쿠폰 받기
               <span aria-hidden="true">🎫</span>
             </button>
           </div>
+          <!-- TODO: 특가 상품 설명을 위한 고유 식별자가 유지되어야 합니다 -->
           <div id="sale-description" class="visually-hidden">
             특가 상품 페이지로 이동하여 할인된 상품들을 확인할 수 있습니다
           </div>
+          <!-- TODO: 쿠폰 설명을 위한 고유 식별자가 유지되어야 합니다 -->
           <div id="coupon-description" class="visually-hidden">
             추가 할인 쿠폰을 받을 수 있습니다
           </div>
         </div>
-      </section>
+      </div>
 
       <!-- 실시간 알림 영역 -->
-      <div
-        id="live-notifications"
-        class="live-notifications"
-        aria-live="polite"
-        aria-atomic="false"
-        aria-relevant="additions text"
-      >
+      <!-- TODO: 실시간 업데이트되는 정보를 알리는 속성들이 필요합니다 -->
+      <div id="live-notifications" class="live-notifications">
         <div class="notification-item">
           <span class="notification-icon" aria-hidden="true">📢</span>
           <span>실시간 할인 정보와 재고 상황을 알려드립니다</span>
@@ -284,7 +234,8 @@
       </div>
 
       <!-- 상품 필터 및 정렬 -->
-      <section class="product-controls" aria-labelledby="controls-title">
+      <!-- TODO: 필터 컨트롤 섹션과 제목 연결이 필요합니다 -->
+      <div class="product-controls">
         <h2 id="controls-title" class="visually-hidden">상품 필터 및 정렬</h2>
 
         <div class="filter-sort-container">
@@ -293,24 +244,26 @@
             <fieldset class="filter-fieldset">
               <legend>가격대 선택</legend>
               <div class="price-range-container">
-                <label for="min-price">최소 가격</label>
+                <!-- TODO: 가격 입력 필드들과 레이블 연결이 필요합니다 -->
+                <label>최소 가격</label>
+                <!-- TODO: 최소 가격 입력 필드와 도움말 연결 속성이 필요합니다 -->
                 <input
                   type="number"
                   id="min-price"
                   placeholder="0"
-                  aria-describedby="price-help"
                   min="0"
                   step="10000"
                 />
-                <label for="max-price">최대 가격</label>
+                <label>최대 가격</label>
+                <!-- TODO: 최대 가격 입력 필드와 도움말 연결 속성이 필요합니다 -->
                 <input
                   type="number"
                   id="max-price"
                   placeholder="무제한"
-                  aria-describedby="price-help"
                   min="0"
                   step="10000"
                 />
+                <!-- TODO: 가격 입력 도움말을 식별하는 ID가 유지되어야 합니다 -->
                 <div id="price-help" class="filter-help">
                   원 단위로 입력해주세요 (예: 100000)
                 </div>
@@ -321,99 +274,84 @@
           <div class="sort-group" role="group" aria-labelledby="sort-title">
             <h3 id="sort-title">정렬</h3>
             <div class="sort-options">
+              <!-- TODO: 정렬 옵션들과 도움말 연결 속성이 필요합니다 -->
               <input
                 type="radio"
                 id="sort-popular"
                 name="sort"
                 value="popular"
                 checked
-                aria-describedby="sort-help"
               />
               <label for="sort-popular">인기순</label>
 
+              <!-- TODO: 낮은 가격순 정렬과 도움말 연결이 필요합니다 -->
               <input
                 type="radio"
                 id="sort-price-low"
                 name="sort"
                 value="price-low"
-                aria-describedby="sort-help"
               />
               <label for="sort-price-low">낮은 가격순</label>
 
+              <!-- TODO: 높은 가격순 정렬과 도움말 연결이 필요합니다 -->
               <input
                 type="radio"
                 id="sort-price-high"
                 name="sort"
                 value="price-high"
-                aria-describedby="sort-help"
               />
               <label for="sort-price-high">높은 가격순</label>
 
+              <!-- TODO: 정렬 도움말을 식별하는 ID가 유지되어야 합니다 -->
               <div id="sort-help" class="filter-help">
                 정렬 기준을 선택하면 즉시 상품 목록이 업데이트됩니다
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       <!-- 상품 목록 -->
-      <section
-        id="products-section"
-        class="products"
-        aria-labelledby="products-title"
-        aria-describedby="products-description"
-      >
+      <!-- TODO: 상품 섹션과 제목, 설명을 연결하는 속성이 필요합니다 -->
+      <div id="products-section" class="products">
         <header class="section-header">
           <h2 id="products-title">인기 상품</h2>
           <p id="products-description" class="section-description">
             고객들이 가장 많이 찾는 인기 상품들을 만나보세요.
-            <span id="product-count" aria-live="polite">총 3개 상품</span>
+            <!-- TODO: 상품 개수 정보를 실시간으로 알리는 속성이 필요합니다 -->
+            <span id="product-count">총 3개 상품</span>
           </p>
         </header>
 
         <!-- 상품 그리드 -->
-        <div
-          class="product-grid"
-          role="list"
-          aria-label="인기 상품 목록"
-          aria-describedby="product-grid-help"
-        >
+        <!-- TODO: 상품 목록의 설명 레이블과 키보드 도움말 연결이 필요합니다 -->
+        <div class="product-grid" role="list">
+          <!-- TODO: 키보드 네비게이션 도움말을 식별하는 ID가 유지되어야 합니다 -->
           <div id="product-grid-help" class="visually-hidden">
             화살표 키로 상품 간 이동, Enter 키로 상세보기, Space 키로 장바구니
             담기가 가능합니다
           </div>
 
           <!-- 상품 1: 스마트폰 -->
-          <article
-            class="product-item"
-            role="listitem"
-            aria-labelledby="product-1-title"
-            aria-describedby="product-1-description"
-            tabindex="0"
-            data-product-id="1"
-          >
-            <div class="product-status" aria-live="polite" aria-atomic="true">
+          <!-- TODO: 독립적인 상품 콘텐츠 태그와 제목, 설명 연결, 키보드 포커스, 상품 식별자가 필요합니다 -->
+          <div class="product-item" role="listitem">
+            <!-- TODO: 상품 재고 상태를 실시간으로 알리는 속성이 필요합니다 -->
+            <div class="product-status">
               <span class="stock-status in-stock" aria-label="재고 있음"
                 >재고 있음</span
               >
             </div>
 
             <div class="product-image-container">
+              <!-- TODO: 상품 이미지 설명과 성능 최적화 속성들이 필요합니다 -->
               <img
                 src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone16pro-digitalmat-gallery-1-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=VWJuckJvbkZqeTMwRFJZSHhSVnN1OVRBZjJveUdyMFM0Z0dEYTB4Rzh1RDBVMUIwNFV6MXNoZGhsYWgvZGlmdEJnNER5bEtzeFpoMTlNVnpVcXBTR0NDaXNCSFl3ajdkc3ZBMkZreEM2YjNZV0hWeXdKNnBTeStXSklkb1ZqKzc"
-                alt="iPhone 16 Pro - 티타늄 블루 색상의 최신 스마트폰"
                 class="product-image"
-                loading="lazy"
-                decoding="async"
               />
               <div class="product-badges">
-                <span class="product-badge new-badge" aria-label="신상품"
-                  >NEW</span
-                >
-                <span class="product-badge eco-badge" aria-label="친환경 제품"
-                  >🌱 ECO</span
-                >
+                <!-- TODO: 상품 뱃지들의 의미를 설명하는 레이블이 필요합니다 -->
+                <span class="product-badge new-badge">NEW</span>
+                <span class="product-badge eco-badge">🌱 ECO</span>
               </div>
 
               <!-- 상품 이미지 갤러리 썸네일 -->
@@ -428,9 +366,9 @@
                   aria-pressed="true"
                   onclick="changeProductImage(1, 0)"
                 >
+                  <!-- TODO: 썸네일 이미지 설명이 필요합니다 -->
                   <img
                     src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone16pro-digitalmat-gallery-2-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=VWJuckJvbkZqeTMwRFJZSHhSVnN1enBhZEVDYXdNalJLdkllSGFmNnBVVDBVMUIwNFV6MXNoZGhsYWgvZGlmdEJnNER5bEtzeFpoMTlNVnpVcXBTR0NDaXNCSFl3ajdkc3ZBMkZreEM2YjFMcENoQkE4dlByUzRnSkp0SGViTnk"
-                    alt="이미지 1"
                   />
                 </button>
                 <button
@@ -439,36 +377,37 @@
                   aria-pressed="false"
                   onclick="changeProductImage(1, 1)"
                 >
+                  <!-- TODO: 두 번째 썸네일 이미지 설명이 필요합니다 -->
                   <img
                     src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone16pro-digitalmat-gallery-3-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=VWJuckJvbkZqeTMwRFJZSHhSVnN1K2tBbTY2NGE0RXZvM3VONU9MVlluajBVMUIwNFV6MXNoZGhsYWgvZGlmdEJnNER5bEtzeFpoMTlNVnpVcXBTR0NDaXNCSFl3ajdkc3ZBMkZreEM2YjArdUxKZmY1NUtWbjl2NkdEREpaOVo"
-                    alt="이미지 2"
                   />
                 </button>
               </div>
             </div>
 
             <div class="product-info">
-              <h3 id="product-1-title" class="product-title">
+              <!-- TODO: 상품명을 나타내는 시맨틱 태그와 식별자가 유지되어야 합니다 -->
+              <div id="product-1-title" class="product-title">
                 <a href="#" onclick="showProduct(1)" class="product-link">
                   iPhone 16 Pro 256GB
                 </a>
-              </h3>
+              </div>
 
+              <!-- TODO: 상품 설명을 식별하는 ID가 유지되어야 합니다 -->
               <p id="product-1-description" class="product-description">
                 6.1인치 Super Retina XDR 디스플레이, A17 Pro 칩, Pro 카메라
                 시스템, 티타늄 디자인
               </p>
 
-              <div
-                class="product-specs"
-                aria-labelledby="product-1-specs-title"
-              >
-                <h4
+              <!-- TODO: 상품 사양과 제목 연결이 필요합니다 -->
+              <div class="product-specs">
+                <!-- TODO: 사양 제목을 나타내는 시맨틱 태그와 식별자가 유지되어야 합니다 -->
+                <div
                   id="product-1-specs-title"
                   class="specs-title visually-hidden"
                 >
                   주요 사양
-                </h4>
+                </div>
                 <dl class="specs-list">
                   <dt>화면 크기</dt>
                   <dd>6.1인치</dd>
@@ -479,37 +418,32 @@
                 </dl>
               </div>
 
-              <div class="price-info" aria-labelledby="product-1-price-title">
-                <h4 id="product-1-price-title" class="visually-hidden">
+              <!-- TODO: 가격 정보와 제목 연결이 필요합니다 -->
+              <div class="price-info">
+                <!-- TODO: 가격 제목을 나타내는 시맨틱 태그와 식별자가 유지되어야 합니다 -->
+                <div id="product-1-price-title" class="visually-hidden">
                   가격 정보
-                </h4>
+                </div>
                 <div class="price-display">
-                  <span class="original-price" aria-label="정가"
-                    >1,550,000원</span
-                  >
-                  <span class="sale-price" aria-label="할인가"
-                    >1,350,000원</span
-                  >
-                  <span class="discount-rate" aria-label="할인율"
-                    >13% 할인</span
-                  >
+                  <!-- TODO: 각 가격 정보의 의미를 설명하는 레이블들이 필요합니다 -->
+                  <span class="original-price">1,550,000원</span>
+                  <span class="sale-price">1,350,000원</span>
+                  <span class="discount-rate">13% 할인</span>
                 </div>
                 <div class="payment-options">
-                  <span class="installment-info" aria-label="할부 정보">
+                  <!-- TODO: 할부 정보를 설명하는 레이블이 필요합니다 -->
+                  <span class="installment-info">
                     무이자 12개월 월 112,500원
                   </span>
                 </div>
               </div>
 
-              <div
-                class="product-rating"
-                aria-labelledby="product-1-rating-title"
-                role="img"
-                aria-label="5점 만점에 4.6점"
-              >
-                <h4 id="product-1-rating-title" class="visually-hidden">
+              <!-- TODO: 평점 정보와 제목 연결, 이미지 역할, 점수 설명이 필요합니다 -->
+              <div class="product-rating">
+                <!-- TODO: 평점 제목을 나타내는 시맨틱 태그와 식별자가 유지되어야 합니다 -->
+                <div id="product-1-rating-title" class="visually-hidden">
                   고객 평점
-                </h4>
+                </div>
                 <div class="stars-container">
                   <span class="stars filled" aria-hidden="true">★★★★★</span>
                   <span class="stars empty" aria-hidden="true">☆☆☆☆☆</span>
@@ -517,13 +451,12 @@
                 <span class="rating-text">4.6점 (리뷰 342개)</span>
               </div>
 
-              <div
-                class="delivery-info"
-                aria-labelledby="product-1-delivery-title"
-              >
-                <h4 id="product-1-delivery-title" class="visually-hidden">
+              <!-- TODO: 배송 정보와 제목 연결이 필요합니다 -->
+              <div class="delivery-info">
+                <!-- TODO: 배송 제목을 나타내는 시맨틱 태그와 식별자가 유지되어야 합니다 -->
+                <div id="product-1-delivery-title" class="visually-hidden">
                   배송 정보
-                </h4>
+                </div>
                 <div class="delivery-details">
                   <span class="delivery-type">🚚 무료배송</span>
                   <span class="delivery-time">오늘 출발시 내일 도착</span>
@@ -543,24 +476,18 @@
                 <span class="btn-text">찜하기</span>
               </button>
 
-              <button
-                onclick="showProduct(1)"
-                class="btn-secondary"
-                aria-label="iPhone 15 Pro 상세정보 보기"
-              >
+              <!-- TODO: 상품 상세보기 버튼의 구체적인 상품명이 필요합니다 -->
+              <button onclick="showProduct(1)" class="btn-secondary">
                 상세보기
               </button>
 
-              <button
-                onclick="addToCart(1)"
-                class="btn-primary add-cart-btn"
-                aria-label="iPhone 15 Pro를 장바구니에 담기"
-                aria-describedby="cart-action-help"
-              >
+              <!-- TODO: 장바구니 담기 버튼의 구체적 설명과 키보드 도움말 연결이 필요합니다 -->
+              <button onclick="addToCart(1)" class="btn-primary add-cart-btn">
                 <span class="btn-icon" aria-hidden="true">🛒</span>
                 장바구니 담기
               </button>
 
+              <!-- TODO: 장바구니 키보드 단축키 도움말을 식별하는 ID가 유지되어야 합니다 -->
               <div id="cart-action-help" class="visually-hidden">
                 Space 키를 눌러 빠르게 장바구니에 담을 수 있습니다
               </div>
@@ -568,35 +495,33 @@
           </article>
 
           <!-- 상품 2: 노트북 (품절 상태 예시) -->
-          <article
+          <!-- TODO: 독립적인 상품 콘텐츠 태그와 제목, 설명 연결, 키보드 포커스, 상품 식별자가 필요합니다 -->
+          <div
             class="product-item out-of-stock"
             role="listitem"
-            aria-labelledby="product-2-title"
-            aria-describedby="product-2-description product-2-stock-notice"
-            tabindex="0"
-            data-product-id="2"
           >
-            <div class="product-status" aria-live="polite" aria-atomic="true">
-              <span class="stock-status out-of-stock" aria-label="현재 품절"
+            <!-- TODO: 상품 재고 상태를 실시간으로 알리는 속성이 필요합니다 -->
+            <div class="product-status">
+              <!-- TODO: 품절 상태를 설명하는 레이블이 필요합니다 -->
+              <span class="stock-status out-of-stock"
                 >품절</span
               >
             </div>
 
             <div class="product-image-container">
+              <!-- TODO: 상품 이미지 설명과 성능 최적화 속성들이 필요합니다 -->
               <img
                 src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mbp14-spaceblack-gallery1-202410?wid=4000&hei=3074&fmt=jpeg&qlt=90&.v=YnlWZDdpMFo0bUpJZnBpZjhKM2M3WGpXSTNqQ2U1MjQxSHBKRkRoWUE0bmd1eUJ6eHZMSFFNMld6aTRncXNRUlJWYlIvRkkxemNIb09FY29ZRmVrUDhQTUF6eWYycDMyY0I5TEVkZkpSbDU4aHA0S1QvclFGZSsvUzZRWUI0U1M"
-                alt="MacBook Pro M3 - 스페이스 그레이 색상 (현재 품절)"
                 class="product-image"
-                loading="lazy"
-                decoding="async"
               />
               <div class="product-badges">
-                <span class="product-badge sale-badge" aria-label="특가 상품"
+                <!-- TODO: 상품 뱃지들의 의미를 설명하는 레이블이 필요합니다 -->
+                <span class="product-badge sale-badge"
                   >SALE</span
                 >
+                <!-- TODO: 프리미엄 뱃지의 의미 설명이 필요합니다 -->
                 <span
                   class="product-badge premium-badge"
-                  aria-label="프리미엄 제품"
                   >PREMIUM</span
                 >
               </div>
@@ -606,43 +531,47 @@
             </div>
 
             <div class="product-info">
-              <h3 id="product-2-title" class="product-title">
+              <!-- TODO: 상품명을 나타내는 시맨틱 태그와 식별자가 유지되어야 합니다 -->
+              <div id="product-2-title" class="product-title">
                 <a href="#" onclick="showProduct(2)" class="product-link">
                   MacBook Pro14
                 </a>
-              </h3>
+              </div>
 
+              <!-- TODO: 상품 설명을 식별하는 ID가 유지되어야 합니다 -->
               <p id="product-2-description" class="product-description">
                 14인치 Liquid Retina XDR 디스플레이, M3 Pro 칩, 18GB 통합
                 메모리, 512GB SSD
               </p>
 
+              <!-- TODO: 품절 알림을 위한 경고 역할과 실시간 알림이 필요합니다 -->
               <div
                 id="product-2-stock-notice"
                 class="stock-notice"
-                role="alert"
               >
                 현재 품절된 상품입니다. 재입고 알림을 신청하실 수 있습니다.
               </div>
 
               <div class="price-info">
                 <div class="price-display">
-                  <span class="original-price" aria-label="정가"
+                  <!-- TODO: 각 가격 정보의 의미를 설명하는 레이블들이 필요합니다 -->
+                  <span class="original-price"
                     >2,390,000원</span
                   >
-                  <span class="sale-price" aria-label="할인가"
+                  <!-- TODO: 할인가 설명이 필요합니다 -->
+                  <span class="sale-price"
                     >1,912,000원</span
                   >
-                  <span class="discount-rate" aria-label="할인율"
+                  <!-- TODO: 할인율 설명이 필요합니다 -->
+                  <span class="discount-rate"
                     >20% 할인</span
                   >
                 </div>
               </div>
 
+              <!-- TODO: 평점 정보와 제목 연결, 이미지 역할, 점수 설명이 필요합니다 -->
               <div
                 class="product-rating"
-                role="img"
-                aria-label="5점 만점에 4.8점"
               >
                 <div class="stars-container">
                   <span class="stars filled" aria-hidden="true">★★★★★</span>
@@ -652,75 +581,74 @@
               </div>
             </div>
 
-            <div class="product-actions" role="group" aria-label="상품 액션">
+            <!-- TODO: 액션 그룹의 설명이 필요합니다 -->
+            <div class="product-actions">
+              <!-- TODO: 위시리스트 버튼의 상태와 설명이 필요합니다 -->
               <button
                 onclick="toggleWishlist(2)"
                 class="wishlist-btn"
-                aria-pressed="false"
-                aria-label="위시리스트에 추가"
               >
                 <span aria-hidden="true">♡</span>
                 <span class="btn-text">찜하기</span>
               </button>
 
+              <!-- TODO: 상품 상세보기 버튼의 구체적인 상품명이 필요합니다 -->
               <button
                 onclick="showProduct(2)"
                 class="btn-secondary"
-                aria-label="MacBook Pro 상세정보 보기"
               >
                 상세보기
               </button>
 
+              <!-- TODO: 재입고 알림 버튼의 구체적 설명이 필요합니다 -->
               <button
                 onclick="requestRestock(2)"
                 class="btn-outline restock-btn"
-                aria-label="MacBook Pro 재입고 알림 신청"
               >
                 <span class="btn-icon" aria-hidden="true">🔔</span>
                 재입고 알림
               </button>
             </div>
-          </article>
+          </div>
 
           <!-- 상품 3: 태블릿 -->
-          <article
+          <!-- TODO: 독립적인 상품 콘텐츠 태그와 제목, 설명 연결, 키보드 포커스, 상품 식별자가 필요합니다 -->
+          <div
             class="product-item"
             role="listitem"
-            aria-labelledby="product-3-title"
-            aria-describedby="product-3-description"
-            tabindex="0"
-            data-product-id="3"
           >
-            <div class="product-status" aria-live="polite" aria-atomic="true">
-              <span class="stock-status low-stock" aria-label="재고 부족"
+            <!-- TODO: 상품 재고 상태를 실시간으로 알리는 속성이 필요합니다 -->
+            <div class="product-status">
+              <!-- TODO: 재고 부족 상태를 설명하는 레이블이 필요합니다 -->
+              <span class="stock-status low-stock"
                 >재고 부족</span
               >
             </div>
 
             <div class="product-image-container">
+              <!-- TODO: 상품 이미지 설명과 성능 최적화 속성들이 필요합니다 -->
               <img
                 src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-pro-finish-select-202405-11inch-silver?wid=5120&hei=2880&fmt=webp&qlt=90&.v=YXpaUEtKWGhlNnNrVGZkTEo4T0xsNEsrMGFueUl5dllOTm9xWTIwTHNieUJLNkVlVkZpVE5VcEU5RHJDbXpCOXF2TWlpSzUzejRCZGt2SjJUNGl1VEE4bm1RcmlWRWp2eDN1WHNkSjNmUmEvQ0hVc0dNMTRHeWE3dDZOT0ZZVDk&traceId=1"
-                alt="iPad Pro 12.9인치 - 실버 색상"
                 class="product-image"
-                loading="lazy"
-                decoding="async"
               />
               <div class="product-badges">
+                <!-- TODO: 베스트셀러 뱃지의 의미를 설명하는 레이블이 필요합니다 -->
                 <span
                   class="product-badge bestseller-badge"
-                  aria-label="베스트셀러"
                   >BEST</span
                 >
               </div>
             </div>
 
             <div class="product-info">
-              <h3 id="product-3-title" class="product-title">
+              <!-- TODO: 상품명을 나타내는 시맨틱 태그와 식별자가 유지되어야 합니다 -->
+              <div id="product-3-title" class="product-title">
                 <a href="#" onclick="showProduct(3)" class="product-link">
                   iPad Pro 12.9 M2
                 </a>
-              </h3>
+              </div>
 
+              <!-- TODO: 상품 설명을 식별하는 ID가 유지되어야 합니다 -->
               <p id="product-3-description" class="product-description">
                 12.9인치 Liquid Retina XDR 디스플레이, M2 칩, 256GB 저장공간,
                 Apple Pencil 호환
@@ -728,14 +656,14 @@
 
               <div class="price-info">
                 <div class="price-display">
-                  <span class="sale-price" aria-label="가격">1,199,000원</span>
+                  <!-- TODO: 가격 정보의 의미를 설명하는 레이블이 필요합니다 -->
+                  <span class="sale-price">1,199,000원</span>
                 </div>
               </div>
 
+              <!-- TODO: 평점 정보와 제목 연결, 이미지 역할, 점수 설명이 필요합니다 -->
               <div
                 class="product-rating"
-                role="img"
-                aria-label="5점 만점에 4.7점"
               >
                 <div class="stars-container">
                   <span class="stars filled" aria-hidden="true">★★★★★</span>
@@ -744,40 +672,41 @@
                 <span class="rating-text">4.7점 (리뷰 298개)</span>
               </div>
 
-              <div class="urgency-notice" role="alert" aria-live="polite">
+              <!-- TODO: 긴급 알림을 위한 경고 역할과 실시간 알림이 필요합니다 -->
+              <div class="urgency-notice">
                 ⚡ 한정 수량! 7개 남음
               </div>
             </div>
 
-            <div class="product-actions" role="group" aria-label="상품 액션">
+            <!-- TODO: 액션 그룹의 설명이 필요합니다 -->
+            <div class="product-actions">
+              <!-- TODO: 위시리스트 버튼의 상태와 설명이 필요합니다 -->
               <button
                 onclick="toggleWishlist(3)"
                 class="wishlist-btn"
-                aria-pressed="false"
-                aria-label="위시리스트에 추가"
               >
                 <span aria-hidden="true">♡</span>
                 <span class="btn-text">찜하기</span>
               </button>
 
+              <!-- TODO: 상품 상세보기 버튼의 구체적인 상품명이 필요합니다 -->
               <button
                 onclick="showProduct(3)"
                 class="btn-secondary"
-                aria-label="iPad Pro 상세정보 보기"
               >
                 상세보기
               </button>
 
+              <!-- TODO: 장바구니 담기 버튼의 구체적 설명과 재고 상태 알림이 필요합니다 -->
               <button
                 onclick="addToCart(3)"
                 class="btn-primary add-cart-btn urgent"
-                aria-label="iPad Pro를 장바구니에 담기 (재고 부족)"
               >
                 <span class="btn-icon" aria-hidden="true">🛒</span>
                 빠른 구매
               </button>
             </div>
-          </article>
+          </div>
         </div>
 
         <!-- 상품 목록 페이지네이션 -->
@@ -797,9 +726,9 @@
               </button>
             </li>
             <li>
+              <!-- TODO: 현재 페이지를 나타내는 속성이 필요합니다 -->
               <button
                 class="pagination-btn current"
-                aria-current="page"
                 aria-label="현재 페이지, 1페이지"
               >
                 1
@@ -825,10 +754,11 @@
             </li>
           </ul>
         </nav>
-      </section>
+      </div>
 
       <!-- 로그인 폼 -->
-      <section class="login-section" aria-labelledby="login-title">
+      <!-- TODO: 로그인 섹션과 제목을 연결하는 속성이 필요합니다 -->
+      <div class="login-section">
         <header>
           <h2 id="login-title">로그인</h2>
           <p class="login-description">
@@ -840,26 +770,18 @@
         </header>
 
         <!-- 소셜 로그인 -->
-        <div
-          class="social-login"
-          role="group"
-          aria-labelledby="social-login-title"
-        >
-          <h3 id="social-login-title">소셜 로그인</h3>
+        <!-- TODO: 소셜 로그인 그룹과 제목 연결이 필요합니다 -->
+        <div class="social-login" role="group">
+          <!-- TODO: 소셜 로그인 제목을 나타내는 시맨틱 태그와 식별자가 유지되어야 합니다 -->
+          <div id="social-login-title">소셜 로그인</div>
           <div class="social-buttons">
-            <button
-              onclick="loginWithGoogle()"
-              class="social-btn google-btn"
-              aria-label="구글 계정으로 로그인"
-            >
+            <!-- TODO: 구글 로그인 버튼의 구체적 설명이 필요합니다 -->
+            <button onclick="loginWithGoogle()" class="social-btn google-btn">
               <span class="social-icon" aria-hidden="true">G</span>
               구글로 로그인
             </button>
-            <button
-              onclick="loginWithKakao()"
-              class="social-btn kakao-btn"
-              aria-label="카카오 계정으로 로그인"
-            >
+            <!-- TODO: 카카오 로그인 버튼의 구체적 설명이 필요합니다 -->
+            <button onclick="loginWithKakao()" class="social-btn kakao-btn">
               <span class="social-icon" aria-hidden="true">K</span>
               카카오로 로그인
             </button>
@@ -870,146 +792,121 @@
           </div>
         </div>
 
-        <form
-          class="login-form"
-          onsubmit="return handleLogin(event)"
-          novalidate
-          aria-labelledby="email-login-title"
-        >
-          <h3 id="email-login-title">이메일 로그인</h3>
+        <!-- TODO: 폼 검증 제어와 이메일 로그인 제목 연결이 필요합니다 -->
+        <form class="login-form" onsubmit="return handleLogin(event)">
+          <!-- TODO: 이메일 로그인 제목을 나타내는 시맨틱 태그와 식별자가 유지되어야 합니다 -->
+          <div id="email-login-title">이메일 로그인</div>
 
           <fieldset class="form-fieldset">
             <legend class="visually-hidden">로그인 정보 입력</legend>
 
             <div class="form-group">
-              <label for="username" class="form-label">
+              <!-- TODO: 이메일 레이블과 입력 필드 연결이 필요합니다 -->
+              <label class="form-label">
                 이메일 주소
                 <span class="required-mark" aria-label="필수 입력">*</span>
               </label>
               <div class="input-container">
+                <!-- TODO: 이메일 자동완성과 도움말, 에러 연결, 유효성 상태 속성이 필요합니다 -->
                 <input
                   type="email"
                   id="username"
                   name="username"
                   required
-                  autocomplete="email"
-                  aria-describedby="username-help username-error"
                   class="form-input"
                   placeholder="example@email.com"
-                  aria-invalid="false"
                 />
                 <span class="input-icon" aria-hidden="true">📧</span>
               </div>
+              <!-- TODO: 이메일 도움말을 식별하는 ID가 유지되어야 합니다 -->
               <div id="username-help" class="form-help">
                 가입시 사용한 이메일 주소를 입력하세요
               </div>
-              <div
-                id="username-error"
-                class="form-error"
-                role="alert"
-                aria-live="polite"
-                aria-atomic="true"
-              ></div>
+              <!-- TODO: 이메일 에러 메시지를 실시간으로 알리는 속성들이 필요합니다 -->
+              <div id="username-error" class="form-error"></div>
             </div>
 
             <div class="form-group">
-              <label for="password" class="form-label">
+              <!-- TODO: 비밀번호 레이블과 입력 필드 연결이 필요합니다 -->
+              <label class="form-label">
                 비밀번호
                 <span class="required-mark" aria-label="필수 입력">*</span>
               </label>
               <div class="input-container">
+                <!-- TODO: 비밀번호 자동완성과 도움말, 에러 연결, 유효성 상태 속성이 필요합니다 -->
                 <input
                   type="password"
                   id="password"
                   name="password"
                   required
-                  autocomplete="current-password"
-                  aria-describedby="password-help password-error"
                   class="form-input"
                   placeholder="비밀번호를 입력하세요"
-                  aria-invalid="false"
                 />
+                <!-- TODO: 비밀번호 보기/숨기기 버튼의 기능과 상태를 설명하는 속성이 필요합니다 -->
                 <button
                   type="button"
                   class="password-toggle"
                   onclick="togglePasswordVisibility()"
-                  aria-label="비밀번호 보기/숨기기"
-                  aria-pressed="false"
                 >
                   <span id="password-toggle-icon" aria-hidden="true">👁️</span>
                 </button>
               </div>
+              <!-- TODO: 비밀번호 도움말을 식별하는 ID가 유지되어야 합니다 -->
               <div id="password-help" class="form-help">
                 8자 이상의 비밀번호를 입력하세요
               </div>
-              <div
-                id="password-error"
-                class="form-error"
-                role="alert"
-                aria-live="polite"
-                aria-atomic="true"
-              ></div>
+              <!-- TODO: 비밀번호 에러 메시지를 실시간으로 알리는 속성들이 필요합니다 -->
+              <div id="password-error" class="form-error"></div>
             </div>
 
             <div class="form-options">
+              <!-- TODO: 로그인 유지 체크박스와 레이블 연결이 필요합니다 -->
               <label class="checkbox-label">
-                <input
-                  type="checkbox"
-                  id="remember-me"
-                  name="remember"
-                  aria-describedby="remember-help"
-                />
+                <!-- TODO: 체크박스와 도움말 연결 속성이 필요합니다 -->
+                <input type="checkbox" id="remember-me" name="remember" />
                 <span class="checkbox-custom" aria-hidden="true"></span>
                 로그인 상태 유지
               </label>
+              <!-- TODO: 로그인 유지 도움말을 식별하는 ID가 유지되어야 합니다 -->
               <div id="remember-help" class="form-help">
                 공용 컴퓨터에서는 선택하지 마세요
               </div>
             </div>
 
             <div class="form-actions">
-              <button
-                type="submit"
-                class="btn-primary login-btn"
-                aria-describedby="login-btn-help"
-              >
+              <!-- TODO: 로그인 버튼과 키보드 단축키 도움말 연결이 필요합니다 -->
+              <button type="submit" class="btn-primary login-btn">
                 <span class="btn-icon" aria-hidden="true">🔐</span>
                 로그인
               </button>
+              <!-- TODO: 로그인 키보드 단축키 도움말을 식별하는 ID가 유지되어야 합니다 -->
               <div id="login-btn-help" class="visually-hidden">
                 Enter 키를 눌러도 로그인할 수 있습니다
               </div>
 
               <div class="form-links">
-                <a href="#" onclick="showSignup()" aria-label="새 계정 만들기">
+                <!-- TODO: 회원가입과 비밀번호 찾기 링크의 구체적 설명이 필요합니다 -->
+                <a href="#" onclick="showSignup()">
                   계정이 없으신가요? 회원가입
                 </a>
                 <span aria-hidden="true">|</span>
-                <a
-                  href="#"
-                  onclick="showFindPassword()"
-                  aria-label="비밀번호 찾기"
-                >
-                  비밀번호 찾기
-                </a>
+                <a href="#" onclick="showFindPassword()"> 비밀번호 찾기 </a>
               </div>
             </div>
           </fieldset>
         </form>
-      </section>
-    </main>
+      </div>
+    </div>
 
     <!-- 푸터 -->
-    <footer class="footer" role="contentinfo">
+    <!-- TODO: 웹페이지 하단 정보 영역을 나타내는 랜드마크와 역할이 필요합니다 -->
+    <div class="footer">
       <div class="footer-container">
-        <nav
-          id="footer-nav"
-          class="footer-nav"
-          aria-label="푸터 내비게이션"
-          role="navigation"
-        >
+        <!-- TODO: 푸터 네비게이션의 역할과 설명 레이블이 필요합니다 -->
+        <div id="footer-nav" class="footer-nav">
           <div class="footer-section">
-            <h3 class="footer-title">고객 서비스</h3>
+            <!-- TODO: 푸터 섹션 제목을 나타내는 시맨틱 태그가 필요합니다 -->
+            <div class="footer-title">고객 서비스</div>
             <ul class="footer-links">
               <li><a href="#" onclick="showTerms()">이용약관</a></li>
               <li><a href="#" onclick="showPrivacy()">개인정보처리방침</a></li>
@@ -1021,7 +918,8 @@
           </div>
 
           <div class="footer-section">
-            <h3 class="footer-title">쇼핑 가이드</h3>
+            <!-- TODO: 쇼핑 가이드 제목을 나타내는 시맨틱 태그가 필요합니다 -->
+            <div class="footer-title">쇼핑 가이드</div>
             <ul class="footer-links">
               <li><a href="#" onclick="showShippingInfo()">배송 안내</a></li>
               <li><a href="#" onclick="showReturnInfo()">반품/교환</a></li>
@@ -1031,7 +929,8 @@
           </div>
 
           <div class="footer-section">
-            <h3 class="footer-title">접근성 지원</h3>
+            <!-- TODO: 접근성 지원 제목을 나타내는 시맨틱 태그가 필요합니다 -->
+            <div class="footer-title">접근성 지원</div>
             <ul class="footer-links">
               <li><a href="#" onclick="showA11yGuide()">접근성 가이드</a></li>
               <li>
@@ -1047,7 +946,7 @@
               </li>
             </ul>
           </div>
-        </nav>
+        </div>
 
         <div class="footer-info">
           <address class="company-info">
@@ -1067,20 +966,21 @@
           </address>
 
           <div class="certifications">
-            <h4>인증 및 수상</h4>
+            <!-- TODO: 인증 제목을 나타내는 시맨틱 태그가 필요합니다 -->
+            <div>인증 및 수상</div>
             <ul class="cert-list">
               <li>
+                <!-- TODO: WCAG 인증 로고 이미지 설명이 필요합니다 -->
                 <img
                   src="https://via.placeholder.com/80x40/28a745/ffffff?text=WCAG"
-                  alt="WCAG 2.1 AA 인증"
                   class="cert-logo"
                 />
                 <span>WCAG 2.1 AA 준수</span>
               </li>
               <li>
+                <!-- TODO: 웹 접근성 품질인증 로고 설명이 필요합니다 -->
                 <img
                   src="https://via.placeholder.com/80x40/007bff/ffffff?text=A11Y"
-                  alt="웹 접근성 품질인증"
                   class="cert-logo"
                 />
                 <span>웹 접근성 품질인증</span>
@@ -1095,109 +995,15 @@
           </p>
         </div>
       </div>
-    </footer>
-
-    <!-- ARIA Live Regions -->
-    <div
-      id="status-announcements"
-      aria-live="polite"
-      aria-atomic="true"
-      class="visually-hidden"
-      role="status"
-    ></div>
-    <div
-      id="alert-announcements"
-      aria-live="assertive"
-      aria-atomic="true"
-      class="visually-hidden"
-      role="alert"
-    ></div>
-    <div
-      id="progress-announcements"
-      aria-live="polite"
-      aria-atomic="false"
-      class="visually-hidden"
-      role="progressbar"
-      aria-valuemin="0"
-      aria-valuemax="100"
-      aria-valuenow="0"
-    ></div>
-
-    <!-- 키보드 단축키 도움말 모달 -->
-    <div
-      id="keyboard-help-modal"
-      class="modal"
-      role="dialog"
-      aria-labelledby="keyboard-help-title"
-      aria-describedby="keyboard-help-description"
-      aria-hidden="true"
-      tabindex="-1"
-    >
-      <div class="modal-content">
-        <header class="modal-header">
-          <h2 id="keyboard-help-title">키보드 단축키</h2>
-          <button
-            class="modal-close"
-            onclick="closeModal('keyboard-help-modal')"
-            aria-label="도움말 닫기"
-          >
-            <span aria-hidden="true">×</span>
-          </button>
-        </header>
-        <div id="keyboard-help-description" class="modal-body">
-          <dl class="shortcut-list">
-            <dt>Ctrl + K</dt>
-            <dd>검색창 열기</dd>
-            <dt>Alt + 1, 2, 3</dt>
-            <dd>주요 메뉴 바로가기</dd>
-            <dt>ESC</dt>
-            <dd>모달/드롭다운 닫기</dd>
-            <dt>Space</dt>
-            <dd>상품을 장바구니에 담기</dd>
-            <dt>Enter</dt>
-            <dd>상품 상세보기</dd>
-            <dt>Tab / Shift+Tab</dt>
-            <dd>다음/이전 요소로 이동</dd>
-            <dt>Arrow Keys</dt>
-            <dd>상품 그리드에서 상품 간 이동</dd>
-          </dl>
-        </div>
-      </div>
-      <div
-        class="modal-backdrop"
-        onclick="closeModal('keyboard-help-modal')"
-      ></div>
     </div>
+
+    <!-- TODO: 실시간 상태 알림과 긴급 메시지를 위한 영역들이 필요합니다 -->
+
+    <!-- TODO: 키보드 단축키 목록을 보여주는 도움말 모달이 필요합니다 -->
 
     <!-- 스크립트 -->
     <script src="script.js"></script>
 
-    <!-- 접근성 분석 스크립트 (개발용) -->
-    <script>
-      // 접근성 통계 로깅
-      if (window.location.hostname === "localhost") {
-        console.log("🔍 접근성 분석 결과:");
-        console.log(
-          "- 스킵 링크:",
-          document.querySelectorAll(".skip-link").length + "개"
-        );
-        console.log(
-          "- ARIA 레이블:",
-          document.querySelectorAll("[aria-label]").length + "개"
-        );
-        console.log(
-          "- Live Region:",
-          document.querySelectorAll("[aria-live]").length + "개"
-        );
-        console.log(
-          "- 폼 라벨 연결:",
-          document.querySelectorAll("label[for]").length + "개"
-        );
-        console.log(
-          "- 이미지 alt 텍스트:",
-          document.querySelectorAll("img[alt]").length + "개"
-        );
-      }
-    </script>
+    <!-- TODO: 개발용 접근성 사용 통계 수집 스크립트가 필요합니다 -->
   </body>
 </html>

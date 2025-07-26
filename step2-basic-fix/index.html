@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- TODO: 페이지 설명을 제공하는 메타태그가 빠져있습니다 -->
     <title>접근성 개선 쇼핑몰</title>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -11,9 +12,11 @@
     <a href="#main-content" class="skip-link">메인 콘텐츠로 바로가기</a>
 
     <!-- 헤더 영역 -->
-    <header class="header">
+    <!-- TODO: 페이지 상단 영역을 나타내는 시맨틱 태그를 사용해야 합니다 -->
+    <div class="header">
       <div class="logo">
-        <button onclick="goHome()" aria-label="홈으로 이동">
+        <!-- TODO: 버튼의 기능을 설명하는 ARIA 속성이 없습니다 -->
+        <button onclick="goHome()">
           <svg
             height="44"
             viewBox="0 0 14 44"
@@ -26,144 +29,127 @@
           </svg>
         </button>
       </div>
-      <nav class="nav" role="navigation" aria-label="주요 내비게이션">
+      <!-- TODO: 내비게이션 역할과 레이블을 나타내는 ARIA 속성들이 필요합니다 -->
+      <div class="nav">
         <button onclick="showProducts()">상품</button>
         <button onclick="showCart()">장바구니</button>
         <button onclick="showMyPage()">마이페이지</button>
-      </nav>
-      <button
-        onclick="toggleSearch()"
-        class="search-btn"
-        aria-label="검색창 열기"
-      >
-        🔍
-      </button>
-    </header>
+      </div>
+      <!-- TODO: 검색 기능을 설명하는 접근성 레이블이 없습니다 -->
+      <button onclick="toggleSearch()" class="search-btn">🔍</button>
+    </div>
 
     <!-- 메인 콘텐츠 -->
-    <main id="main-content">
+    <!-- TODO: 페이지의 주요 콘텐츠 영역임을 나타내는 시맨틱 태그가 필요합니다 -->
+    <div id="main-content">
       <!-- 메인 배너 -->
-      <section class="banner" aria-labelledby="banner-title">
+      <!-- TODO: 독립적인 콘텐츠 섹션임을 나타내는 태그와 제목 연결이 필요합니다 -->
+      <div class="banner">
         <h2 id="banner-title">특가 할인!</h2>
         <p>지금 바로 확인하세요</p>
         <button onclick="showSale()" class="sale-btn">특가 상품 보기</button>
-      </section>
+      </div>
 
       <!-- 상품 목록 -->
-      <section class="products" aria-labelledby="products-title">
+      <!-- TODO: 상품 목록을 감싸는 섹션 태그와 제목 연결이 필요합니다 -->
+      <div class="products">
         <h2 id="products-title">인기 상품</h2>
 
         <div class="product-grid" role="list">
-          <article class="product-item" role="listitem">
-            <button
-              onclick="showProduct(1)"
-              class="product-link"
-              aria-label="스마트폰 상품 상세보기"
-            >
+          <!-- TODO: 개별 상품을 나타내는 독립적인 콘텐츠 태그가 필요합니다 -->
+          <div class="product-item" role="listitem">
+            <!-- TODO: 상품 상세 정보로 이동하는 링크에 설명이 필요합니다 -->
+            <button onclick="showProduct(1)" class="product-link">
+              <!-- TODO: 이미지를 설명하는 대체 텍스트가 없습니다 -->
               <img
                 src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone16pro-digitalmat-gallery-1-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=VWJuckJvbkZqeTMwRFJZSHhSVnN1OVRBZjJveUdyMFM0Z0dEYTB4Rzh1RDBVMUIwNFV6MXNoZGhsYWgvZGlmdEJnNER5bEtzeFpoMTlNVnpVcXBTR0NDaXNCSFl3ajdkc3ZBMkZreEM2YjNZV0hWeXdKNnBTeStXSklkb1ZqKzc"
-                alt="스마트폰 제품 이미지"
               />
               <h3>iPhone 16 Pro</h3>
               <p class="price">1,550,000원</p>
             </button>
-            <button
-              onclick="addToCart(1)"
-              class="add-cart-btn"
-              aria-label="스마트폰을 장바구니에 담기"
-            >
+            <!-- TODO: 장바구니 담기 기능을 설명하는 레이블이 없습니다 -->
+            <button onclick="addToCart(1)" class="add-cart-btn">
               장바구니 담기
             </button>
-          </article>
+          </div>
 
-          <article class="product-item" role="listitem">
-            <button
-              onclick="showProduct(2)"
-              class="product-link"
-              aria-label="노트북 상품 상세보기"
-            >
+          <!-- TODO: 상품 아티클 태그가 필요합니다 -->
+          <div class="product-item" role="listitem">
+            <!-- TODO: 노트북 상품 링크 설명이 필요합니다 -->
+            <button onclick="showProduct(2)" class="product-link">
+              <!-- TODO: 노트북 이미지 설명이 없습니다 -->
               <img
                 src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mbp14-spaceblack-gallery1-202410?wid=4000&hei=3074&fmt=jpeg&qlt=90&.v=YnlWZDdpMFo0bUpJZnBpZjhKM2M3WGpXSTNqQ2U1MjQxSHBKRkRoWUE0bmd1eUJ6eHZMSFFNMld6aTRncXNRUlJWYlIvRkkxemNIb09FY29ZRmVrUDhQTUF6eWYycDMyY0I5TEVkZkpSbDU4aHA0S1QvclFGZSsvUzZRWUI0U1M"
-                alt="노트북 제품 이미지"
               />
               <h3>MacBook Pro14</h3>
               <p class="price">2,390,000원</p>
             </button>
-            <button
-              onclick="addToCart(2)"
-              class="add-cart-btn"
-              aria-label="노트북을 장바구니에 담기"
-            >
+            <!-- TODO: 노트북 장바구니 담기 설명이 필요합니다 -->
+            <button onclick="addToCart(2)" class="add-cart-btn">
               장바구니 담기
             </button>
-          </article>
+          </div>
 
-          <article class="product-item" role="listitem">
-            <button
-              onclick="showProduct(3)"
-              class="product-link"
-              aria-label="태블릿 상품 상세보기"
-            >
+          <!-- TODO: 태블릿 상품을 위한 아티클 태그가 필요합니다 -->
+          <div class="product-item" role="listitem">
+            <!-- TODO: 태블릿 상품 링크에 설명이 필요합니다 -->
+            <button onclick="showProduct(3)" class="product-link">
+              <!-- TODO: 태블릿 이미지 대체 텍스트가 필요합니다 -->
               <img
                 src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-pro-finish-select-202405-11inch-silver?wid=5120&hei=2880&fmt=webp&qlt=90&.v=YXpaUEtKWGhlNnNrVGZkTEo4T0xsNEsrMGFueUl5dllOTm9xWTIwTHNieUJLNkVlVkZpVE5VcEU5RHJDbXpCOXF2TWlpSzUzejRCZGt2SjJUNGl1VEE4bm1RcmlWRWp2eDN1WHNkSjNmUmEvQ0hVc0dNMTRHeWE3dDZOT0ZZVDk&traceId=1"
-                alt="태블릿 제품 이미지"
               />
               <h3>iPad Pro 11</h3>
               <p class="price">1,599,000원</p>
             </button>
-            <button
-              onclick="addToCart(3)"
-              class="add-cart-btn"
-              aria-label="태블릿을 장바구니에 담기"
-            >
+            <!-- TODO: 태블릿 장바구니 버튼 설명이 필요합니다 -->
+            <button onclick="addToCart(3)" class="add-cart-btn">
               장바구니 담기
             </button>
-          </article>
+          </div>
         </div>
-      </section>
+      </div>
 
       <!-- 로그인 폼 -->
-      <section class="login-section" aria-labelledby="login-title">
+      <!-- TODO: 로그인 섹션과 제목 연결이 필요합니다 -->
+      <div class="login-section">
         <h2 id="login-title">로그인</h2>
         <form class="form" onsubmit="return handleLogin(event)">
           <div class="form-group">
-            <label for="username">아이디</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              required
-              aria-describedby="username-help"
-            />
+            <!-- TODO: 레이블과 입력 필드를 연결하는 속성이 필요합니다 -->
+            <label>아이디</label>
+            <!-- TODO: 입력 도움말을 연결하는 속성이 필요합니다 -->
+            <input type="text" id="username" name="username" required />
+            <!-- TODO: 도움말 텍스트를 식별할 수 있는 ID가 유지되어야 합니다 -->
             <small id="username-help">등록된 아이디를 입력하세요</small>
           </div>
           <div class="form-group">
-            <label for="password">비밀번호</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              required
-              aria-describedby="password-help"
-            />
+            <!-- TODO: 비밀번호 레이블과 입력 필드 연결이 필요합니다 -->
+            <label>비밀번호</label>
+            <!-- TODO: 비밀번호 도움말 연결 속성이 필요합니다 -->
+            <input type="password" id="password" name="password" required />
+            <!-- TODO: 비밀번호 도움말을 위한 ID가 유지되어야 합니다 -->
             <small id="password-help">8자 이상의 비밀번호를 입력하세요</small>
           </div>
           <button type="submit" class="login-btn">로그인</button>
         </form>
-      </section>
-    </main>
+      </div>
+    </div>
 
     <!-- 푸터 -->
-    <footer class="footer">
-      <nav aria-label="푸터 내비게이션">
+    <!-- TODO: 페이지 하단 정보 영역임을 나타내는 시맨틱 태그가 필요합니다 -->
+    <div class="footer">
+      <!-- TODO: 푸터 내비게이션 역할과 설명이 필요합니다 -->
+      <div>
         <ul>
           <li><a href="#" onclick="showTerms()">이용약관</a></li>
           <li><a href="#" onclick="showPrivacy()">개인정보처리방침</a></li>
           <li><a href="#" onclick="showContact()">고객센터</a></li>
         </ul>
-      </nav>
+      </div>
       <p>&copy; 2024. All rights reserved.</p>
-    </footer>
+    </div>
+
+    <!-- TODO: 동적 콘텐츠 변경사항을 알리는 영역이 필요합니다 -->
 
     <script src="script.js"></script>
   </body>

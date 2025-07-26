@@ -220,7 +220,7 @@ body {
   justify-content: center;
   gap: var(--spacing-xs);
   min-width: 60px;
-  min-height: 60px;
+  /* min-height: 60px; */
   padding: var(--spacing-sm);
   background: var(--white);
   border: 2px solid var(--gray-300);
@@ -295,7 +295,6 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding-top: 80px; /* 접근성 도구 모음을 위한 여백 */
 }
 
 .header-container {
