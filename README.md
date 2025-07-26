@@ -113,3 +113,4 @@ lector/
 💡 **팁**: 각 단계별로 Lighthouse 점수를 측정하고 비교해보세요!  
 📞 **문의**: 실습 중 궁금한 점이 있으면 언제든 질문해주세요.
 # web-accessibility-lector
+# web-accessibility-lector
