@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="접근성을 고려한 쇼핑몰 - 모든 사용자가 편리하게 이용할 수 있는 온라인 쇼핑 서비스"
+    />
+    <title>접근성 모범 사례 쇼핑몰 - 홈</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- 스킵 내비게이션 -->
+    <nav class="skip-nav" aria-label="스킵 내비게이션">
+      <a href="#main-content" class="skip-link">메인 콘텐츠로 바로가기</a>
+      <a href="#primary-nav" class="skip-link">주요 메뉴로 바로가기</a>
+      <a href="#search" class="skip-link">검색으로 바로가기</a>
+    </nav>
+
+    <!-- 헤더 영역 -->
+    <header class="header" role="banner">
+      <div class="header-container">
+        <div class="logo">
+          <button onclick="goHome()" aria-label="홈으로 이동" class="logo-btn">
+            <svg
+              height="44"
+              viewBox="0 0 14 44"
+              width="14"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m13.0729 17.6825a3.61 3.61 0 0 0 -1.7248 3.0365 3.5132 3.5132 0 0 0 2.1379 3.2223 8.394 8.394 0 0 1 -1.0948 2.2618c-.6816.9812-1.3943 1.9623-2.4787 1.9623s-1.3633-.63-2.613-.63c-1.2187 0-1.6525.6507-2.644.6507s-1.6834-.9089-2.4787-2.0243a9.7842 9.7842 0 0 1 -1.6628-5.2776c0-3.0984 2.014-4.7405 3.9969-4.7405 1.0535 0 1.9314.6919 2.5924.6919.63 0 1.6112-.7333 2.8092-.7333a3.7579 3.7579 0 0 1 3.1604 1.5802zm-3.7284-2.8918a3.5615 3.5615 0 0 0 .8469-2.22 1.5353 1.5353 0 0 0 -.031-.32 3.5686 3.5686 0 0 0 -2.3445 1.2084 3.4629 3.4629 0 0 0 -.8779 2.1585 1.419 1.419 0 0 0 .031.2892 1.19 1.19 0 0 0 .2169.0207 3.0935 3.0935 0 0 0 2.1586-1.1368z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <nav
+          id="primary-nav"
+          class="primary-nav"
+          role="navigation"
+          aria-label="주요 내비게이션"
+        >
+          <ul class="nav-list">
+            <li>
+              <button onclick="showProducts()" aria-current="false">
+                상품
+              </button>
+            </li>
+            <li>
+              <button onclick="showCart()" aria-label="장바구니 (0개 상품)">
+                장바구니
+                <span id="cart-count" class="cart-count" aria-live="polite"
+                  >0</span
+                >
+              </button>
+            </li>
+            <li><button onclick="showMyPage()">마이페이지</button></li>
+          </ul>
+        </nav>
+
+        <div class="search-area">
+          <button
+            id="search"
+            onclick="toggleSearch()"
+            class="search-btn"
+            aria-label="검색창 열기"
+            aria-expanded="false"
+            aria-controls="search-form"
+          >
+            🔍
+          </button>
+          <div id="search-form" class="search-form" hidden>
+            <label for="search-input" class="visually-hidden">상품 검색</label>
+            <input
+              type="search"
+              id="search-input"
+              placeholder="검색할 상품명을 입력하세요"
+              aria-describedby="search-help"
+            />
+            <button
+              type="button"
+              onclick="performSearch()"
+              aria-label="검색 실행"
+            >
+              검색
+            </button>
+            <div id="search-help" class="search-help">
+              Enter 키를 누르거나 검색 버튼을 클릭하세요
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 메인 콘텐츠 -->
+    <main id="main-content" role="main">
+      <!-- 메인 배너 -->
+      <section class="banner" aria-labelledby="banner-title" role="banner">
+        <div class="banner-content">
+          <h1 id="banner-title">🎉 특가 할인 이벤트</h1>
+          <p class="banner-description">
+            지금 구매하시면 최대 50% 할인!
+            <time datetime="2024-12-31">12월 31일</time>까지 한정 특가
+          </p>
+          <button
+            onclick="showSale()"
+            class="sale-btn"
+            aria-describedby="sale-description"
+          >
+            특가 상품 보기
+          </button>
+          <div id="sale-description" class="visually-hidden">
+            특가 상품 페이지로 이동하여 할인된 상품들을 확인할 수 있습니다
+          </div>
+        </div>
+      </section>
+
+      <!-- 상품 목록 -->
+      <section class="products" aria-labelledby="products-title">
+        <header class="section-header">
+          <h2 id="products-title">인기 상품</h2>
+          <p class="section-description">
+            고객들이 가장 많이 찾는 인기 상품들을 만나보세요
+          </p>
+        </header>
+
+        <div class="product-grid" role="list" aria-label="인기 상품 목록">
+          <!-- 상품 1: 스마트폰 -->
+          <article
+            class="product-item"
+            role="listitem"
+            aria-labelledby="product-1-title"
+          >
+            <div class="product-image-container">
+              <img
+                src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone16pro-digitalmat-gallery-1-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=VWJuckJvbkZqeTMwRFJZSHhSVnN1OVRBZjJveUdyMFM0Z0dEYTB4Rzh1RDBVMUIwNFV6MXNoZGhsYWgvZGlmdEJnNER5bEtzeFpoMTlNVnpVcXBTR0NDaXNCSFl3ajdkc3ZBMkZreEM2YjNZV0hWeXdKNnBTeStXSklkb1ZqKzc"
+                alt="최신 스마트폰 제품 이미지"
+                class="product-image"
+              />
+              <div class="product-badge" aria-label="신상품">NEW</div>
+            </div>
+
+            <div class="product-info">
+              <h3 id="product-1-title" class="product-title">iPhone 16 Pro</h3>
+              <p class="product-description">
+                6.5인치 OLED 디스플레이, 128GB 저장공간, 듀얼 카메라
+              </p>
+              <div class="price-info">
+                <span class="original-price" aria-label="정가"
+                  >1,550,000원</span
+                >
+                <span class="sale-price" aria-label="할인가">1,200,000원</span>
+                <span class="discount-rate" aria-label="할인율">22% 할인</span>
+              </div>
+              <div class="product-rating" aria-label="상품 평점">
+                <span class="stars" aria-hidden="true">★★★★☆</span>
+                <span class="rating-text">4.2점 (리뷰 150개)</span>
+              </div>
+            </div>
+
+            <div class="product-actions">
+              <button
+                onclick="showProduct(1)"
+                class="btn-secondary"
+                aria-label="프리미엄 스마트폰 상세정보 보기"
+              >
+                상세보기
+              </button>
+              <button
+                onclick="addToCart(1)"
+                class="btn-primary add-cart-btn"
+                aria-label="프리미엄 스마트폰을 장바구니에 담기"
+              >
+                장바구니 담기
+              </button>
+            </div>
+          </article>
+
+          <!-- 상품 2: 노트북 -->
+          <article
+            class="product-item"
+            role="listitem"
+            aria-labelledby="product-2-title"
+          >
+            <div class="product-image-container">
+              <img
+                src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mbp14-spaceblack-gallery1-202410?wid=4000&hei=3074&fmt=jpeg&qlt=90&.v=YnlWZDdpMFo0bUpJZnBpZjhKM2M3WGpXSTNqQ2U1MjQxSHBKRkRoWUE0bmd1eUJ6eHZMSFFNMld6aTRncXNRUlJWYlIvRkkxemNIb09FY29ZRmVrUDhQTUF6eWYycDMyY0I5TEVkZkpSbDU4aHA0S1QvclFGZSsvUzZRWUI0U1M"
+                alt="고성능 노트북 제품 이미지"
+                class="product-image"
+              />
+              <div class="product-badge sale-badge" aria-label="특가 상품">
+                SALE
+              </div>
+            </div>
+
+            <div class="product-info">
+              <h3 id="product-2-title" class="product-title">MacBook Pro14</h3>
+              <p class="product-description">
+                14인치 FHD 디스플레이, Intel i7, 16GB RAM, 512GB SSD
+              </p>
+              <div class="price-info">
+                <span class="original-price" aria-label="정가"
+                  >2,390,000원</span
+                >
+                <span class="sale-price" aria-label="할인가">1,912,000원</span>
+                <span class="discount-rate" aria-label="할인율">20% 할인</span>
+              </div>
+              <div class="product-rating" aria-label="상품 평점">
+                <span class="stars" aria-hidden="true">★★★★★</span>
+                <span class="rating-text">4.8점 (리뷰 89개)</span>
+              </div>
+            </div>
+
+            <div class="product-actions">
+              <button
+                onclick="showProduct(2)"
+                class="btn-secondary"
+                aria-label="울트라북 노트북 상세정보 보기"
+              >
+                상세보기
+              </button>
+              <button
+                onclick="addToCart(2)"
+                class="btn-primary add-cart-btn"
+                aria-label="울트라북 노트북을 장바구니에 담기"
+              >
+                장바구니 담기
+              </button>
+            </div>
+          </article>
+
+          <!-- 상품 3: 태블릿 -->
+          <article
+            class="product-item"
+            role="listitem"
+            aria-labelledby="product-3-title"
+          >
+            <div class="product-image-container">
+              <img
+                src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-pro-finish-select-202405-11inch-silver?wid=5120&hei=2880&fmt=webp&qlt=90&.v=YXpaUEtKWGhlNnNrVGZkTEo4T0xsNEsrMGFueUl5dllOTm9xWTIwTHNieUJLNkVlVkZpVE5VcEU5RHJDbXpCOXF2TWlpSzUzejRCZGt2SjJUNGl1VEE4bm1RcmlWRWp2eDN1WHNkSjNmUmEvQ0hVc0dNMTRHeWE3dDZOT0ZZVDk&traceId=1"
+                alt="프리미엄 태블릿 제품 이미지"
+                class="product-image"
+              />
+            </div>
+
+            <div class="product-info">
+              <h3 id="product-3-title" class="product-title">iPad Pro 11</h3>
+              <p class="product-description">
+                11인치 Liquid Retina 디스플레이, Apple M1 칩, 256GB
+              </p>
+              <div class="price-info">
+                <span class="sale-price" aria-label="가격">1,599,000원</span>
+              </div>
+              <div class="product-rating" aria-label="상품 평점">
+                <span class="stars" aria-hidden="true">★★★★☆</span>
+                <span class="rating-text">4.5점 (리뷰 203개)</span>
+              </div>
+            </div>
+
+            <div class="product-actions">
+              <button
+                onclick="showProduct(3)"
+                class="btn-secondary"
+                aria-label="프로 태블릿 상세정보 보기"
+              >
+                상세보기
+              </button>
+              <button
+                onclick="addToCart(3)"
+                class="btn-primary add-cart-btn"
+                aria-label="프로 태블릿을 장바구니에 담기"
+              >
+                장바구니 담기
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 로그인 폼 -->
+      <section class="login-section" aria-labelledby="login-title">
+        <header>
+          <h2 id="login-title">로그인</h2>
+          <p class="login-description">
+            계정에 로그인하여 더 많은 서비스를 이용하세요
+          </p>
+        </header>
+
+        <form
+          class="login-form"
+          onsubmit="return handleLogin(event)"
+          novalidate
+        >
+          <fieldset class="form-fieldset">
+            <legend class="visually-hidden">로그인 정보 입력</legend>
+
+            <div class="form-group">
+              <label for="username" class="form-label">
+                아이디
+                <span class="required-mark" aria-label="필수 입력">*</span>
+              </label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                required
+                autocomplete="username"
+                aria-describedby="username-help username-error"
+                class="form-input"
+              />
+              <div id="username-help" class="form-help">
+                등록된 아이디를 입력하세요
+              </div>
+              <div
+                id="username-error"
+                class="form-error"
+                role="alert"
+                aria-live="polite"
+              ></div>
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="form-label">
+                비밀번호
+                <span class="required-mark" aria-label="필수 입력">*</span>
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                autocomplete="current-password"
+                aria-describedby="password-help password-error"
+                class="form-input"
+              />
+              <div id="password-help" class="form-help">
+                8자 이상의 비밀번호를 입력하세요
+              </div>
+              <div
+                id="password-error"
+                class="form-error"
+                role="alert"
+                aria-live="polite"
+              ></div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary login-btn">
+                로그인
+              </button>
+              <p class="form-links">
+                계정이 없으신가요?
+                <a href="#" onclick="showSignup()">회원가입</a> |
+                <a href="#" onclick="showFindPassword()">비밀번호 찾기</a>
+              </p>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer-container">
+        <nav class="footer-nav" aria-label="푸터 내비게이션">
+          <h3 class="footer-title">고객 서비스</h3>
+          <ul class="footer-links">
+            <li><a href="#" onclick="showTerms()">이용약관</a></li>
+            <li><a href="#" onclick="showPrivacy()">개인정보처리방침</a></li>
+            <li><a href="#" onclick="showContact()">고객센터</a></li>
+            <li><a href="#" onclick="showAccessibility()">접근성 정책</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-info">
+          <address class="company-info">
+            <strong>A11Y 쇼핑몰</strong><br />
+            서울시 강남구 테헤란로 123<br />
+            대표전화: <a href="tel:1588-1234">1588-1234</a><br />
+            이메일:
+            <a href="mailto:support@a11ymall.com">support@a11ymall.com</a>
+          </address>
+
+          <p class="copyright">&copy; 2024 A11Y Mall. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ARIA Live Regions -->
+    <div
+      id="status-announcements"
+      aria-live="polite"
+      aria-atomic="true"
+      class="visually-hidden"
+    ></div>
+    <div
+      id="alert-announcements"
+      aria-live="assertive"
+      aria-atomic="true"
+      class="visually-hidden"
+    ></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

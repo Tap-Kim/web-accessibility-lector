@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="완전한 접근성을 갖춘 쇼핑몰 - 모든 사용자에게 동등한 쇼핑 경험을 제공합니다"
+    />
+    <meta name="keywords" content="접근성, 쇼핑몰, 스크린리더, 키보드, WCAG" />
+    <meta name="theme-color" content="#0056b3" />
+    <title>고급 접근성 쇼핑몰 - 모든 사용자를 위한 완벽한 쇼핑 경험</title>
+
+    <!-- 접근성 개선을 위한 추가 메타태그 -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>"
+    />
+  </head>
+  <body>
+    <!-- 접근성 도구 모음 -->
+    <div
+      id="accessibility-tools"
+      class="accessibility-toolbar"
+      role="toolbar"
+      aria-label="접근성 도구"
+    >
+      <button
+        id="toggle-high-contrast"
+        class="a11y-tool-btn"
+        aria-pressed="false"
+        title="고대비 모드 전환"
+      >
+        <span aria-hidden="true">🌓</span>
+        <span class="btn-text">고대비</span>
+      </button>
+      <button
+        id="toggle-large-text"
+        class="a11y-tool-btn"
+        aria-pressed="false"
+        title="큰 글씨 모드 전환"
+      >
+        <span aria-hidden="true">🔍</span>
+        <span class="btn-text">큰글씨</span>
+      </button>
+      <button
+        id="toggle-focus-indicator"
+        class="a11y-tool-btn"
+        aria-pressed="false"
+        title="포커스 표시 강화"
+      >
+        <span aria-hidden="true">🎯</span>
+        <span class="btn-text">포커스</span>
+      </button>
+      <button
+        id="toggle-screen-reader-mode"
+        class="a11y-tool-btn"
+        aria-pressed="false"
+        title="스크린 리더 최적화 모드"
+      >
+        <span aria-hidden="true">👁️</span>
+        <span class="btn-text">리더모드</span>
+      </button>
+    </div>
+
+    <!-- 스킵 내비게이션 -->
+    <nav class="skip-nav" aria-label="스킵 내비게이션">
+      <a href="#main-content" class="skip-link">메인 콘텐츠로 바로가기</a>
+      <a href="#primary-nav" class="skip-link">주요 메뉴로 바로가기</a>
+      <a href="#search" class="skip-link">검색으로 바로가기</a>
+      <a href="#products-section" class="skip-link">상품 목록으로 바로가기</a>
+      <a href="#footer-nav" class="skip-link">푸터 메뉴로 바로가기</a>
+    </nav>
+
+    <!-- 헤더 영역 -->
+    <header class="header" role="banner">
+      <div class="header-container">
+        <div class="logo">
+          <button onclick="goHome()" aria-label="홈으로 이동" class="logo-btn">
+            <svg
+              height="44"
+              viewBox="0 0 14 44"
+              width="14"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m13.0729 17.6825a3.61 3.61 0 0 0 -1.7248 3.0365 3.5132 3.5132 0 0 0 2.1379 3.2223 8.394 8.394 0 0 1 -1.0948 2.2618c-.6816.9812-1.3943 1.9623-2.4787 1.9623s-1.3633-.63-2.613-.63c-1.2187 0-1.6525.6507-2.644.6507s-1.6834-.9089-2.4787-2.0243a9.7842 9.7842 0 0 1 -1.6628-5.2776c0-3.0984 2.014-4.7405 3.9969-4.7405 1.0535 0 1.9314.6919 2.5924.6919.63 0 1.6112-.7333 2.8092-.7333a3.7579 3.7579 0 0 1 3.1604 1.5802zm-3.7284-2.8918a3.5615 3.5615 0 0 0 .8469-2.22 1.5353 1.5353 0 0 0 -.031-.32 3.5686 3.5686 0 0 0 -2.3445 1.2084 3.4629 3.4629 0 0 0 -.8779 2.1585 1.419 1.419 0 0 0 .031.2892 1.19 1.19 0 0 0 .2169.0207 3.0935 3.0935 0 0 0 2.1586-1.1368z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <nav
+          id="primary-nav"
+          class="primary-nav"
+          role="navigation"
+          aria-label="주요 내비게이션"
+        >
+          <ul class="nav-list">
+            <li>
+              <button
+                onclick="showProducts()"
+                aria-current="page"
+                aria-describedby="nav-help-1"
+              >
+                상품
+              </button>
+              <div id="nav-help-1" class="nav-help visually-hidden">
+                전체 상품 목록을 확인할 수 있습니다. Alt+1 단축키 사용 가능
+              </div>
+            </li>
+            <li>
+              <button
+                onclick="showCart()"
+                aria-label="장바구니 (0개 상품)"
+                aria-describedby="nav-help-2"
+              >
+                장바구니
+                <span
+                  id="cart-count"
+                  class="cart-count"
+                  aria-live="polite"
+                  aria-atomic="true"
+                  >0</span
+                >
+              </button>
+              <div id="nav-help-2" class="nav-help visually-hidden">
+                장바구니에 담긴 상품을 확인할 수 있습니다. Alt+2 단축키 사용
+                가능
+              </div>
+            </li>
+            <li>
+              <button onclick="showMyPage()" aria-describedby="nav-help-3">
+                마이페이지
+              </button>
+              <div id="nav-help-3" class="nav-help visually-hidden">
+                개인 정보와 주문 내역을 확인할 수 있습니다. Alt+3 단축키 사용
+                가능
+              </div>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="search-area">
+          <button
+            id="search"
+            onclick="toggleSearch()"
+            class="search-btn"
+            aria-label="검색창 열기"
+            aria-expanded="false"
+            aria-controls="search-form"
+            aria-describedby="search-instructions"
+          >
+            <span aria-hidden="true">🔍</span>
+            <span class="btn-text">검색</span>
+          </button>
+          <div id="search-instructions" class="visually-hidden">
+            검색 버튼을 누르거나 Ctrl+K를 눌러 검색창을 열 수 있습니다
+          </div>
+
+          <div
+            id="search-form"
+            class="search-form"
+            hidden
+            role="search"
+            aria-labelledby="search-title"
+          >
+            <h3 id="search-title" class="search-title">상품 검색</h3>
+            <div class="search-input-group">
+              <label for="search-input" class="visually-hidden"
+                >검색어 입력</label
+              >
+              <input
+                type="search"
+                id="search-input"
+                placeholder="검색할 상품명을 입력하세요"
+                aria-describedby="search-help search-suggestions"
+                autocomplete="off"
+                spellcheck="false"
+                aria-autocomplete="list"
+                aria-owns="search-suggestions"
+                role="combobox"
+                aria-expanded="false"
+              />
+              <button
+                type="button"
+                onclick="performSearch()"
+                class="search-submit-btn"
+                aria-label="검색 실행"
+              >
+                <span aria-hidden="true">→</span>
+                검색
+              </button>
+            </div>
+            <div id="search-help" class="search-help">
+              Enter 키를 누르거나 검색 버튼을 클릭하세요. ESC 키로 검색창을 닫을
+              수 있습니다.
+            </div>
+
+            <!-- 검색 자동완성 -->
+            <ul
+              id="search-suggestions"
+              class="search-suggestions"
+              role="listbox"
+              aria-label="검색 제안"
+              hidden
+            >
+              <!-- 동적으로 생성됨 -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 메인 콘텐츠 -->
+    <main id="main-content" role="main">
+      <!-- 브레드크럼 내비게이션 -->
+      <nav aria-label="브레드크럼 내비게이션" class="breadcrumb-nav">
+        <ol class="breadcrumb-list">
+          <li><a href="#" onclick="goHome()" aria-current="page">홈</a></li>
+        </ol>
+      </nav>
+
+      <!-- 메인 배너 -->
+      <section
+        class="banner"
+        aria-labelledby="banner-title"
+        role="banner"
+        tabindex="0"
+      >
+        <div class="banner-content">
+          <h1 id="banner-title">🎉 새해 특가 이벤트</h1>
+          <p class="banner-description">
+            지금 구매하시면 최대 50% 할인!
+            <time datetime="2024-12-31">12월 31일</time>까지 한정 특가
+            <br />
+            <small>(전 품목 무료배송, 당일발송)</small>
+          </p>
+          <div class="banner-actions">
+            <button
+              onclick="showSale()"
+              class="sale-btn primary-cta"
+              aria-describedby="sale-description"
+            >
+              특가 상품 보기
+              <span aria-hidden="true">🏃‍♂️</span>
+            </button>
+            <button
+              onclick="showCoupon()"
+              class="coupon-btn secondary-cta"
+              aria-describedby="coupon-description"
+            >
+              쿠폰 받기
+              <span aria-hidden="true">🎫</span>
+            </button>
+          </div>
+          <div id="sale-description" class="visually-hidden">
+            특가 상품 페이지로 이동하여 할인된 상품들을 확인할 수 있습니다
+          </div>
+          <div id="coupon-description" class="visually-hidden">
+            추가 할인 쿠폰을 받을 수 있습니다
+          </div>
+        </div>
+      </section>
+
+      <!-- 실시간 알림 영역 -->
+      <div
+        id="live-notifications"
+        class="live-notifications"
+        aria-live="polite"
+        aria-atomic="false"
+        aria-relevant="additions text"
+      >
+        <div class="notification-item">
+          <span class="notification-icon" aria-hidden="true">📢</span>
+          <span>실시간 할인 정보와 재고 상황을 알려드립니다</span>
+        </div>
+      </div>
+
+      <!-- 상품 필터 및 정렬 -->
+      <section class="product-controls" aria-labelledby="controls-title">
+        <h2 id="controls-title" class="visually-hidden">상품 필터 및 정렬</h2>
+
+        <div class="filter-sort-container">
+          <div class="filter-group" role="group" aria-labelledby="filter-title">
+            <h3 id="filter-title">필터</h3>
+            <fieldset class="filter-fieldset">
+              <legend>가격대 선택</legend>
+              <div class="price-range-container">
+                <label for="min-price">최소 가격</label>
+                <input
+                  type="number"
+                  id="min-price"
+                  placeholder="0"
+                  aria-describedby="price-help"
+                  min="0"
+                  step="10000"
+                />
+                <label for="max-price">최대 가격</label>
+                <input
+                  type="number"
+                  id="max-price"
+                  placeholder="무제한"
+                  aria-describedby="price-help"
+                  min="0"
+                  step="10000"
+                />
+                <div id="price-help" class="filter-help">
+                  원 단위로 입력해주세요 (예: 100000)
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="sort-group" role="group" aria-labelledby="sort-title">
+            <h3 id="sort-title">정렬</h3>
+            <div class="sort-options">
+              <input
+                type="radio"
+                id="sort-popular"
+                name="sort"
+                value="popular"
+                checked
+                aria-describedby="sort-help"
+              />
+              <label for="sort-popular">인기순</label>
+
+              <input
+                type="radio"
+                id="sort-price-low"
+                name="sort"
+                value="price-low"
+                aria-describedby="sort-help"
+              />
+              <label for="sort-price-low">낮은 가격순</label>
+
+              <input
+                type="radio"
+                id="sort-price-high"
+                name="sort"
+                value="price-high"
+                aria-describedby="sort-help"
+              />
+              <label for="sort-price-high">높은 가격순</label>
+
+              <div id="sort-help" class="filter-help">
+                정렬 기준을 선택하면 즉시 상품 목록이 업데이트됩니다
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 상품 목록 -->
+      <section
+        id="products-section"
+        class="products"
+        aria-labelledby="products-title"
+        aria-describedby="products-description"
+      >
+        <header class="section-header">
+          <h2 id="products-title">인기 상품</h2>
+          <p id="products-description" class="section-description">
+            고객들이 가장 많이 찾는 인기 상품들을 만나보세요.
+            <span id="product-count" aria-live="polite">총 3개 상품</span>
+          </p>
+        </header>
+
+        <!-- 상품 그리드 -->
+        <div
+          class="product-grid"
+          role="list"
+          aria-label="인기 상품 목록"
+          aria-describedby="product-grid-help"
+        >
+          <div id="product-grid-help" class="visually-hidden">
+            화살표 키로 상품 간 이동, Enter 키로 상세보기, Space 키로 장바구니
+            담기가 가능합니다
+          </div>
+
+          <!-- 상품 1: 스마트폰 -->
+          <article
+            class="product-item"
+            role="listitem"
+            aria-labelledby="product-1-title"
+            aria-describedby="product-1-description"
+            tabindex="0"
+            data-product-id="1"
+          >
+            <div class="product-status" aria-live="polite" aria-atomic="true">
+              <span class="stock-status in-stock" aria-label="재고 있음"
+                >재고 있음</span
+              >
+            </div>
+
+            <div class="product-image-container">
+              <img
+                src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone16pro-digitalmat-gallery-1-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=VWJuckJvbkZqeTMwRFJZSHhSVnN1OVRBZjJveUdyMFM0Z0dEYTB4Rzh1RDBVMUIwNFV6MXNoZGhsYWgvZGlmdEJnNER5bEtzeFpoMTlNVnpVcXBTR0NDaXNCSFl3ajdkc3ZBMkZreEM2YjNZV0hWeXdKNnBTeStXSklkb1ZqKzc"
+                alt="iPhone 16 Pro - 티타늄 블루 색상의 최신 스마트폰"
+                class="product-image"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="product-badges">
+                <span class="product-badge new-badge" aria-label="신상품"
+                  >NEW</span
+                >
+                <span class="product-badge eco-badge" aria-label="친환경 제품"
+                  >🌱 ECO</span
+                >
+              </div>
+
+              <!-- 상품 이미지 갤러리 썸네일 -->
+              <div
+                class="image-thumbnails"
+                role="group"
+                aria-label="상품 이미지 갤러리"
+              >
+                <button
+                  class="thumbnail-btn active"
+                  aria-label="메인 이미지 보기"
+                  aria-pressed="true"
+                  onclick="changeProductImage(1, 0)"
+                >
+                  <img
+                    src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone16pro-digitalmat-gallery-2-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=VWJuckJvbkZqeTMwRFJZSHhSVnN1enBhZEVDYXdNalJLdkllSGFmNnBVVDBVMUIwNFV6MXNoZGhsYWgvZGlmdEJnNER5bEtzeFpoMTlNVnpVcXBTR0NDaXNCSFl3ajdkc3ZBMkZreEM2YjFMcENoQkE4dlByUzRnSkp0SGViTnk"
+                    alt="이미지 1"
+                  />
+                </button>
+                <button
+                  class="thumbnail-btn"
+                  aria-label="측면 이미지 보기"
+                  aria-pressed="false"
+                  onclick="changeProductImage(1, 1)"
+                >
+                  <img
+                    src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone16pro-digitalmat-gallery-3-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=VWJuckJvbkZqeTMwRFJZSHhSVnN1K2tBbTY2NGE0RXZvM3VONU9MVlluajBVMUIwNFV6MXNoZGhsYWgvZGlmdEJnNER5bEtzeFpoMTlNVnpVcXBTR0NDaXNCSFl3ajdkc3ZBMkZreEM2YjArdUxKZmY1NUtWbjl2NkdEREpaOVo"
+                    alt="이미지 2"
+                  />
+                </button>
+              </div>
+            </div>
+
+            <div class="product-info">
+              <h3 id="product-1-title" class="product-title">
+                <a href="#" onclick="showProduct(1)" class="product-link">
+                  iPhone 16 Pro 256GB
+                </a>
+              </h3>
+
+              <p id="product-1-description" class="product-description">
+                6.1인치 Super Retina XDR 디스플레이, A17 Pro 칩, Pro 카메라
+                시스템, 티타늄 디자인
+              </p>
+
+              <div
+                class="product-specs"
+                aria-labelledby="product-1-specs-title"
+              >
+                <h4
+                  id="product-1-specs-title"
+                  class="specs-title visually-hidden"
+                >
+                  주요 사양
+                </h4>
+                <dl class="specs-list">
+                  <dt>화면 크기</dt>
+                  <dd>6.1인치</dd>
+                  <dt>저장 용량</dt>
+                  <dd>256GB</dd>
+                  <dt>색상</dt>
+                  <dd>티타늄 블루</dd>
+                </dl>
+              </div>
+
+              <div class="price-info" aria-labelledby="product-1-price-title">
+                <h4 id="product-1-price-title" class="visually-hidden">
+                  가격 정보
+                </h4>
+                <div class="price-display">
+                  <span class="original-price" aria-label="정가"
+                    >1,550,000원</span
+                  >
+                  <span class="sale-price" aria-label="할인가"
+                    >1,350,000원</span
+                  >
+                  <span class="discount-rate" aria-label="할인율"
+                    >13% 할인</span
+                  >
+                </div>
+                <div class="payment-options">
+                  <span class="installment-info" aria-label="할부 정보">
+                    무이자 12개월 월 112,500원
+                  </span>
+                </div>
+              </div>
+
+              <div
+                class="product-rating"
+                aria-labelledby="product-1-rating-title"
+                role="img"
+                aria-label="5점 만점에 4.6점"
+              >
+                <h4 id="product-1-rating-title" class="visually-hidden">
+                  고객 평점
+                </h4>
+                <div class="stars-container">
+                  <span class="stars filled" aria-hidden="true">★★★★★</span>
+                  <span class="stars empty" aria-hidden="true">☆☆☆☆☆</span>
+                </div>
+                <span class="rating-text">4.6점 (리뷰 342개)</span>
+              </div>
+
+              <div
+                class="delivery-info"
+                aria-labelledby="product-1-delivery-title"
+              >
+                <h4 id="product-1-delivery-title" class="visually-hidden">
+                  배송 정보
+                </h4>
+                <div class="delivery-details">
+                  <span class="delivery-type">🚚 무료배송</span>
+                  <span class="delivery-time">오늘 출발시 내일 도착</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-actions" role="group" aria-label="상품 액션">
+              <button
+                onclick="toggleWishlist(1)"
+                class="wishlist-btn"
+                aria-pressed="false"
+                aria-label="위시리스트에 추가"
+                title="위시리스트에 추가"
+              >
+                <span aria-hidden="true">♡</span>
+                <span class="btn-text">찜하기</span>
+              </button>
+
+              <button
+                onclick="showProduct(1)"
+                class="btn-secondary"
+                aria-label="iPhone 15 Pro 상세정보 보기"
+              >
+                상세보기
+              </button>
+
+              <button
+                onclick="addToCart(1)"
+                class="btn-primary add-cart-btn"
+                aria-label="iPhone 15 Pro를 장바구니에 담기"
+                aria-describedby="cart-action-help"
+              >
+                <span class="btn-icon" aria-hidden="true">🛒</span>
+                장바구니 담기
+              </button>
+
+              <div id="cart-action-help" class="visually-hidden">
+                Space 키를 눌러 빠르게 장바구니에 담을 수 있습니다
+              </div>
+            </div>
+          </article>
+
+          <!-- 상품 2: 노트북 (품절 상태 예시) -->
+          <article
+            class="product-item out-of-stock"
+            role="listitem"
+            aria-labelledby="product-2-title"
+            aria-describedby="product-2-description product-2-stock-notice"
+            tabindex="0"
+            data-product-id="2"
+          >
+            <div class="product-status" aria-live="polite" aria-atomic="true">
+              <span class="stock-status out-of-stock" aria-label="현재 품절"
+                >품절</span
+              >
+            </div>
+
+            <div class="product-image-container">
+              <img
+                src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mbp14-spaceblack-gallery1-202410?wid=4000&hei=3074&fmt=jpeg&qlt=90&.v=YnlWZDdpMFo0bUpJZnBpZjhKM2M3WGpXSTNqQ2U1MjQxSHBKRkRoWUE0bmd1eUJ6eHZMSFFNMld6aTRncXNRUlJWYlIvRkkxemNIb09FY29ZRmVrUDhQTUF6eWYycDMyY0I5TEVkZkpSbDU4aHA0S1QvclFGZSsvUzZRWUI0U1M"
+                alt="MacBook Pro M3 - 스페이스 그레이 색상 (현재 품절)"
+                class="product-image"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="product-badges">
+                <span class="product-badge sale-badge" aria-label="특가 상품"
+                  >SALE</span
+                >
+                <span
+                  class="product-badge premium-badge"
+                  aria-label="프리미엄 제품"
+                  >PREMIUM</span
+                >
+              </div>
+              <div class="stock-overlay" aria-hidden="true">
+                <span class="stock-overlay-text">일시 품절</span>
+              </div>
+            </div>
+
+            <div class="product-info">
+              <h3 id="product-2-title" class="product-title">
+                <a href="#" onclick="showProduct(2)" class="product-link">
+                  MacBook Pro14
+                </a>
+              </h3>
+
+              <p id="product-2-description" class="product-description">
+                14인치 Liquid Retina XDR 디스플레이, M3 Pro 칩, 18GB 통합
+                메모리, 512GB SSD
+              </p>
+
+              <div
+                id="product-2-stock-notice"
+                class="stock-notice"
+                role="alert"
+              >
+                현재 품절된 상품입니다. 재입고 알림을 신청하실 수 있습니다.
+              </div>
+
+              <div class="price-info">
+                <div class="price-display">
+                  <span class="original-price" aria-label="정가"
+                    >2,390,000원</span
+                  >
+                  <span class="sale-price" aria-label="할인가"
+                    >1,912,000원</span
+                  >
+                  <span class="discount-rate" aria-label="할인율"
+                    >20% 할인</span
+                  >
+                </div>
+              </div>
+
+              <div
+                class="product-rating"
+                role="img"
+                aria-label="5점 만점에 4.8점"
+              >
+                <div class="stars-container">
+                  <span class="stars filled" aria-hidden="true">★★★★★</span>
+                  <span class="stars empty" aria-hidden="true">☆☆☆☆☆</span>
+                </div>
+                <span class="rating-text">4.8점 (리뷰 156개)</span>
+              </div>
+            </div>
+
+            <div class="product-actions" role="group" aria-label="상품 액션">
+              <button
+                onclick="toggleWishlist(2)"
+                class="wishlist-btn"
+                aria-pressed="false"
+                aria-label="위시리스트에 추가"
+              >
+                <span aria-hidden="true">♡</span>
+                <span class="btn-text">찜하기</span>
+              </button>
+
+              <button
+                onclick="showProduct(2)"
+                class="btn-secondary"
+                aria-label="MacBook Pro 상세정보 보기"
+              >
+                상세보기
+              </button>
+
+              <button
+                onclick="requestRestock(2)"
+                class="btn-outline restock-btn"
+                aria-label="MacBook Pro 재입고 알림 신청"
+              >
+                <span class="btn-icon" aria-hidden="true">🔔</span>
+                재입고 알림
+              </button>
+            </div>
+          </article>
+
+          <!-- 상품 3: 태블릿 -->
+          <article
+            class="product-item"
+            role="listitem"
+            aria-labelledby="product-3-title"
+            aria-describedby="product-3-description"
+            tabindex="0"
+            data-product-id="3"
+          >
+            <div class="product-status" aria-live="polite" aria-atomic="true">
+              <span class="stock-status low-stock" aria-label="재고 부족"
+                >재고 부족</span
+              >
+            </div>
+
+            <div class="product-image-container">
+              <img
+                src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-pro-finish-select-202405-11inch-silver?wid=5120&hei=2880&fmt=webp&qlt=90&.v=YXpaUEtKWGhlNnNrVGZkTEo4T0xsNEsrMGFueUl5dllOTm9xWTIwTHNieUJLNkVlVkZpVE5VcEU5RHJDbXpCOXF2TWlpSzUzejRCZGt2SjJUNGl1VEE4bm1RcmlWRWp2eDN1WHNkSjNmUmEvQ0hVc0dNMTRHeWE3dDZOT0ZZVDk&traceId=1"
+                alt="iPad Pro 12.9인치 - 실버 색상"
+                class="product-image"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="product-badges">
+                <span
+                  class="product-badge bestseller-badge"
+                  aria-label="베스트셀러"
+                  >BEST</span
+                >
+              </div>
+            </div>
+
+            <div class="product-info">
+              <h3 id="product-3-title" class="product-title">
+                <a href="#" onclick="showProduct(3)" class="product-link">
+                  iPad Pro 12.9 M2
+                </a>
+              </h3>
+
+              <p id="product-3-description" class="product-description">
+                12.9인치 Liquid Retina XDR 디스플레이, M2 칩, 256GB 저장공간,
+                Apple Pencil 호환
+              </p>
+
+              <div class="price-info">
+                <div class="price-display">
+                  <span class="sale-price" aria-label="가격">1,199,000원</span>
+                </div>
+              </div>
+
+              <div
+                class="product-rating"
+                role="img"
+                aria-label="5점 만점에 4.7점"
+              >
+                <div class="stars-container">
+                  <span class="stars filled" aria-hidden="true">★★★★★</span>
+                  <span class="stars empty" aria-hidden="true">☆☆☆☆☆</span>
+                </div>
+                <span class="rating-text">4.7점 (리뷰 298개)</span>
+              </div>
+
+              <div class="urgency-notice" role="alert" aria-live="polite">
+                ⚡ 한정 수량! 7개 남음
+              </div>
+            </div>
+
+            <div class="product-actions" role="group" aria-label="상품 액션">
+              <button
+                onclick="toggleWishlist(3)"
+                class="wishlist-btn"
+                aria-pressed="false"
+                aria-label="위시리스트에 추가"
+              >
+                <span aria-hidden="true">♡</span>
+                <span class="btn-text">찜하기</span>
+              </button>
+
+              <button
+                onclick="showProduct(3)"
+                class="btn-secondary"
+                aria-label="iPad Pro 상세정보 보기"
+              >
+                상세보기
+              </button>
+
+              <button
+                onclick="addToCart(3)"
+                class="btn-primary add-cart-btn urgent"
+                aria-label="iPad Pro를 장바구니에 담기 (재고 부족)"
+              >
+                <span class="btn-icon" aria-hidden="true">🛒</span>
+                빠른 구매
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <!-- 상품 목록 페이지네이션 -->
+        <nav
+          class="pagination-nav"
+          aria-label="상품 목록 페이지 내비게이션"
+          role="navigation"
+        >
+          <ul class="pagination-list">
+            <li>
+              <button
+                class="pagination-btn"
+                disabled
+                aria-label="이전 페이지 없음"
+              >
+                <span aria-hidden="true">‹</span> 이전
+              </button>
+            </li>
+            <li>
+              <button
+                class="pagination-btn current"
+                aria-current="page"
+                aria-label="현재 페이지, 1페이지"
+              >
+                1
+              </button>
+            </li>
+            <li>
+              <button class="pagination-btn" aria-label="2페이지로 이동">
+                2
+              </button>
+            </li>
+            <li>
+              <button class="pagination-btn" aria-label="3페이지로 이동">
+                3
+              </button>
+            </li>
+            <li>
+              <button
+                class="pagination-btn"
+                aria-label="다음 페이지, 2페이지로 이동"
+              >
+                다음 <span aria-hidden="true">›</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+      <!-- 로그인 폼 -->
+      <section class="login-section" aria-labelledby="login-title">
+        <header>
+          <h2 id="login-title">로그인</h2>
+          <p class="login-description">
+            계정에 로그인하여 더 많은 서비스를 이용하세요
+            <br /><small
+              >소셜 로그인 또는 이메일로 간편하게 로그인하실 수 있습니다</small
+            >
+          </p>
+        </header>
+
+        <!-- 소셜 로그인 -->
+        <div
+          class="social-login"
+          role="group"
+          aria-labelledby="social-login-title"
+        >
+          <h3 id="social-login-title">소셜 로그인</h3>
+          <div class="social-buttons">
+            <button
+              onclick="loginWithGoogle()"
+              class="social-btn google-btn"
+              aria-label="구글 계정으로 로그인"
+            >
+              <span class="social-icon" aria-hidden="true">G</span>
+              구글로 로그인
+            </button>
+            <button
+              onclick="loginWithKakao()"
+              class="social-btn kakao-btn"
+              aria-label="카카오 계정으로 로그인"
+            >
+              <span class="social-icon" aria-hidden="true">K</span>
+              카카오로 로그인
+            </button>
+          </div>
+
+          <div class="divider" role="separator" aria-label="또는">
+            <span>또는</span>
+          </div>
+        </div>
+
+        <form
+          class="login-form"
+          onsubmit="return handleLogin(event)"
+          novalidate
+          aria-labelledby="email-login-title"
+        >
+          <h3 id="email-login-title">이메일 로그인</h3>
+
+          <fieldset class="form-fieldset">
+            <legend class="visually-hidden">로그인 정보 입력</legend>
+
+            <div class="form-group">
+              <label for="username" class="form-label">
+                이메일 주소
+                <span class="required-mark" aria-label="필수 입력">*</span>
+              </label>
+              <div class="input-container">
+                <input
+                  type="email"
+                  id="username"
+                  name="username"
+                  required
+                  autocomplete="email"
+                  aria-describedby="username-help username-error"
+                  class="form-input"
+                  placeholder="example@email.com"
+                  aria-invalid="false"
+                />
+                <span class="input-icon" aria-hidden="true">📧</span>
+              </div>
+              <div id="username-help" class="form-help">
+                가입시 사용한 이메일 주소를 입력하세요
+              </div>
+              <div
+                id="username-error"
+                class="form-error"
+                role="alert"
+                aria-live="polite"
+                aria-atomic="true"
+              ></div>
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="form-label">
+                비밀번호
+                <span class="required-mark" aria-label="필수 입력">*</span>
+              </label>
+              <div class="input-container">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  required
+                  autocomplete="current-password"
+                  aria-describedby="password-help password-error"
+                  class="form-input"
+                  placeholder="비밀번호를 입력하세요"
+                  aria-invalid="false"
+                />
+                <button
+                  type="button"
+                  class="password-toggle"
+                  onclick="togglePasswordVisibility()"
+                  aria-label="비밀번호 보기/숨기기"
+                  aria-pressed="false"
+                >
+                  <span id="password-toggle-icon" aria-hidden="true">👁️</span>
+                </button>
+              </div>
+              <div id="password-help" class="form-help">
+                8자 이상의 비밀번호를 입력하세요
+              </div>
+              <div
+                id="password-error"
+                class="form-error"
+                role="alert"
+                aria-live="polite"
+                aria-atomic="true"
+              ></div>
+            </div>
+
+            <div class="form-options">
+              <label class="checkbox-label">
+                <input
+                  type="checkbox"
+                  id="remember-me"
+                  name="remember"
+                  aria-describedby="remember-help"
+                />
+                <span class="checkbox-custom" aria-hidden="true"></span>
+                로그인 상태 유지
+              </label>
+              <div id="remember-help" class="form-help">
+                공용 컴퓨터에서는 선택하지 마세요
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button
+                type="submit"
+                class="btn-primary login-btn"
+                aria-describedby="login-btn-help"
+              >
+                <span class="btn-icon" aria-hidden="true">🔐</span>
+                로그인
+              </button>
+              <div id="login-btn-help" class="visually-hidden">
+                Enter 키를 눌러도 로그인할 수 있습니다
+              </div>
+
+              <div class="form-links">
+                <a href="#" onclick="showSignup()" aria-label="새 계정 만들기">
+                  계정이 없으신가요? 회원가입
+                </a>
+                <span aria-hidden="true">|</span>
+                <a
+                  href="#"
+                  onclick="showFindPassword()"
+                  aria-label="비밀번호 찾기"
+                >
+                  비밀번호 찾기
+                </a>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer-container">
+        <nav
+          id="footer-nav"
+          class="footer-nav"
+          aria-label="푸터 내비게이션"
+          role="navigation"
+        >
+          <div class="footer-section">
+            <h3 class="footer-title">고객 서비스</h3>
+            <ul class="footer-links">
+              <li><a href="#" onclick="showTerms()">이용약관</a></li>
+              <li><a href="#" onclick="showPrivacy()">개인정보처리방침</a></li>
+              <li><a href="#" onclick="showContact()">고객센터</a></li>
+              <li>
+                <a href="#" onclick="showAccessibility()">웹 접근성 정책</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3 class="footer-title">쇼핑 가이드</h3>
+            <ul class="footer-links">
+              <li><a href="#" onclick="showShippingInfo()">배송 안내</a></li>
+              <li><a href="#" onclick="showReturnInfo()">반품/교환</a></li>
+              <li><a href="#" onclick="showPaymentInfo()">결제 방법</a></li>
+              <li><a href="#" onclick="showFAQ()">자주 묻는 질문</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3 class="footer-title">접근성 지원</h3>
+            <ul class="footer-links">
+              <li><a href="#" onclick="showA11yGuide()">접근성 가이드</a></li>
+              <li>
+                <a href="#" onclick="showKeyboardShortcuts()">키보드 단축키</a>
+              </li>
+              <li>
+                <a href="#" onclick="showScreenReaderHelp()"
+                  >스크린 리더 도움말</a
+                >
+              </li>
+              <li>
+                <a href="#" onclick="reportA11yIssue()">접근성 문제 신고</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="footer-info">
+          <address class="company-info">
+            <strong>Ultimate A11Y 쇼핑몰</strong><br />
+            서울시 강남구 테헤란로 123, A11Y 빌딩 5층<br />
+            사업자등록번호: 123-45-67890<br />
+            대표전화: <a href="tel:1588-1234">1588-1234</a> (평일 9시-18시)<br />
+            팩스: 02-1234-5678<br />
+            이메일:
+            <a href="mailto:support@ultimate-a11y.com"
+              >support@ultimate-a11y.com</a
+            ><br />
+            접근성 문의:
+            <a href="mailto:accessibility@ultimate-a11y.com"
+              >accessibility@ultimate-a11y.com</a
+            >
+          </address>
+
+          <div class="certifications">
+            <h4>인증 및 수상</h4>
+            <ul class="cert-list">
+              <li>
+                <img
+                  src="https://via.placeholder.com/80x40/28a745/ffffff?text=WCAG"
+                  alt="WCAG 2.1 AA 인증"
+                  class="cert-logo"
+                />
+                <span>WCAG 2.1 AA 준수</span>
+              </li>
+              <li>
+                <img
+                  src="https://via.placeholder.com/80x40/007bff/ffffff?text=A11Y"
+                  alt="웹 접근성 품질인증"
+                  class="cert-logo"
+                />
+                <span>웹 접근성 품질인증</span>
+              </li>
+            </ul>
+          </div>
+
+          <p class="copyright">
+            &copy; 2024 Ultimate A11Y Mall. All rights reserved.
+            <br />
+            <small>이 사이트는 웹 접근성 실습을 위한 예제입니다.</small>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ARIA Live Regions -->
+    <div
+      id="status-announcements"
+      aria-live="polite"
+      aria-atomic="true"
+      class="visually-hidden"
+      role="status"
+    ></div>
+    <div
+      id="alert-announcements"
+      aria-live="assertive"
+      aria-atomic="true"
+      class="visually-hidden"
+      role="alert"
+    ></div>
+    <div
+      id="progress-announcements"
+      aria-live="polite"
+      aria-atomic="false"
+      class="visually-hidden"
+      role="progressbar"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="0"
+    ></div>
+
+    <!-- 키보드 단축키 도움말 모달 -->
+    <div
+      id="keyboard-help-modal"
+      class="modal"
+      role="dialog"
+      aria-labelledby="keyboard-help-title"
+      aria-describedby="keyboard-help-description"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <div class="modal-content">
+        <header class="modal-header">
+          <h2 id="keyboard-help-title">키보드 단축키</h2>
+          <button
+            class="modal-close"
+            onclick="closeModal('keyboard-help-modal')"
+            aria-label="도움말 닫기"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        </header>
+        <div id="keyboard-help-description" class="modal-body">
+          <dl class="shortcut-list">
+            <dt>Ctrl + K</dt>
+            <dd>검색창 열기</dd>
+            <dt>Alt + 1, 2, 3</dt>
+            <dd>주요 메뉴 바로가기</dd>
+            <dt>ESC</dt>
+            <dd>모달/드롭다운 닫기</dd>
+            <dt>Space</dt>
+            <dd>상품을 장바구니에 담기</dd>
+            <dt>Enter</dt>
+            <dd>상품 상세보기</dd>
+            <dt>Tab / Shift+Tab</dt>
+            <dd>다음/이전 요소로 이동</dd>
+            <dt>Arrow Keys</dt>
+            <dd>상품 그리드에서 상품 간 이동</dd>
+          </dl>
+        </div>
+      </div>
+      <div
+        class="modal-backdrop"
+        onclick="closeModal('keyboard-help-modal')"
+      ></div>
+    </div>
+
+    <!-- 스크립트 -->
+    <script src="script.js"></script>
+
+    <!-- 접근성 분석 스크립트 (개발용) -->
+    <script>
+      // 접근성 통계 로깅
+      if (window.location.hostname === "localhost") {
+        console.log("🔍 접근성 분석 결과:");
+        console.log(
+          "- 스킵 링크:",
+          document.querySelectorAll(".skip-link").length + "개"
+        );
+        console.log(
+          "- ARIA 레이블:",
+          document.querySelectorAll("[aria-label]").length + "개"
+        );
+        console.log(
+          "- Live Region:",
+          document.querySelectorAll("[aria-live]").length + "개"
+        );
+        console.log(
+          "- 폼 라벨 연결:",
+          document.querySelectorAll("label[for]").length + "개"
+        );
+        console.log(
+          "- 이미지 alt 텍스트:",
+          document.querySelectorAll("img[alt]").length + "개"
+        );
+      }
+    </script>
+  </body>
+</html>

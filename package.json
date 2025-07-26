@@ -1,0 +1,41 @@
+{
+  "name": "web-accessibility-practice",
+  "version": "1.0.0",
+  "description": "웹 접근성 실습을 위한 단계별 프로젝트",
+  "scripts": {
+    "start": "echo '사용 가능한 명령어:' && echo 'npm run step1 - 1단계 서버 실행 (포트 3001)' && echo 'npm run step2 - 2단계 서버 실행 (포트 3002)' && echo 'npm run step3 - 3단계 서버 실행 (포트 3003)' && echo 'npm run step4 - 4단계 서버 실행 (포트 3004)' && echo 'npm run all - 모든 단계 동시 실행'",
+    "step1": "echo '🔴 1단계 서버 시작 - http://localhost:3001' && npx http-server step1-problems -p 3001 -o",
+    "step2": "echo '🟡 2단계 서버 시작 - http://localhost:3002' && npx http-server step2-basic-fix -p 3002 -o",
+    "step3": "echo '🟢 3단계 서버 시작 - http://localhost:3003' && npx http-server step3-good-practice -p 3003 -o",
+    "step4": "echo '🔥 4단계 서버 시작 - http://localhost:3004' && npx http-server step4-advanced -p 3004 -o",
+    "all": "concurrently \"npm run step1:bg\" \"npm run step2:bg\" \"npm run step3:bg\" \"npm run step4:bg\" && echo '모든 서버가 시작되었습니다!'",
+    "step1:bg": "npx http-server step1-problems -p 3001 --silent",
+    "step2:bg": "npx http-server step2-basic-fix -p 3002 --silent",
+    "step3:bg": "npx http-server step3-good-practice -p 3003 --silent",
+    "step4:bg": "npx http-server step4-advanced -p 3004 --silent",
+    "lighthouse": "npm run lighthouse:all",
+    "lighthouse:all": "echo '모든 단계에 대해 Lighthouse 검사를 실행합니다...' && npm run lighthouse:step1 && npm run lighthouse:step2 && npm run lighthouse:step3 && npm run lighthouse:step4",
+    "lighthouse:step1": "lighthouse http://localhost:3001 --only-categories=accessibility --output=html --output-path=./reports/step1-lighthouse.html",
+    "lighthouse:step2": "lighthouse http://localhost:3002 --only-categories=accessibility --output=html --output-path=./reports/step2-lighthouse.html",
+    "lighthouse:step3": "lighthouse http://localhost:3003 --only-categories=accessibility --output=html --output-path=./reports/step3-lighthouse.html",
+    "lighthouse:step4": "lighthouse http://localhost:3004 --only-categories=accessibility --output=html --output-path=./reports/step4-lighthouse.html",
+    "install-tools": "npm install -g http-server lighthouse concurrently",
+    "setup": "mkdir -p reports && npm run install-tools && echo '설정이 완료되었습니다!'"
+  },
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "wcag",
+    "web-accessibility",
+    "lighthouse",
+    "practice"
+  ],
+  "author": "Web Accessibility Practice",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}

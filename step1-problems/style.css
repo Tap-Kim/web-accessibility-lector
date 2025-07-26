@@ -1,0 +1,149 @@
+/* 기본 스타일 */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+}
+
+/* 헤더 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav div {
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.search-btn {
+  cursor: pointer;
+  font-size: 20px;
+  padding: 10px;
+}
+
+/* 배너 */
+.banner {
+  padding: 50px 20px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.banner div:last-child {
+  margin-top: 20px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* 상품 목록 */
+.products {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.product-item {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.product-item div:last-child {
+  margin-top: 10px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* 로그인 섹션 */
+.login-section {
+  background: white;
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form > div {
+  margin-bottom: 15px;
+}
+
+.form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form > div:last-child {
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* 푸터 */
+.footer {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.footer > div {
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.footer > div:last-child {
+  cursor: default;
+}
+
+/* 호버 효과 - 접근성 문제 */
+.nav div:hover {
+  background: #ff6b6b;
+  color: white;
+}
+
+.product-item:hover {
+  transform: scale(1.05);
+}
+
+/* 작은 글씨 - 가독성 문제 */
+.small-text {
+  font-size: 10px;
+  color: #999;
+}
+
+/* 색상 대비 문제 */
+.low-contrast {
+  color: #ccc;
+  background: #ddd;
+}
