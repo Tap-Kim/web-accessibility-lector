@@ -489,6 +489,29 @@ function showProduct(productId) {
   announceToScreenReader(message);
 }
 
+function changeProductImage(productId, imageIndex) {
+  const productCard = document.querySelector(`[data-product-id="${productId}"]`);
+  if (!productCard) return;
+
+  const mainImage = productCard.querySelector(".product-image");
+  const thumbnails = productCard.querySelectorAll(".thumbnail-btn");
+  const targetThumbnail = thumbnails[imageIndex];
+  const thumbnailImage = targetThumbnail?.querySelector("img");
+
+  if (!mainImage || !thumbnailImage) return;
+
+  mainImage.src = thumbnailImage.src;
+  mainImage.alt = `${products[productId]?.name || "상품"} 이미지 ${imageIndex + 1}`;
+
+  thumbnails.forEach((button, index) => {
+    const isActive = index === imageIndex;
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-pressed", isActive.toString());
+  });
+
+  announceToScreenReader(`상품 이미지 ${imageIndex + 1}번으로 변경되었습니다.`);
+}
+
 function addToCart(productId) {
   const product = products[productId];
   if (!product) return;
@@ -761,6 +784,44 @@ function showContact() {
 function showAccessibility() {
   console.log("접근성 정책 보기");
   announceToScreenReader("웹 접근성 정책 페이지로 이동합니다.");
+}
+
+function showShippingInfo() {
+  announceToScreenReader("배송 안내 페이지로 이동합니다.");
+  showNotification("배송 안내 페이지로 이동합니다.", "info");
+}
+
+function showReturnInfo() {
+  announceToScreenReader("반품 및 교환 안내 페이지로 이동합니다.");
+  showNotification("반품 및 교환 안내 페이지로 이동합니다.", "info");
+}
+
+function showPaymentInfo() {
+  announceToScreenReader("결제 방법 안내 페이지로 이동합니다.");
+  showNotification("결제 방법 안내 페이지로 이동합니다.", "info");
+}
+
+function showFAQ() {
+  announceToScreenReader("자주 묻는 질문 페이지로 이동합니다.");
+  showNotification("자주 묻는 질문 페이지로 이동합니다.", "info");
+}
+
+function showA11yGuide() {
+  announceToScreenReader("접근성 가이드 문서로 이동합니다.");
+  showNotification("접근성 가이드 페이지로 이동합니다.", "info");
+}
+
+function showScreenReaderHelp() {
+  announceToScreenReader("스크린 리더 도움말 페이지로 이동합니다.");
+  showNotification("스크린 리더 도움말 페이지로 이동합니다.", "info");
+}
+
+function reportA11yIssue() {
+  announceToScreenReader(
+    "접근성 문제 신고 양식으로 이동합니다. 불편 사항을 자세히 작성해 주세요.",
+    "assertive"
+  );
+  showNotification("접근성 문제 신고 페이지로 이동합니다.", "warning");
 }
 
 function showKeyboardShortcuts() {

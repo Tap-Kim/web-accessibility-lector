@@ -225,8 +225,12 @@ document.addEventListener("DOMContentLoaded", function () {
       event.preventDefault();
       const target = document.querySelector(skipLink.getAttribute("href"));
       if (target) {
+        // 포커스 이동이 보장되도록 프로그램적 포커스 허용
+        if (!target.hasAttribute("tabindex")) {
+          target.setAttribute("tabindex", "-1");
+        }
         target.focus();
-        target.scrollIntoView();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
   }

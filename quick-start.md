@@ -4,7 +4,7 @@
 
 ## 📋 사전 요구사항
 
-- **Node.js** (v14 이상) - [다운로드](https://nodejs.org)
+- **Node.js** (v18 이상) - [다운로드](https://nodejs.org)
 - **Chrome 브라우저** (Lighthouse 사용)
 - **터미널/명령 프롬프트** 액세스
 
@@ -14,8 +14,8 @@
 # 1. 설정 스크립트 실행
 ./server-setup.sh
 
-# 2. 1단계 서버 시작
-npm run step1
+# 2. 1단계 Lighthouse 자동 검사
+npm run audit:step1
 ```
 
 ## 🔧 수동 설정
@@ -23,14 +23,11 @@ npm run step1
 ### 1단계: 필요한 도구 설치
 
 ```bash
-# http-server 설치 (로컬 서버용)
-npm install -g http-server
+# 프로젝트 의존성 설치
+npm install
 
-# lighthouse 설치 (접근성 검사용)
-npm install -g lighthouse
-
-# concurrently 설치 (동시 실행용)
-npm install -g concurrently
+# 보고서 폴더 생성
+mkdir -p reports
 ```
 
 ### 2단계: 서버 실행
@@ -85,14 +82,14 @@ npm run all
 ### 방법 2: CLI 사용
 
 ```bash
-# 개별 단계 검사
-npm run lighthouse:step1
-npm run lighthouse:step2
-npm run lighthouse:step3
-npm run lighthouse:step4
+# 개별 단계 자동 검사(서버 자동 실행/종료)
+npm run audit:step1
+npm run audit:step2
+npm run audit:step3
+npm run audit:step4
 
-# 모든 단계 검사
-npm run lighthouse
+# 전체 단계 자동 검사
+npm run audit:all
 ```
 
 리포트는 `reports/` 폴더에 HTML 파일로 저장됩니다.
@@ -124,7 +121,7 @@ npm run lighthouse
 ### 3️⃣ 3단계: 모범 사례
 
 1. **서버 실행**: `npm run step3`
-2. **고득점 확인**: 90점 이상 달성 확인
+2. **고득점 확인**: 85점 이상 달성 확인 (권장 범위 85-95점)
 3. **WCAG 준수**: 체크리스트로 확인
 
 ### 4️⃣ 4단계: 고급 기능
@@ -132,6 +129,20 @@ npm run lighthouse
 1. **서버 실행**: `npm run step4`
 2. **완벽한 점수**: 95점 이상 목표
 3. **고급 기능**: 접근성 도구 모음 체험
+
+## ⏱ 60분 실습 타임박스 (권장)
+
+1. **0-10분**: Step1 문제 탐색 + `npm run audit:step1`로 기준 점수 기록
+2. **10-30분**: Step2 필수 TODO 완료 + `npm run audit:step2` 확인
+3. **30-45분**: Step3 필수 TODO 완료 + `npm run audit:step3` 확인
+4. **45-60분**: Step4 선택 TODO 1~2개 적용 + `npm run audit:step4` 확인
+
+### 타임박스 내 최소 통과 기준
+
+- [ ] Step2에서 Lighthouse 60점 이상
+- [ ] Step3에서 Lighthouse 85점 이상
+- [ ] 키보드만으로 메뉴 이동/검색/로그인 제출 가능
+- [ ] 폼 오류가 시각 + 스크린리더 모두에 전달됨
 
 ## 🔧 문제 해결
 
@@ -145,9 +156,10 @@ npx http-server step1-problems -p 8001 -o
 ### 권한 오류 시 (Mac/Linux)
 
 ```bash
-# sudo 없이 전역 설치
-npm config set prefix '~/.npm-global'
-export PATH=~/.npm-global/bin:$PATH
+# 캐시 정리 후 재설치
+npm cache clean --force
+rm -rf node_modules package-lock.json
+npm install
 ```
 
 ### Node.js 미설치 시
@@ -192,6 +204,8 @@ export PATH=~/.npm-global/bin:$PATH
 - ✅ 폼 필드에 라벨이 연결되어 있는가?
 - ✅ 색상 대비가 충분한가?
 - ✅ 스크린 리더로 내용을 이해할 수 있는가?
+
+강사용 상세 채점은 `instructor-rubric.md`를 참고하세요.
 
 ---
 

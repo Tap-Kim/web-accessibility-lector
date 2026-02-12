@@ -39,19 +39,19 @@
         <div id="primary-nav" class="primary-nav">
           <!-- TODO: 메뉴 목록을 나타내는 시맨틱 구조가 필요합니다 -->
           <div class="nav-list">
-            <li>
+            <div class="nav-item">
               <!-- TODO: 현재 페이지 상태를 나타내는 ARIA 속성이 필요합니다 -->
               <button onclick="showProducts()">상품</button>
-            </li>
-            <li>
+            </div>
+            <div class="nav-item">
               <!-- TODO: 장바구니 개수 정보를 포함한 버튼 설명이 필요합니다 -->
               <button onclick="showCart()">
                 장바구니
                 <!-- TODO: 실시간으로 변경되는 카운트 정보를 알리는 속성이 필요합니다 -->
                 <span id="cart-count" class="cart-count">0</span>
               </button>
-            </li>
-            <li><button onclick="showMyPage()">마이페이지</button></li>
+            </div>
+            <div class="nav-item"><button onclick="showMyPage()">마이페이지</button></div>
           </div>
         </div>
 
@@ -84,6 +84,7 @@
             <div id="search-help" class="search-help">
               Enter 키를 누르거나 검색 버튼을 클릭하세요
             </div>
+            <div id="search-input-error" class="form-error" aria-live="polite"></div>
           </div>
         </div>
       </div>
