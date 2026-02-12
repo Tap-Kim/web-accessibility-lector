@@ -1,12 +1,16 @@
 <!DOCTYPE html>
+<!-- TODO: 문서의 언어를 지정하는 속성이 없습니다 -->
 <html>
   <head>
     <title>쇼핑몰</title>
+    <!-- TODO: 문자 인코딩과 뷰포트 설정을 위한 메타태그가 없습니다 -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- 헤더 영역 -->
+    <!-- TODO: 헤더 영역을 나타내는 시맨틱 태그를 사용해야 합니다 -->
     <div class="header">
+      <!-- TODO: 클릭 가능한 요소는 div 대신 button 태그를 사용해야 합니다 -->
       <div onclick="goHome()" class="logo">
         <svg
           height="44"
@@ -19,11 +23,14 @@
           ></path>
         </svg>
       </div>
+      <!-- TODO: 내비게이션 영역을 나타내는 시맨틱 태그를 사용해야 합니다 -->
       <div class="nav">
+        <!-- TODO: 메뉴 항목들은 div+onclick 대신 button 태그를 사용해야 합니다 -->
         <div onclick="showProducts()" style="color: #ff6b6b">상품</div>
         <div onclick="showCart()">장바구니</div>
         <div onclick="showMyPage()">마이페이지</div>
       </div>
+      <!-- TODO: 검색 버튼은 div 대신 button 태그를 사용하고 접근성 레이블이 필요합니다 -->
       <div onclick="toggleSearch()" class="search-btn">🔍</div>
     </div>
 
@@ -32,8 +39,10 @@
       class="banner"
       style="background: linear-gradient(45deg, #ff6b6b, #4ecdc4)"
     >
+      <!-- TODO: 제목 텍스트는 div 대신 적절한 heading 태그(h1~h6)를 사용해야 합니다 -->
       <div style="color: white; font-size: 24px">특가 할인!</div>
       <div style="color: #ffeb3b; font-size: 14px">지금 바로 확인하세요</div>
+      <!-- TODO: 클릭 유도 버튼은 div 대신 button 태그를 사용하고 명확한 텍스트가 필요합니다 -->
       <div
         onclick="showSale()"
         style="background: yellow; color: red; padding: 10px"
@@ -44,15 +53,18 @@
 
     <!-- 상품 목록 -->
     <div class="products">
+      <!-- TODO: 섹션 제목은 heading 태그를 사용해야 합니다 -->
       <div style="font-size: 20px; margin: 20px 0">인기 상품</div>
 
       <div class="product-grid">
         <div class="product-item" onclick="showProduct(1)">
+          <!-- TODO: 이미지에 내용을 설명하는 alt 속성이 없습니다 -->
           <img
             src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone16pro-digitalmat-gallery-1-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=VWJuckJvbkZqeTMwRFJZSHhSVnN1OVRBZjJveUdyMFM0Z0dEYTB4Rzh1RDBVMUIwNFV6MXNoZGhsYWgvZGlmdEJnNER5bEtzeFpoMTlNVnpVcXBTR0NDaXNCSFl3ajdkc3ZBMkZreEM2YjNZV0hWeXdKNnBTeStXSklkb1ZqKzc"
           />
           <div style="color: gray">iPhone 16 Pro</div>
           <div style="color: red; font-weight: bold">1,550,000원</div>
+          <!-- TODO: 장바구니 담기는 div 대신 button 태그를 사용해야 합니다 -->
           <div
             onclick="addToCart(1); event.stopPropagation();"
             style="background: blue; color: white; padding: 5px"
@@ -93,9 +105,11 @@
 
     <!-- 로그인 폼 -->
     <div class="login-section">
+      <!-- TODO: 폼 제목은 heading 태그를 사용해야 합니다 -->
       <div style="font-size: 18px; margin: 20px 0">로그인</div>
       <div class="form">
         <div>
+          <!-- TODO: 입력 필드의 레이블은 div 대신 label 태그를 사용하고 입력 필드와 연결해야 합니다 -->
           <div>아이디</div>
           <input type="text" style="border: 1px solid gray" />
         </div>
@@ -103,6 +117,7 @@
           <div>비밀번호</div>
           <input type="password" style="border: 1px solid gray" />
         </div>
+        <!-- TODO: 폼 제출 버튼은 div 대신 button 태그를 사용해야 합니다 -->
         <div
           onclick="login()"
           style="
@@ -119,7 +134,9 @@
     </div>
 
     <!-- 푸터 -->
+    <!-- TODO: 푸터 영역을 나타내는 시맨틱 태그를 사용해야 합니다 -->
     <div class="footer" style="background: #333; color: white; padding: 20px">
+      <!-- TODO: 링크 역할의 요소는 div+onclick 대신 a 또는 button 태그를 사용해야 합니다 -->
       <div onclick="showTerms()">이용약관</div>
       <div onclick="showPrivacy()">개인정보처리방침</div>
       <div onclick="showContact()">고객센터</div>
