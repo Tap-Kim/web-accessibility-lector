@@ -17,3 +17,8 @@ Thumbs.db
 # 임시 파일
 *.tmp
 *.temp
+
+# 답안 파일
+*-answer.html
+
+.omc

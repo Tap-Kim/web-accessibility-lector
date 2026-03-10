@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: 검색엔진과 보조기술을 위한 페이지 설명 메타태그가 없습니다 -->
     <title>접근성 모범 사례 쇼핑몰 - 홈</title>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -16,11 +15,9 @@
     </nav>
 
     <!-- 헤더 영역 -->
-    <!-- TODO: 웹페이지 상단을 나타내는 랜드마크 역할의 시맨틱 태그가 필요합니다 -->
     <div class="header">
       <div class="header-container">
         <div class="logo">
-          <!-- TODO: 로고 버튼의 목적지를 설명하는 접근성 레이블이 필요합니다 -->
           <button onclick="goHome()" class="logo-btn">
             <svg
               height="44"
@@ -35,19 +32,14 @@
           </button>
         </div>
 
-        <!-- TODO: 네비게이션 시맨틱 태그와 식별자, 역할, 레이블이 필요합니다 -->
         <div id="primary-nav" class="primary-nav">
-          <!-- TODO: 메뉴 목록을 나타내는 시맨틱 구조가 필요합니다 -->
           <div class="nav-list">
             <div class="nav-item">
-              <!-- TODO: 현재 페이지 상태를 나타내는 ARIA 속성이 필요합니다 -->
               <button onclick="showProducts()">상품</button>
             </div>
             <div class="nav-item">
-              <!-- TODO: 장바구니 개수 정보를 포함한 버튼 설명이 필요합니다 -->
               <button onclick="showCart()">
                 장바구니
-                <!-- TODO: 실시간으로 변경되는 카운트 정보를 알리는 속성이 필요합니다 -->
                 <span id="cart-count" class="cart-count">0</span>
               </button>
             </div>
@@ -56,7 +48,6 @@
         </div>
 
         <div class="search-area">
-          <!-- TODO: 검색창 확장/축소 상태와 연결된 요소를 나타내는 속성들이 필요합니다 -->
           <button
             id="search"
             onclick="toggleSearch()"
@@ -67,7 +58,6 @@
           </button>
           <div id="search-form" class="search-form" hidden>
             <label for="search-input" class="visually-hidden">상품 검색</label>
-            <!-- TODO: 검색 입력 필드와 도움말을 연결하는 속성이 필요합니다 -->
             <input
               type="search"
               id="search-input"
@@ -80,7 +70,6 @@
             >
               검색
             </button>
-            <!-- TODO: 검색 도움말을 식별하는 ID가 유지되어야 합니다 -->
             <div id="search-help" class="search-help">
               Enter 키를 누르거나 검색 버튼을 클릭하세요
             </div>
@@ -91,10 +80,8 @@
     </div>
 
     <!-- 메인 콘텐츠 -->
-    <!-- TODO: 페이지의 핵심 콘텐츠 영역을 나타내는 랜드마크와 역할이 필요합니다 -->
     <div id="main-content">
       <!-- 메인 배너 -->
-      <!-- TODO: 배너 섹션과 제목 연결, 배너 역할이 필요합니다 -->
       <div class="banner">
         <div class="banner-content">
           <h1 id="banner-title">🎉 특가 할인 이벤트</h1>
@@ -102,9 +89,7 @@
             지금 구매하시면 최대 50% 할인!
             <time datetime="2024-12-31">12월 31일</time>까지 한정 특가
           </p>
-          <!-- TODO: 버튼과 설명을 연결하는 속성이 필요합니다 -->
           <button onclick="showSale()" class="sale-btn">특가 상품 보기</button>
-          <!-- TODO: 버튼 설명을 위한 고유 식별자가 유지되어야 합니다 -->
           <div id="sale-description" class="visually-hidden">
             특가 상품 페이지로 이동하여 할인된 상품들을 확인할 수 있습니다
           </div>
@@ -112,7 +97,6 @@
       </div>
 
       <!-- 상품 목록 -->
-      <!-- TODO: 상품 섹션과 제목을 연결하는 속성이 필요합니다 -->
       <div class="products">
         <header class="section-header">
           <h2 id="products-title">인기 상품</h2>
@@ -121,18 +105,14 @@
           </p>
         </header>
 
-        <!-- TODO: 상품 목록의 설명 레이블이 필요합니다 -->
         <div class="product-grid" role="list">
           <!-- 상품 1: 스마트폰 -->
-          <!-- TODO: 독립된 상품 콘텐츠를 나타내는 태그와 제목 연결이 필요합니다 -->
           <div class="product-item" role="listitem">
             <div class="product-image-container">
-              <!-- TODO: 스마트폰 이미지를 설명하는 대체 텍스트가 필요합니다 -->
               <img
                 src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone16pro-digitalmat-gallery-1-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=VWJuckJvbkZqeTMwRFJZSHhSVnN1OVRBZjJveUdyMFM0Z0dEYTB4Rzh1RDBVMUIwNFV6MXNoZGhsYWgvZGlmdEJnNER5bEtzeFpoMTlNVnpVcXBTR0NDaXNCSFl3ajdkc3ZBMkZreEM2YjNZV0hWeXdKNnBTeStXSklkb1ZqKzc"
                 class="product-image"
               />
-              <!-- TODO: 상품 뱃지의 의미를 설명하는 레이블이 필요합니다 -->
               <div class="product-badge">NEW</div>
             </div>
 
@@ -142,12 +122,10 @@
                 6.5인치 OLED 디스플레이, 128GB 저장공간, 듀얼 카메라
               </p>
               <div class="price-info">
-                <!-- TODO: 가격 정보들의 의미를 설명하는 레이블들이 필요합니다 -->
                 <span class="original-price">1,550,000원</span>
                 <span class="sale-price">1,200,000원</span>
                 <span class="discount-rate">22% 할인</span>
               </div>
-              <!-- TODO: 평점 정보를 설명하는 레이블이 필요합니다 -->
               <div class="product-rating">
                 <span class="stars" aria-hidden="true">★★★★☆</span>
                 <span class="rating-text">4.2점 (리뷰 150개)</span>
@@ -155,11 +133,9 @@
             </div>
 
             <div class="product-actions">
-              <!-- TODO: 상품 상세보기 버튼의 목적을 설명하는 레이블이 필요합니다 -->
               <button onclick="showProduct(1)" class="btn-secondary">
                 상세보기
               </button>
-              <!-- TODO: 장바구니 담기 버튼의 구체적인 상품 정보가 필요합니다 -->
               <button onclick="addToCart(1)" class="btn-primary add-cart-btn">
                 장바구니 담기
               </button>
@@ -167,15 +143,12 @@
           </div>
 
           <!-- 상품 2: 노트북 -->
-          <!-- TODO: 노트북 상품의 독립적 콘텐츠 태그와 제목 연결이 필요합니다 -->
           <div class="product-item" role="listitem">
             <div class="product-image-container">
-              <!-- TODO: 노트북 이미지 설명이 필요합니다 -->
               <img
                 src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mbp14-spaceblack-gallery1-202410?wid=4000&hei=3074&fmt=jpeg&qlt=90&.v=YnlWZDdpMFo0bUpJZnBpZjhKM2M3WGpXSTNqQ2U1MjQxSHBKRkRoWUE0bmd1eUJ6eHZMSFFNMld6aTRncXNRUlJWYlIvRkkxemNIb09FY29ZRmVrUDhQTUF6eWYycDMyY0I5TEVkZkpSbDU4aHA0S1QvclFGZSsvUzZRWUI0U1M"
                 class="product-image"
               />
-              <!-- TODO: 특가 뱃지의 의미 설명이 필요합니다 -->
               <div class="product-badge sale-badge">SALE</div>
             </div>
 
@@ -185,12 +158,10 @@
                 14인치 FHD 디스플레이, Intel i7, 16GB RAM, 512GB SSD
               </p>
               <div class="price-info">
-                <!-- TODO: 노트북 가격 정보들의 의미 설명이 필요합니다 -->
                 <span class="original-price">2,390,000원</span>
                 <span class="sale-price">1,912,000원</span>
                 <span class="discount-rate">20% 할인</span>
               </div>
-              <!-- TODO: 노트북 평점 정보 설명이 필요합니다 -->
               <div class="product-rating">
                 <span class="stars" aria-hidden="true">★★★★★</span>
                 <span class="rating-text">4.8점 (리뷰 89개)</span>
@@ -198,11 +169,9 @@
             </div>
 
             <div class="product-actions">
-              <!-- TODO: 노트북 상세보기 버튼 설명이 필요합니다 -->
               <button onclick="showProduct(2)" class="btn-secondary">
                 상세보기
               </button>
-              <!-- TODO: 노트북 장바구니 버튼의 구체적 설명이 필요합니다 -->
               <button onclick="addToCart(2)" class="btn-primary add-cart-btn">
                 장바구니 담기
               </button>
@@ -210,10 +179,8 @@
           </div>
 
           <!-- 상품 3: 태블릿 -->
-          <!-- TODO: 태블릿 상품의 독립적 콘텐츠 태그와 제목 연결이 필요합니다 -->
           <div class="product-item" role="listitem">
             <div class="product-image-container">
-              <!-- TODO: 태블릿 이미지 설명이 필요합니다 -->
               <img
                 src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-pro-finish-select-202405-11inch-silver?wid=5120&hei=2880&fmt=webp&qlt=90&.v=YXpaUEtKWGhlNnNrVGZkTEo4T0xsNEsrMGFueUl5dllOTm9xWTIwTHNieUJLNkVlVkZpVE5VcEU5RHJDbXpCOXF2TWlpSzUzejRCZGt2SjJUNGl1VEE4bm1RcmlWRWp2eDN1WHNkSjNmUmEvQ0hVc0dNMTRHeWE3dDZOT0ZZVDk&traceId=1"
                 class="product-image"
@@ -226,10 +193,8 @@
                 11인치 Liquid Retina 디스플레이, Apple M1 칩, 256GB
               </p>
               <div class="price-info">
-                <!-- TODO: 태블릿 가격 설명이 필요합니다 -->
                 <span class="sale-price">1,599,000원</span>
               </div>
-              <!-- TODO: 태블릿 평점 설명이 필요합니다 -->
               <div class="product-rating">
                 <span class="stars" aria-hidden="true">★★★★☆</span>
                 <span class="rating-text">4.5점 (리뷰 203개)</span>
@@ -237,11 +202,9 @@
             </div>
 
             <div class="product-actions">
-              <!-- TODO: 태블릿 상세보기 버튼 설명이 필요합니다 -->
               <button onclick="showProduct(3)" class="btn-secondary">
                 상세보기
               </button>
-              <!-- TODO: 태블릿 장바구니 버튼의 구체적 설명이 필요합니다 -->
               <button onclick="addToCart(3)" class="btn-primary add-cart-btn">
                 장바구니 담기
               </button>
@@ -251,7 +214,6 @@
       </div>
 
       <!-- 로그인 폼 -->
-      <!-- TODO: 로그인 섹션과 제목을 연결하는 속성이 필요합니다 -->
       <div class="login-section">
         <header>
           <h2 id="login-title">로그인</h2>
@@ -260,18 +222,15 @@
           </p>
         </header>
 
-        <!-- TODO: 폼 검증 제어와 섹션 제목 연결이 필요합니다 -->
         <form class="login-form" onsubmit="return handleLogin(event)">
           <fieldset class="form-fieldset">
             <legend class="visually-hidden">로그인 정보 입력</legend>
 
             <div class="form-group">
-              <!-- TODO: 레이블과 입력 필드를 연결하는 속성들이 필요합니다 -->
               <label class="form-label">
                 아이디
                 <span class="required-mark" aria-label="필수 입력">*</span>
               </label>
-              <!-- TODO: 자동완성과 도움말 연결 속성들이 필요합니다 -->
               <input
                 type="text"
                 id="username"
@@ -279,21 +238,17 @@
                 required
                 class="form-input"
               />
-              <!-- TODO: 아이디 도움말을 식별하는 ID가 유지되어야 합니다 -->
               <div id="username-help" class="form-help">
                 등록된 아이디를 입력하세요
               </div>
-              <!-- TODO: 에러 메시지를 실시간으로 알리는 속성들이 필요합니다 -->
               <div id="username-error" class="form-error"></div>
             </div>
 
             <div class="form-group">
-              <!-- TODO: 비밀번호 레이블과 입력 필드 연결이 필요합니다 -->
               <label class="form-label">
                 비밀번호
                 <span class="required-mark" aria-label="필수 입력">*</span>
               </label>
-              <!-- TODO: 비밀번호 자동완성과 도움말 연결이 필요합니다 -->
               <input
                 type="password"
                 id="password"
@@ -301,11 +256,9 @@
                 required
                 class="form-input"
               />
-              <!-- TODO: 비밀번호 도움말 식별자가 유지되어야 합니다 -->
               <div id="password-help" class="form-help">
                 8자 이상의 비밀번호를 입력하세요
               </div>
-              <!-- TODO: 비밀번호 에러 메시지 실시간 알림이 필요합니다 -->
               <div id="password-error" class="form-error"></div>
             </div>
 
@@ -325,10 +278,8 @@
     </div>
 
     <!-- 푸터 -->
-    <!-- TODO: 웹페이지 하단 정보 영역을 나타내는 랜드마크와 역할이 필요합니다 -->
     <div class="footer">
       <div class="footer-container">
-        <!-- TODO: 푸터 내비게이션의 설명 레이블이 필요합니다 -->
         <div class="footer-nav">
           <h3 class="footer-title">고객 서비스</h3>
           <ul class="footer-links">
@@ -353,7 +304,6 @@
       </div>
     </div>
 
-    <!-- TODO: 실시간 상태 변경과 긴급 알림을 위한 영역들이 필요합니다 -->
 
     <script src="script.js"></script>
   </body>
