@@ -42,6 +42,9 @@
     "lighthouse": "^12.8.2",
     "start-server-and-test": "^2.1.2"
   },
+  "overrides": {
+    "axios": "^1.15.0"
+  },
   "dependencies": {},
   "engines": {
     "node": ">=18.0.0",
