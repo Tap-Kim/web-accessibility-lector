@@ -5,6 +5,42 @@ body {
   background: #f0f0f0;
 }
 
+/* 태그를 바꿀 때도 클래스를 유지하면 같은 모양을 사용합니다.
+   버튼과 링크의 기본 외형만 초기화하고 포커스 표시는 유지합니다. */
+.logo,
+.nav-link,
+.search-btn,
+.sale-btn,
+.add-cart-btn,
+.login-btn,
+.footer-link {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.banner-title,
+.banner-description,
+.section-title,
+.product-title,
+.price,
+.copyright {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+.form-label {
+  display: block;
+}
+
 /* 헤더 */
 .header {
   display: flex;
@@ -24,7 +60,7 @@ body {
   gap: 20px;
 }
 
-.nav div {
+.nav-link {
   cursor: pointer;
   padding: 10px;
   font-size: 16px;
@@ -43,7 +79,7 @@ body {
   margin: 20px 0;
 }
 
-.banner div:last-child {
+.sale-btn {
   margin-top: 20px;
   cursor: pointer;
   display: inline-block;
@@ -78,7 +114,9 @@ body {
   border-radius: 4px;
 }
 
-.product-item div:last-child {
+.add-cart-btn {
+  display: block;
+  width: 100%;
   margin-top: 10px;
   text-align: center;
   cursor: pointer;
@@ -95,18 +133,21 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.form > div {
+.form-group {
   margin-bottom: 15px;
 }
 
-.form input {
+.form-input {
   width: 100%;
   padding: 10px;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
-.form > div:last-child {
+.login-btn {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
   cursor: pointer;
   border-radius: 4px;
 }
@@ -117,17 +158,20 @@ body {
   margin-top: 50px;
 }
 
-.footer > div {
+.footer-link,
+.copyright {
+  display: block;
+  width: 100%;
   margin: 10px 0;
   cursor: pointer;
 }
 
-.footer > div:last-child {
+.copyright {
   cursor: default;
 }
 
 /* 호버 효과 - 접근성 문제 */
-.nav div:hover {
+.nav-link:hover {
   background: #ff6b6b;
   color: white;
 }

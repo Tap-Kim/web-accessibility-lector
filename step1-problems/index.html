@@ -26,9 +26,11 @@
       <!-- TODO: 내비게이션 영역을 나타내는 시맨틱 태그를 사용해야 합니다 -->
       <div class="nav">
         <!-- TODO: 메뉴 항목들은 div+onclick 대신 button 태그를 사용해야 합니다 -->
-        <div onclick="showProducts()" style="color: #ff6b6b">상품</div>
-        <div onclick="showCart()">장바구니</div>
-        <div onclick="showMyPage()">마이페이지</div>
+        <div class="nav-link" onclick="showProducts()" style="color: #ff6b6b">
+          상품
+        </div>
+        <div class="nav-link" onclick="showCart()">장바구니</div>
+        <div class="nav-link" onclick="showMyPage()">마이페이지</div>
       </div>
       <!-- TODO: 검색 버튼은 div 대신 button 태그를 사용하고 접근성 레이블이 필요합니다 -->
       <div onclick="toggleSearch()" class="search-btn">🔍</div>
@@ -40,10 +42,15 @@
       style="background: linear-gradient(45deg, #ff6b6b, #4ecdc4)"
     >
       <!-- TODO: 제목 텍스트는 div 대신 적절한 heading 태그(h1~h6)를 사용해야 합니다 -->
-      <div style="color: white; font-size: 24px">특가 할인!</div>
-      <div style="color: #ffeb3b; font-size: 14px">지금 바로 확인하세요</div>
+      <div class="banner-title" style="color: white; font-size: 24px">
+        특가 할인!
+      </div>
+      <div class="banner-description" style="color: #ffeb3b; font-size: 14px">
+        지금 바로 확인하세요
+      </div>
       <!-- TODO: 클릭 유도 버튼은 div 대신 button 태그를 사용하고 명확한 텍스트가 필요합니다 -->
       <div
+        class="sale-btn"
         onclick="showSale()"
         style="background: yellow; color: red; padding: 10px"
       >
@@ -54,7 +61,9 @@
     <!-- 상품 목록 -->
     <div class="products">
       <!-- TODO: 섹션 제목은 heading 태그를 사용해야 합니다 -->
-      <div style="font-size: 20px; margin: 20px 0">인기 상품</div>
+      <div class="section-title" style="font-size: 20px; margin: 20px 0">
+        인기 상품
+      </div>
 
       <div class="product-grid">
         <div class="product-item" onclick="showProduct(1)">
@@ -62,10 +71,11 @@
           <img
             src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone16pro-digitalmat-gallery-1-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=VWJuckJvbkZqeTMwRFJZSHhSVnN1OVRBZjJveUdyMFM0Z0dEYTB4Rzh1RDBVMUIwNFV6MXNoZGhsYWgvZGlmdEJnNER5bEtzeFpoMTlNVnpVcXBTR0NDaXNCSFl3ajdkc3ZBMkZreEM2YjNZV0hWeXdKNnBTeStXSklkb1ZqKzc"
           />
-          <div style="color: gray">iPhone 16 Pro</div>
-          <div style="color: red; font-weight: bold">1,550,000원</div>
+          <div class="product-title" style="color: gray">iPhone 16 Pro</div>
+          <div class="price" style="color: red; font-weight: bold">1,550,000원</div>
           <!-- TODO: 장바구니 담기는 div 대신 button 태그를 사용해야 합니다 -->
           <div
+            class="add-cart-btn"
             onclick="addToCart(1); event.stopPropagation();"
             style="background: blue; color: white; padding: 5px"
           >
@@ -77,9 +87,10 @@
           <img
             src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mbp14-spaceblack-gallery1-202410?wid=4000&hei=3074&fmt=jpeg&qlt=90&.v=YnlWZDdpMFo0bUpJZnBpZjhKM2M3WGpXSTNqQ2U1MjQxSHBKRkRoWUE0bmd1eUJ6eHZMSFFNMld6aTRncXNRUlJWYlIvRkkxemNIb09FY29ZRmVrUDhQTUF6eWYycDMyY0I5TEVkZkpSbDU4aHA0S1QvclFGZSsvUzZRWUI0U1M"
           />
-          <div style="color: gray">MacBook Pro14</div>
-          <div style="color: red; font-weight: bold">2,390,000원</div>
+          <div class="product-title" style="color: gray">MacBook Pro14</div>
+          <div class="price" style="color: red; font-weight: bold">2,390,000원</div>
           <div
+            class="add-cart-btn"
             onclick="addToCart(2); event.stopPropagation();"
             style="background: blue; color: white; padding: 5px"
           >
@@ -91,9 +102,10 @@
           <img
             src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-pro-finish-select-202405-11inch-silver?wid=5120&hei=2880&fmt=webp&qlt=90&.v=YXpaUEtKWGhlNnNrVGZkTEo4T0xsNEsrMGFueUl5dllOTm9xWTIwTHNieUJLNkVlVkZpVE5VcEU5RHJDbXpCOXF2TWlpSzUzejRCZGt2SjJUNGl1VEE4bm1RcmlWRWp2eDN1WHNkSjNmUmEvQ0hVc0dNMTRHeWE3dDZOT0ZZVDk&traceId=1"
           />
-          <div style="color: gray">iPad Pro 11</div>
-          <div style="color: red; font-weight: bold">1,599,000원</div>
+          <div class="product-title" style="color: gray">iPad Pro 11</div>
+          <div class="price" style="color: red; font-weight: bold">1,599,000원</div>
           <div
+            class="add-cart-btn"
             onclick="addToCart(3); event.stopPropagation();"
             style="background: blue; color: white; padding: 5px"
           >
@@ -106,19 +118,26 @@
     <!-- 로그인 폼 -->
     <div class="login-section">
       <!-- TODO: 폼 제목은 heading 태그를 사용해야 합니다 -->
-      <div style="font-size: 18px; margin: 20px 0">로그인</div>
+      <div class="section-title" style="font-size: 18px; margin: 20px 0">
+        로그인
+      </div>
       <div class="form">
-        <div>
+        <div class="form-group">
           <!-- TODO: 입력 필드의 레이블은 div 대신 label 태그를 사용하고 입력 필드와 연결해야 합니다 -->
-          <div>아이디</div>
-          <input type="text" style="border: 1px solid gray" />
+          <div class="form-label">아이디</div>
+          <input class="form-input" type="text" style="border: 1px solid gray" />
         </div>
-        <div>
-          <div>비밀번호</div>
-          <input type="password" style="border: 1px solid gray" />
+        <div class="form-group">
+          <div class="form-label">비밀번호</div>
+          <input
+            class="form-input"
+            type="password"
+            style="border: 1px solid gray"
+          />
         </div>
         <!-- TODO: 폼 제출 버튼은 div 대신 button 태그를 사용해야 합니다 -->
         <div
+          class="login-btn"
           onclick="login()"
           style="
             background: green;
@@ -137,10 +156,10 @@
     <!-- TODO: 푸터 영역을 나타내는 시맨틱 태그를 사용해야 합니다 -->
     <div class="footer" style="background: #333; color: white; padding: 20px">
       <!-- TODO: 링크 역할의 요소는 div+onclick 대신 a 또는 button 태그를 사용해야 합니다 -->
-      <div onclick="showTerms()">이용약관</div>
-      <div onclick="showPrivacy()">개인정보처리방침</div>
-      <div onclick="showContact()">고객센터</div>
-      <div style="color: #ccc; font-size: 12px">
+      <div class="footer-link" onclick="showTerms()">이용약관</div>
+      <div class="footer-link" onclick="showPrivacy()">개인정보처리방침</div>
+      <div class="footer-link" onclick="showContact()">고객센터</div>
+      <div class="copyright" style="color: #ccc; font-size: 12px">
         Copyright 2024. All rights reserved.
       </div>
     </div>
