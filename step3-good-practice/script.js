@@ -6,9 +6,24 @@ let searchVisible = false;
 
 // 상품 데이터
 const products = {
-  1: { name: "프리미엄 스마트폰", price: 990000, originalPrice: 1200000 },
-  2: { name: "울트라북 노트북", price: 1500000, originalPrice: 2000000 },
-  3: { name: "프로 태블릿", price: 700000, originalPrice: null },
+  1: {
+    name: "iPhone 16 Pro",
+    price: 1200000,
+    originalPrice: 1550000,
+    image: "images/iphone.jpg",
+  },
+  2: {
+    name: "MacBook Pro14",
+    price: 1912000,
+    originalPrice: 2390000,
+    image: "images/macbook.jpg",
+  },
+  3: {
+    name: "iPad Pro 11",
+    price: 1599000,
+    originalPrice: null,
+    image: "images/ipad.jpg",
+  },
 };
 
 // ===== 접근성 유틸리티 함수 =====
@@ -65,7 +80,7 @@ function handleKeyboardTrap(container, event) {
   if (event.key !== "Tab") return;
 
   const focusableElements = container.querySelectorAll(
-    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
   );
 
   const firstElement = focusableElements[0];
@@ -147,22 +162,14 @@ function showProducts() {
  * 장바구니 표시
  */
 function showCart() {
-  console.log("장바구니 표시");
-
-  if (cart.length === 0) {
-    const message = "장바구니가 비어있습니다.";
-    announceToScreenReader(message);
-    alert(message);
-  } else {
-    const totalItems = cart.length;
-    const totalPrice = cart.reduce((sum, productId) => {
-      return sum + (products[productId]?.price || 0);
-    }, 0);
-
-    const message = `장바구니에 ${totalItems}개 상품이 있습니다. 총 금액: ${totalPrice.toLocaleString()}원`;
-    announceToScreenReader(message);
-    alert(message);
-  }
+  renderCart();
+  document.getElementById("cart-panel").hidden = false;
+  const title = document.getElementById("cart-title");
+  title.focus({ preventScroll: true });
+  document
+    .getElementById("cart-panel")
+    .scrollIntoView({ block: "start", behavior: "instant" });
+  if (typeof updateCurrentPage === "function") updateCurrentPage("cart");
 }
 
 /**
@@ -268,7 +275,7 @@ function performSearch() {
 function showSale() {
   console.log("특가 페이지 표시");
   announceToScreenReader(
-    "특가 상품 페이지로 이동합니다. 최대 50% 할인된 상품들을 만나보세요."
+    "특가 상품 페이지로 이동합니다. 최대 50% 할인된 상품들을 만나보세요.",
   );
 }
 
@@ -291,13 +298,11 @@ function addToCart(productId) {
   if (!product) return;
 
   cart.push(productId);
+  renderCart();
   console.log(`상품 ${productId}를 장바구니에 추가`);
 
   const message = `${product.name}이(가) 장바구니에 추가되었습니다. 현재 ${cart.length}개 상품이 담겨있습니다.`;
   announceToScreenReader(message);
-
-  // 시각적 피드백
-  updateCartCount();
 
   // 성공 알림
   showNotification(message, "success");
@@ -442,7 +447,7 @@ function showPrivacy() {
 function showContact() {
   console.log("고객센터 보기");
   announceToScreenReader(
-    "고객센터 페이지로 이동합니다. 1588-1234로 전화 또는 이메일로 문의 가능합니다."
+    "고객센터 페이지로 이동합니다. 1588-1234로 전화 또는 이메일로 문의 가능합니다.",
   );
 }
 
@@ -618,7 +623,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 초기 로딩 완료 안내
   setTimeout(() => {
     announceToScreenReader(
-      "A11Y 쇼핑몰 페이지가 완전히 로드되었습니다. 모든 접근성 기능이 활성화되어 있습니다."
+      "A11Y 쇼핑몰 페이지가 완전히 로드되었습니다. 모든 접근성 기능이 활성화되어 있습니다.",
     );
   }, 1000);
 
@@ -631,7 +636,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // 3초 이상 걸리면 사용자에게 알림
       if (loadTime > 3000) {
         announceToScreenReader(
-          "페이지 로딩이 완료되었습니다. 네트워크 상태가 느려 시간이 다소 걸렸습니다."
+          "페이지 로딩이 완료되었습니다. 네트워크 상태가 느려 시간이 다소 걸렸습니다.",
         );
       }
     });
@@ -647,7 +652,7 @@ window.addEventListener("error", function (event) {
   console.error("JavaScript 에러 발생:", event.error);
   announceToScreenReader(
     "일시적인 오류가 발생했습니다. 페이지를 새로고침해 주세요.",
-    "assertive"
+    "assertive",
   );
 });
 
@@ -670,9 +675,79 @@ if (
       console.log("현재 사용자:", currentUser);
 
       const focusableElements = document.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
       );
       console.log("포커스 가능한 요소 수:", focusableElements.length);
     }
   });
+}
+
+// ===== 장바구니 내역 =====
+// cart는 상품 ID 배열입니다. 같은 상품을 여러 번 담으면 수량으로 묶습니다.
+function renderCart() {
+  const items = document.getElementById("cart-items");
+  const quantities = new Map();
+  cart.forEach((id) => quantities.set(id, (quantities.get(id) || 0) + 1));
+  document.querySelectorAll("[data-cart-product]").forEach((button) => {
+    button.hidden = !quantities.has(Number(button.dataset.cartProduct));
+  });
+  items.replaceChildren();
+  let total = 0;
+  quantities.forEach((quantity, id) => {
+    const product = products[id];
+    const subtotal = product.price * quantity;
+    total += subtotal;
+
+    const item = document.createElement("li");
+    item.className = "cart-item";
+    const image = document.createElement("img");
+    image.className = "cart-image";
+    image.src = product.image;
+    image.alt = "";
+    const info = document.createElement("div");
+    info.className = "cart-item-info";
+    const name = document.createElement("p");
+    name.className = "cart-item-name";
+    name.textContent = product.name;
+    const detail = document.createElement("p");
+    detail.className = "cart-item-detail";
+    detail.textContent = `${product.price.toLocaleString("ko-KR")}원 × ${quantity}개`;
+    info.append(name, detail);
+    const price = document.createElement("p");
+    price.className = "cart-item-price";
+    price.textContent = `${subtotal.toLocaleString("ko-KR")}원`;
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.className = "btn-secondary cart-remove";
+    remove.textContent = "삭제";
+    remove.setAttribute("aria-label", `${product.name} 장바구니에서 삭제`);
+    remove.addEventListener("click", () => removeFromCart(id));
+    item.append(image, info, price, remove);
+    items.appendChild(item);
+  });
+  document.getElementById("cart-empty").hidden = cart.length > 0;
+  document.getElementById("cart-summary").textContent =
+    `총 ${cart.length}개 상품, 합계 ${total.toLocaleString("ko-KR")}원`;
+  if (typeof updateCartCount === "function") updateCartCount();
+}
+
+function removeFromCart(productId) {
+  const buttons = [...document.querySelectorAll(".cart-remove")];
+  const index = buttons.indexOf(document.activeElement);
+  cart = cart.filter((id) => id !== productId);
+  renderCart();
+  const remaining = document.querySelectorAll(".cart-remove");
+  const target =
+    remaining[Math.min(Math.max(index, 0), remaining.length - 1)] ||
+    document.getElementById("cart-title");
+  target.focus();
+}
+
+function closeCart() {
+  document.getElementById("cart-panel").hidden = true;
+  const title = document.querySelector(".products .section-title");
+  title.tabIndex = -1;
+  title.focus();
+  title.scrollIntoView({ block: "start", behavior: "instant" });
+  if (typeof updateCurrentPage === "function") updateCurrentPage("products");
 }

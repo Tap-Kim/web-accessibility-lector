@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>고급 접근성 쇼핑몰 - 모든 사용자를 위한 완벽한 쇼핑 경험</title>
-
 
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -31,7 +30,7 @@
         aria-pressed="false"
         title="큰 글씨 모드 전환"
       >
-        <!-- <span aria-hidden="true">🔍</span> -->
+        <!-- <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg> -->
         <span class="btn-text">큰글씨</span>
       </button>
       <button
@@ -66,7 +65,7 @@
     <!-- 헤더 영역 -->
     <div class="header">
       <div class="header-container">
-        <div class="logo">
+        <div class="logo brand">
           <button onclick="goHome()" class="logo-btn">
             <svg
               height="44"
@@ -79,18 +78,19 @@
               ></path>
             </svg>
           </button>
+          <span class="brand-name">A11Y STORE</span>
         </div>
 
         <div id="primary-nav" class="primary-nav">
           <div class="nav-list">
             <div class="nav-item">
-              <button onclick="showProducts()">상품</button>
+              <button class="nav-link" onclick="showProducts()">상품</button>
               <div id="nav-help-1" class="nav-help visually-hidden">
                 전체 상품 목록을 확인할 수 있습니다. Alt+1 단축키 사용 가능
               </div>
             </div>
             <div class="nav-item">
-              <button onclick="showCart()">
+              <button class="nav-link" onclick="showCart()">
                 장바구니
                 <span id="cart-count" class="cart-count">0</span>
               </button>
@@ -100,7 +100,9 @@
               </div>
             </div>
             <div class="nav-item">
-              <button onclick="showMyPage()">마이페이지</button>
+              <button class="nav-link" onclick="showMyPage()">
+                마이페이지
+              </button>
               <div id="nav-help-3" class="nav-help visually-hidden">
                 개인 정보와 주문 내역을 확인할 수 있습니다. Alt+3 단축키 사용
                 가능
@@ -116,7 +118,10 @@
             class="search-btn"
             aria-label="검색창 열기"
           >
-            <span aria-hidden="true">🔍</span>
+            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="10.5" cy="10.5" r="6.5" />
+              <path d="m16 16 5 5" />
+            </svg>
             <span class="btn-text">검색</span>
           </button>
           <div id="search-instructions" class="visually-hidden">
@@ -130,6 +135,7 @@
                 >검색어 입력</label
               >
               <input
+                class="form-input"
                 type="search"
                 id="search-input"
                 placeholder="검색할 상품명을 입력하세요"
@@ -148,7 +154,11 @@
               Enter 키를 누르거나 검색 버튼을 클릭하세요. ESC 키로 검색창을 닫을
               수 있습니다.
             </div>
-            <div id="search-input-error" class="form-error" aria-live="polite"></div>
+            <div
+              id="search-input-error"
+              class="form-error"
+              aria-live="polite"
+            ></div>
 
             <!-- 
             <ul
@@ -166,34 +176,32 @@
     </div>
 
     <!-- 메인 콘텐츠 -->
-    <div id="main-content">
-
+    <div id="main-content" class="main-content">
       <!-- 메인 배너 -->
       <div class="banner">
         <div class="banner-content">
-          <h1 id="banner-title">🎉 새해 특가 이벤트</h1>
+          <h1 id="banner-title" class="banner-title">
+            일상에 필요한 기기, 한곳에서 만나보세요
+          </h1>
           <p class="banner-description">
-            지금 구매하시면 최대 50% 할인!
-            <time datetime="2024-12-31">12월 31일</time>까지 한정 특가
-            <br />
-            <small>(전 품목 무료배송, 당일발송)</small>
+            iPhone, MacBook, iPad를 둘러보고 나에게 맞는 제품을 골라보세요.
           </p>
-          <div class="banner-actions">
-            <button onclick="showSale()" class="sale-btn primary-cta">
-              특가 상품 보기
-              <span aria-hidden="true">🏃‍♂️</span>
-            </button>
-            <button onclick="showCoupon()" class="coupon-btn secondary-cta">
-              쿠폰 받기
-              <span aria-hidden="true">🎫</span>
-            </button>
-          </div>
+
           <div id="sale-description" class="visually-hidden">
             특가 상품 페이지로 이동하여 할인된 상품들을 확인할 수 있습니다
           </div>
           <div id="coupon-description" class="visually-hidden">
             추가 할인 쿠폰을 받을 수 있습니다
           </div>
+        </div>
+        <img class="hero-image" src="images/macbook.jpg" alt="" />
+        <div class="banner-actions">
+          <button onclick="showSale()" class="sale-btn primary-cta">
+            특가 상품 보기
+          </button>
+          <button onclick="showCoupon()" class="coupon-btn secondary-cta">
+            쿠폰 받기
+          </button>
         </div>
       </div>
 
@@ -211,20 +219,22 @@
 
         <div class="filter-sort-container">
           <div class="filter-group" role="group" aria-labelledby="filter-title">
-            <h3 id="filter-title">필터</h3>
+            <h3 id="filter-title" class="control-title">필터</h3>
             <fieldset class="filter-fieldset">
-              <legend>가격대 선택</legend>
+              <legend class="filter-legend">가격대 선택</legend>
               <div class="price-range-container">
-                <label>최소 가격</label>
+                <label class="filter-label">최소 가격</label>
                 <input
+                  class="form-input"
                   type="number"
                   id="min-price"
                   placeholder="0"
                   min="0"
                   step="10000"
                 />
-                <label>최대 가격</label>
+                <label class="filter-label">최대 가격</label>
                 <input
+                  class="form-input"
                   type="number"
                   id="max-price"
                   placeholder="무제한"
@@ -239,32 +249,37 @@
           </div>
 
           <div class="sort-group" role="group" aria-labelledby="sort-title">
-            <h3 id="sort-title">정렬</h3>
+            <h3 id="sort-title" class="control-title">정렬</h3>
             <div class="sort-options">
               <input
+                class="sort-radio"
                 type="radio"
                 id="sort-popular"
                 name="sort"
                 value="popular"
                 checked
               />
-              <label for="sort-popular">인기순</label>
+              <label class="sort-label" for="sort-popular">인기순</label>
 
               <input
+                class="sort-radio"
                 type="radio"
                 id="sort-price-low"
                 name="sort"
                 value="price-low"
               />
-              <label for="sort-price-low">낮은 가격순</label>
+              <label class="sort-label" for="sort-price-low">낮은 가격순</label>
 
               <input
+                class="sort-radio"
                 type="radio"
                 id="sort-price-high"
                 name="sort"
                 value="price-high"
               />
-              <label for="sort-price-high">높은 가격순</label>
+              <label class="sort-label" for="sort-price-high"
+                >높은 가격순</label
+              >
 
               <div id="sort-help" class="filter-help">
                 정렬 기준을 선택하면 즉시 상품 목록이 업데이트됩니다
@@ -277,10 +292,10 @@
       <!-- 상품 목록 -->
       <div id="products-section" class="products">
         <header class="section-header">
-          <h2 id="products-title">인기 상품</h2>
+          <h2 id="products-title" class="section-title">인기 상품</h2>
           <p id="products-description" class="section-description">
             고객들이 가장 많이 찾는 인기 상품들을 만나보세요.
-            <span id="product-count">총 3개 상품</span>
+            <span id="product-count" class="product-count">총 3개 상품</span>
           </p>
         </header>
 
@@ -300,10 +315,7 @@
             </div>
 
             <div class="product-image-container">
-              <img
-                src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone16pro-digitalmat-gallery-1-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=VWJuckJvbkZqeTMwRFJZSHhSVnN1OVRBZjJveUdyMFM0Z0dEYTB4Rzh1RDBVMUIwNFV6MXNoZGhsYWgvZGlmdEJnNER5bEtzeFpoMTlNVnpVcXBTR0NDaXNCSFl3ajdkc3ZBMkZreEM2YjNZV0hWeXdKNnBTeStXSklkb1ZqKzc"
-                class="product-image"
-              />
+              <img src="images/iphone.jpg" class="product-image" />
               <div class="product-badges">
                 <span class="product-badge new-badge">NEW</span>
                 <span class="product-badge eco-badge">🌱 ECO</span>
@@ -321,9 +333,7 @@
                   aria-pressed="true"
                   onclick="changeProductImage(1, 0)"
                 >
-                  <img
-                    src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone16pro-digitalmat-gallery-2-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=VWJuckJvbkZqeTMwRFJZSHhSVnN1enBhZEVDYXdNalJLdkllSGFmNnBVVDBVMUIwNFV6MXNoZGhsYWgvZGlmdEJnNER5bEtzeFpoMTlNVnpVcXBTR0NDaXNCSFl3ajdkc3ZBMkZreEM2YjFMcENoQkE4dlByUzRnSkp0SGViTnk"
-                  />
+                  <img class="thumbnail-image" src="images/iphone-front.jpg" />
                 </button>
                 <button
                   class="thumbnail-btn"
@@ -331,9 +341,7 @@
                   aria-pressed="false"
                   onclick="changeProductImage(1, 1)"
                 >
-                  <img
-                    src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone16pro-digitalmat-gallery-3-202409?wid=728&hei=666&fmt=p-jpg&qlt=95&.v=VWJuckJvbkZqeTMwRFJZSHhSVnN1K2tBbTY2NGE0RXZvM3VONU9MVlluajBVMUIwNFV6MXNoZGhsYWgvZGlmdEJnNER5bEtzeFpoMTlNVnpVcXBTR0NDaXNCSFl3ajdkc3ZBMkZreEM2YjArdUxKZmY1NUtWbjl2NkdEREpaOVo"
-                  />
+                  <img class="thumbnail-image" src="images/iphone-side.jpg" />
                 </button>
               </div>
             </div>
@@ -358,12 +366,12 @@
                   주요 사양
                 </div>
                 <dl class="specs-list">
-                  <dt>화면 크기</dt>
-                  <dd>6.1인치</dd>
-                  <dt>저장 용량</dt>
-                  <dd>256GB</dd>
-                  <dt>색상</dt>
-                  <dd>티타늄 블루</dd>
+                  <dt class="spec-term">화면 크기</dt>
+                  <dd class="spec-value">6.1인치</dd>
+                  <dt class="spec-term">저장 용량</dt>
+                  <dd class="spec-value">256GB</dd>
+                  <dt class="spec-term">색상</dt>
+                  <dd class="spec-value">티타늄 블루</dd>
                 </dl>
               </div>
 
@@ -422,8 +430,16 @@
               </button>
 
               <button onclick="addToCart(1)" class="btn-primary add-cart-btn">
-                <span class="btn-icon" aria-hidden="true">🛒</span>
                 장바구니 담기
+              </button>
+              <button
+                type="button"
+                class="btn-secondary cart-view-btn"
+                data-cart-product="1"
+                onclick="showCart()"
+                hidden
+              >
+                장바구니 보기
               </button>
 
               <div id="cart-action-help" class="visually-hidden">
@@ -433,31 +449,21 @@
           </div>
 
           <!-- 상품 2: 노트북 (품절 상태 예시) -->
-           
+
           <div
             class="product-item out-of-stock"
             role="listitem"
             data-product-id="2"
           >
             <div class="product-status">
-              <span class="stock-status out-of-stock"
-                >품절</span
-              >
+              <span class="stock-status out-of-stock">품절</span>
             </div>
 
             <div class="product-image-container">
-              <img
-                src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/mbp14-spaceblack-gallery1-202410?wid=4000&hei=3074&fmt=jpeg&qlt=90&.v=YnlWZDdpMFo0bUpJZnBpZjhKM2M3WGpXSTNqQ2U1MjQxSHBKRkRoWUE0bmd1eUJ6eHZMSFFNMld6aTRncXNRUlJWYlIvRkkxemNIb09FY29ZRmVrUDhQTUF6eWYycDMyY0I5TEVkZkpSbDU4aHA0S1QvclFGZSsvUzZRWUI0U1M"
-                class="product-image"
-              />
+              <img src="images/macbook.jpg" class="product-image" />
               <div class="product-badges">
-                <span class="product-badge sale-badge"
-                  >SALE</span
-                >
-                <span
-                  class="product-badge premium-badge"
-                  >PREMIUM</span
-                >
+                <span class="product-badge sale-badge">SALE</span>
+                <span class="product-badge premium-badge">PREMIUM</span>
               </div>
               <div class="stock-overlay" aria-hidden="true">
                 <span class="stock-overlay-text">일시 품절</span>
@@ -476,30 +482,19 @@
                 메모리, 512GB SSD
               </p>
 
-              <div
-                id="product-2-stock-notice"
-                class="stock-notice"
-              >
+              <div id="product-2-stock-notice" class="stock-notice">
                 현재 품절된 상품입니다. 재입고 알림을 신청하실 수 있습니다.
               </div>
 
               <div class="price-info">
                 <div class="price-display">
-                  <span class="original-price"
-                    >2,390,000원</span
-                  >
-                  <span class="sale-price"
-                    >1,912,000원</span
-                  >
-                  <span class="discount-rate"
-                    >20% 할인</span
-                  >
+                  <span class="original-price">2,390,000원</span>
+                  <span class="sale-price">1,912,000원</span>
+                  <span class="discount-rate">20% 할인</span>
                 </div>
               </div>
 
-              <div
-                class="product-rating"
-              >
+              <div class="product-rating">
                 <div class="stars-container">
                   <span class="stars filled" aria-hidden="true">★★★★★</span>
                   <span class="stars empty" aria-hidden="true">☆☆☆☆☆</span>
@@ -509,18 +504,12 @@
             </div>
 
             <div class="product-actions">
-              <button
-                onclick="toggleWishlist(2)"
-                class="wishlist-btn"
-              >
+              <button onclick="toggleWishlist(2)" class="wishlist-btn">
                 <span aria-hidden="true">♡</span>
                 <span class="btn-text">찜하기</span>
               </button>
 
-              <button
-                onclick="showProduct(2)"
-                class="btn-secondary"
-              >
+              <button onclick="showProduct(2)" class="btn-secondary">
                 상세보기
               </button>
 
@@ -535,27 +524,15 @@
           </div>
 
           <!-- 상품 3: 태블릿 -->
-          <div
-            class="product-item"
-            role="listitem"
-            data-product-id="3"
-          >
+          <div class="product-item" role="listitem" data-product-id="3">
             <div class="product-status">
-              <span class="stock-status low-stock"
-                >재고 부족</span
-              >
+              <span class="stock-status low-stock">재고 부족</span>
             </div>
 
             <div class="product-image-container">
-              <img
-                src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-pro-finish-select-202405-11inch-silver?wid=5120&hei=2880&fmt=webp&qlt=90&.v=YXpaUEtKWGhlNnNrVGZkTEo4T0xsNEsrMGFueUl5dllOTm9xWTIwTHNieUJLNkVlVkZpVE5VcEU5RHJDbXpCOXF2TWlpSzUzejRCZGt2SjJUNGl1VEE4bm1RcmlWRWp2eDN1WHNkSjNmUmEvQ0hVc0dNMTRHeWE3dDZOT0ZZVDk&traceId=1"
-                class="product-image"
-              />
+              <img src="images/ipad.jpg" class="product-image" />
               <div class="product-badges">
-                <span
-                  class="product-badge bestseller-badge"
-                  >BEST</span
-                >
+                <span class="product-badge bestseller-badge">BEST</span>
               </div>
             </div>
 
@@ -577,9 +554,7 @@
                 </div>
               </div>
 
-              <div
-                class="product-rating"
-              >
+              <div class="product-rating">
                 <div class="stars-container">
                   <span class="stars filled" aria-hidden="true">★★★★★</span>
                   <span class="stars empty" aria-hidden="true">☆☆☆☆☆</span>
@@ -587,24 +562,16 @@
                 <span class="rating-text">4.7점 (리뷰 298개)</span>
               </div>
 
-              <div class="urgency-notice">
-                ⚡ 한정 수량! 7개 남음
-              </div>
+              <div class="urgency-notice">⚡ 한정 수량! 7개 남음</div>
             </div>
 
             <div class="product-actions">
-              <button
-                onclick="toggleWishlist(3)"
-                class="wishlist-btn"
-              >
+              <button onclick="toggleWishlist(3)" class="wishlist-btn">
                 <span aria-hidden="true">♡</span>
                 <span class="btn-text">찜하기</span>
               </button>
 
-              <button
-                onclick="showProduct(3)"
-                class="btn-secondary"
-              >
+              <button onclick="showProduct(3)" class="btn-secondary">
                 상세보기
               </button>
 
@@ -612,8 +579,16 @@
                 onclick="addToCart(3)"
                 class="btn-primary add-cart-btn urgent"
               >
-                <span class="btn-icon" aria-hidden="true">🛒</span>
                 빠른 구매
+              </button>
+              <button
+                type="button"
+                class="btn-secondary cart-view-btn"
+                data-cart-product="3"
+                onclick="showCart()"
+                hidden
+              >
+                장바구니 보기
               </button>
             </div>
           </div>
@@ -665,10 +640,35 @@
         </nav>
       </div>
 
+      <!-- 장바구니: 기존 페이지의 접근성 실습 항목과 별개로 내역을 확인합니다. -->
+      <section
+        id="cart-panel"
+        class="cart-panel"
+        aria-labelledby="cart-title"
+        hidden
+      >
+        <div class="cart-header">
+          <h2 id="cart-title" class="section-title" tabindex="-1">장바구니</h2>
+          <button type="button" class="btn-secondary" onclick="closeCart()">
+            쇼핑 계속하기
+          </button>
+        </div>
+        <p id="cart-empty" class="cart-empty">
+          장바구니가 비어 있습니다. 상품을 담아보세요.
+        </p>
+        <ul id="cart-items" class="cart-items"></ul>
+        <p
+          id="cart-summary"
+          class="cart-summary"
+          role="status"
+          aria-atomic="true"
+        ></p>
+      </section>
+
       <!-- 로그인 폼 -->
       <div class="login-section">
-        <header>
-          <h2 id="login-title">로그인</h2>
+        <header class="login-header">
+          <h2 id="login-title" class="section-title">로그인</h2>
           <p class="login-description">
             계정에 로그인하여 더 많은 서비스를 이용하세요
             <br /><small
@@ -679,7 +679,9 @@
 
         <!-- 소셜 로그인 -->
         <div class="social-login" role="group">
-          <div id="social-login-title">소셜 로그인</div>
+          <div id="social-login-title" class="subsection-title">
+            소셜 로그인
+          </div>
           <div class="social-buttons">
             <button onclick="loginWithGoogle()" class="social-btn google-btn">
               <span class="social-icon" aria-hidden="true">G</span>
@@ -697,7 +699,9 @@
         </div>
 
         <form class="login-form" onsubmit="return handleLogin(event)">
-          <div id="email-login-title">이메일 로그인</div>
+          <div id="email-login-title" class="subsection-title">
+            이메일 로그인
+          </div>
 
           <fieldset class="form-fieldset">
             <legend class="visually-hidden">로그인 정보 입력</legend>
@@ -754,7 +758,12 @@
 
             <div class="form-options">
               <label class="checkbox-label">
-                <input type="checkbox" id="remember-me" name="remember" />
+                <input
+                  class="checkbox-input"
+                  type="checkbox"
+                  id="remember-me"
+                  name="remember"
+                />
                 <span class="checkbox-custom" aria-hidden="true"></span>
                 로그인 상태 유지
               </label>
@@ -765,7 +774,6 @@
 
             <div class="form-actions">
               <button type="submit" class="btn-primary login-btn">
-                <span class="btn-icon" aria-hidden="true">🔐</span>
                 로그인
               </button>
               <div id="login-btn-help" class="visually-hidden">
@@ -773,11 +781,13 @@
               </div>
 
               <div class="form-links">
-                <a href="#" onclick="showSignup()">
+                <a class="text-link" href="#" onclick="showSignup()">
                   계정이 없으신가요? 회원가입
                 </a>
                 <span aria-hidden="true">|</span>
-                <a href="#" onclick="showFindPassword()"> 비밀번호 찾기 </a>
+                <a class="text-link" href="#" onclick="showFindPassword()">
+                  비밀번호 찾기
+                </a>
               </div>
             </div>
           </fieldset>
@@ -792,11 +802,25 @@
           <div class="footer-section">
             <div class="footer-title">고객 서비스</div>
             <ul class="footer-links">
-              <li><a href="#" onclick="showTerms()">이용약관</a></li>
-              <li><a href="#" onclick="showPrivacy()">개인정보처리방침</a></li>
-              <li><a href="#" onclick="showContact()">고객센터</a></li>
               <li>
-                <a href="#" onclick="showAccessibility()">웹 접근성 정책</a>
+                <a class="footer-link" href="#" onclick="showTerms()"
+                  >이용약관</a
+                >
+              </li>
+              <li>
+                <a class="footer-link" href="#" onclick="showPrivacy()"
+                  >개인정보처리방침</a
+                >
+              </li>
+              <li>
+                <a class="footer-link" href="#" onclick="showContact()"
+                  >고객센터</a
+                >
+              </li>
+              <li>
+                <a class="footer-link" href="#" onclick="showAccessibility()"
+                  >웹 접근성 정책</a
+                >
               </li>
             </ul>
           </div>
@@ -804,27 +828,54 @@
           <div class="footer-section">
             <div class="footer-title">쇼핑 가이드</div>
             <ul class="footer-links">
-              <li><a href="#" onclick="showShippingInfo()">배송 안내</a></li>
-              <li><a href="#" onclick="showReturnInfo()">반품/교환</a></li>
-              <li><a href="#" onclick="showPaymentInfo()">결제 방법</a></li>
-              <li><a href="#" onclick="showFAQ()">자주 묻는 질문</a></li>
+              <li>
+                <a class="footer-link" href="#" onclick="showShippingInfo()"
+                  >배송 안내</a
+                >
+              </li>
+              <li>
+                <a class="footer-link" href="#" onclick="showReturnInfo()"
+                  >반품/교환</a
+                >
+              </li>
+              <li>
+                <a class="footer-link" href="#" onclick="showPaymentInfo()"
+                  >결제 방법</a
+                >
+              </li>
+              <li>
+                <a class="footer-link" href="#" onclick="showFAQ()"
+                  >자주 묻는 질문</a
+                >
+              </li>
             </ul>
           </div>
 
           <div class="footer-section">
             <div class="footer-title">접근성 지원</div>
             <ul class="footer-links">
-              <li><a href="#" onclick="showA11yGuide()">접근성 가이드</a></li>
               <li>
-                <a href="#" onclick="showKeyboardShortcuts()">키보드 단축키</a>
+                <a class="footer-link" href="#" onclick="showA11yGuide()"
+                  >접근성 가이드</a
+                >
               </li>
               <li>
-                <a href="#" onclick="showScreenReaderHelp()"
+                <a
+                  class="footer-link"
+                  href="#"
+                  onclick="showKeyboardShortcuts()"
+                  >키보드 단축키</a
+                >
+              </li>
+              <li>
+                <a class="footer-link" href="#" onclick="showScreenReaderHelp()"
                   >스크린 리더 도움말</a
                 >
               </li>
               <li>
-                <a href="#" onclick="reportA11yIssue()">접근성 문제 신고</a>
+                <a class="footer-link" href="#" onclick="reportA11yIssue()"
+                  >접근성 문제 신고</a
+                >
               </li>
             </ul>
           </div>
@@ -835,34 +886,30 @@
             <strong>Ultimate A11Y 쇼핑몰</strong><br />
             서울시 강남구 테헤란로 123, A11Y 빌딩 5층<br />
             사업자등록번호: 123-45-67890<br />
-            대표전화: <a href="tel:1588-1234">1588-1234</a> (평일 9시-18시)<br />
+            대표전화:
+            <a class="text-link" href="tel:1588-1234">1588-1234</a> (평일
+            9시-18시)<br />
             팩스: 02-1234-5678<br />
             이메일:
-            <a href="mailto:support@ultimate-a11y.com"
+            <a class="text-link" href="mailto:support@ultimate-a11y.com"
               >support@ultimate-a11y.com</a
             ><br />
             접근성 문의:
-            <a href="mailto:accessibility@ultimate-a11y.com"
+            <a class="text-link" href="mailto:accessibility@ultimate-a11y.com"
               >accessibility@ultimate-a11y.com</a
             >
           </address>
 
           <div class="certifications">
-            <div>인증 및 수상</div>
+            <div class="footer-title">학습 참고 예시</div>
             <ul class="cert-list">
-              <li>
-                <img
-                  src="https://via.placeholder.com/80x40/28a745/ffffff?text=WCAG"
-                  class="cert-logo"
-                />
-                <span>WCAG 2.1 AA 준수</span>
+              <li class="cert-item">
+                <img src="images/wcag.svg" class="cert-logo" />
+                <span>WCAG 2.1 AA 학습</span>
               </li>
-              <li>
-                <img
-                  src="https://via.placeholder.com/80x40/007bff/ffffff?text=A11Y"
-                  class="cert-logo"
-                />
-                <span>웹 접근성 품질인증</span>
+              <li class="cert-item">
+                <img src="images/a11y.svg" class="cert-logo" />
+                <span>웹 접근성 품질인증 학습</span>
               </li>
             </ul>
           </div>
@@ -870,16 +917,13 @@
           <p class="copyright">
             &copy; 2024 Ultimate A11Y Mall. All rights reserved.
             <br />
-            <small>이 사이트는 웹 접근성 실습을 위한 예제입니다.</small>
+            <small>웹 접근성 교육용 쇼핑몰 예제 - 4단계</small>
           </p>
         </div>
       </div>
     </div>
 
-
-
     <!-- 스크립트 -->
     <script src="script.js"></script>
-
   </body>
 </html>

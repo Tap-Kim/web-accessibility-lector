@@ -17,7 +17,8 @@ let accessibilitySettings = {
 // 상품 데이터 (확장됨)
 const products = {
   1: {
-    name: "iPhone 15 Pro 256GB",
+    name: "iPhone 16 Pro 256GB",
+    image: "images/iphone.jpg",
     price: 1350000,
     originalPrice: 1550000,
     description:
@@ -28,9 +29,10 @@ const products = {
     reviewCount: 342,
   },
   2: {
-    name: "MacBook Pro M3 14인치",
-    price: 2800000,
-    originalPrice: 3200000,
+    name: "MacBook Pro14",
+    image: "images/macbook.jpg",
+    price: 1912000,
+    originalPrice: 2390000,
     description:
       "14인치 Liquid Retina XDR 디스플레이, M3 Pro 칩, 18GB 통합 메모리",
     category: "laptop",
@@ -40,6 +42,7 @@ const products = {
   },
   3: {
     name: "iPad Pro 12.9 M2",
+    image: "images/ipad.jpg",
     price: 1199000,
     originalPrice: null,
     description: "12.9인치 Liquid Retina XDR 디스플레이, M2 칩, 256GB 저장공간",
@@ -80,7 +83,7 @@ function announceToScreenReader(message, priority = "polite", atomic = true) {
     announcer.className = "visually-hidden";
     announcer.setAttribute(
       "role",
-      priority === "assertive" ? "alert" : "status"
+      priority === "assertive" ? "alert" : "status",
     );
     document.body.appendChild(announcer);
   }
@@ -265,7 +268,7 @@ function toggleHighContrast() {
 
   localStorage.setItem(
     "a11y-high-contrast",
-    accessibilitySettings.highContrast
+    accessibilitySettings.highContrast,
   );
 }
 
@@ -308,7 +311,7 @@ function toggleEnhancedFocus() {
 
   localStorage.setItem(
     "a11y-enhanced-focus",
-    accessibilitySettings.enhancedFocus
+    accessibilitySettings.enhancedFocus,
   );
 }
 
@@ -332,7 +335,7 @@ function toggleScreenReaderMode() {
 
   localStorage.setItem(
     "a11y-screen-reader-mode",
-    accessibilitySettings.screenReaderMode
+    accessibilitySettings.screenReaderMode,
   );
 }
 
@@ -351,22 +354,14 @@ function showProducts() {
 }
 
 function showCart() {
-  console.log("장바구니 표시");
-
-  if (cart.length === 0) {
-    const message = "장바구니가 비어있습니다. 상품을 추가해보세요.";
-    announceToScreenReader(message);
-    showNotification(message, "info");
-  } else {
-    const totalItems = cart.length;
-    const uniqueProducts = [...new Set(cart)].length;
-    const message = `장바구니에 ${uniqueProducts}종류, 총 ${totalItems}개 상품이 있습니다.`;
-
-    announceToScreenReader(message);
-    showNotification(message, "success");
-  }
-
-  updateCurrentPage("cart");
+  renderCart();
+  document.getElementById("cart-panel").hidden = false;
+  const title = document.getElementById("cart-title");
+  title.focus({ preventScroll: true });
+  document
+    .getElementById("cart-panel")
+    .scrollIntoView({ block: "start", behavior: "instant" });
+  if (typeof updateCurrentPage === "function") updateCurrentPage("cart");
 }
 
 function showMyPage() {
@@ -458,7 +453,7 @@ function performSearch() {
     const resultCount = Object.keys(products).length;
     announceToScreenReader(
       `"${query}" 검색이 완료되었습니다. ${resultCount}개의 결과를 찾았습니다.`,
-      "assertive"
+      "assertive",
     );
     showNotification(`검색 완료: ${resultCount}개 결과`, "success");
   }, 1000);
@@ -490,7 +485,9 @@ function showProduct(productId) {
 }
 
 function changeProductImage(productId, imageIndex) {
-  const productCard = document.querySelector(`[data-product-id="${productId}"]`);
+  const productCard = document.querySelector(
+    `[data-product-id="${productId}"]`,
+  );
   if (!productCard) return;
 
   const mainImage = productCard.querySelector(".product-image");
@@ -525,12 +522,12 @@ function addToCart(productId) {
   }
 
   cart.push(productId);
+  renderCart();
   console.log(`상품 ${productId}를 장바구니에 추가`);
 
   const message = `${product.name}이(가) 장바구니에 추가되었습니다. 현재 ${cart.length}개 상품이 담겨있습니다.`;
   announceToScreenReader(message);
 
-  updateCartCount();
   showNotification(message, "success");
 }
 
@@ -539,7 +536,7 @@ function toggleWishlist(productId) {
   if (!product) return;
 
   const button = document.querySelector(
-    `[data-product-id="${productId}"] .wishlist-btn`
+    `[data-product-id="${productId}"] .wishlist-btn`,
   );
   const isInWishlist = wishlist.includes(productId);
 
@@ -550,7 +547,7 @@ function toggleWishlist(productId) {
       button.setAttribute("aria-label", `${product.name} 위시리스트에 추가`);
     }
     announceToScreenReader(
-      `${product.name}이(가) 위시리스트에서 제거되었습니다.`
+      `${product.name}이(가) 위시리스트에서 제거되었습니다.`,
     );
     showNotification("위시리스트에서 제거되었습니다", "info");
   } else {
@@ -560,7 +557,7 @@ function toggleWishlist(productId) {
       button.setAttribute("aria-label", `${product.name} 위시리스트에서 제거`);
     }
     announceToScreenReader(
-      `${product.name}이(가) 위시리스트에 추가되었습니다.`
+      `${product.name}이(가) 위시리스트에 추가되었습니다.`,
     );
     showNotification("위시리스트에 추가되었습니다", "success");
   }
@@ -617,11 +614,11 @@ function handleLogin(event) {
 
   if (!isValid) {
     const errorCount = document.querySelectorAll(
-      '[aria-invalid="true"]'
+      '[aria-invalid="true"]',
     ).length;
     announceToScreenReader(
       `${errorCount}개의 입력 오류가 있습니다.`,
-      "assertive"
+      "assertive",
     );
 
     if (firstErrorField) {
@@ -672,12 +669,12 @@ function togglePasswordVisibility() {
   toggleButton.setAttribute("aria-pressed", (!isVisible).toString());
   toggleButton.setAttribute(
     "aria-label",
-    isVisible ? "비밀번호 보기" : "비밀번호 숨기기"
+    isVisible ? "비밀번호 보기" : "비밀번호 숨기기",
   );
   if (toggleIcon) toggleIcon.textContent = isVisible ? "👁️" : "🙈";
 
   announceToScreenReader(
-    isVisible ? "비밀번호가 숨겨졌습니다." : "비밀번호가 표시됩니다."
+    isVisible ? "비밀번호가 숨겨졌습니다." : "비밀번호가 표시됩니다.",
   );
 }
 
@@ -713,7 +710,7 @@ function showNotification(message, type = "info", options = {}) {
   notification.setAttribute("role", type === "error" ? "alert" : "status");
   notification.setAttribute(
     "aria-live",
-    type === "error" ? "assertive" : "polite"
+    type === "error" ? "assertive" : "polite",
   );
   notification.textContent = message;
 
@@ -819,7 +816,7 @@ function showScreenReaderHelp() {
 function reportA11yIssue() {
   announceToScreenReader(
     "접근성 문제 신고 양식으로 이동합니다. 불편 사항을 자세히 작성해 주세요.",
-    "assertive"
+    "assertive",
   );
   showNotification("접근성 문제 신고 페이지로 이동합니다.", "warning");
 }
@@ -935,7 +932,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "Ultimate A11Y 쇼핑몰 페이지가 완전히 로드되었습니다. " +
         "모든 고급 접근성 기능이 활성화되어 있습니다. " +
         "Alt+H를 눌러 키보드 단축키를 확인할 수 있습니다.",
-      "assertive"
+      "assertive",
     );
   }, 1500);
 });
@@ -946,7 +943,77 @@ window.addEventListener("error", function (event) {
   console.error("[A11Y] JavaScript 에러 발생:", event.error);
   announceToScreenReader(
     "일시적인 오류가 발생했습니다. 페이지를 새로고침해 주세요.",
-    "assertive"
+    "assertive",
   );
   showNotification("오류가 발생했습니다. 다시 시도해 주세요.", "error");
 });
+
+// ===== 장바구니 내역 =====
+// cart는 상품 ID 배열입니다. 같은 상품을 여러 번 담으면 수량으로 묶습니다.
+function renderCart() {
+  const items = document.getElementById("cart-items");
+  const quantities = new Map();
+  cart.forEach((id) => quantities.set(id, (quantities.get(id) || 0) + 1));
+  document.querySelectorAll("[data-cart-product]").forEach((button) => {
+    button.hidden = !quantities.has(Number(button.dataset.cartProduct));
+  });
+  items.replaceChildren();
+  let total = 0;
+  quantities.forEach((quantity, id) => {
+    const product = products[id];
+    const subtotal = product.price * quantity;
+    total += subtotal;
+
+    const item = document.createElement("li");
+    item.className = "cart-item";
+    const image = document.createElement("img");
+    image.className = "cart-image";
+    image.src = product.image;
+    image.alt = "";
+    const info = document.createElement("div");
+    info.className = "cart-item-info";
+    const name = document.createElement("p");
+    name.className = "cart-item-name";
+    name.textContent = product.name;
+    const detail = document.createElement("p");
+    detail.className = "cart-item-detail";
+    detail.textContent = `${product.price.toLocaleString("ko-KR")}원 × ${quantity}개`;
+    info.append(name, detail);
+    const price = document.createElement("p");
+    price.className = "cart-item-price";
+    price.textContent = `${subtotal.toLocaleString("ko-KR")}원`;
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.className = "btn-secondary cart-remove";
+    remove.textContent = "삭제";
+    remove.setAttribute("aria-label", `${product.name} 장바구니에서 삭제`);
+    remove.addEventListener("click", () => removeFromCart(id));
+    item.append(image, info, price, remove);
+    items.appendChild(item);
+  });
+  document.getElementById("cart-empty").hidden = cart.length > 0;
+  document.getElementById("cart-summary").textContent =
+    `총 ${cart.length}개 상품, 합계 ${total.toLocaleString("ko-KR")}원`;
+  if (typeof updateCartCount === "function") updateCartCount();
+}
+
+function removeFromCart(productId) {
+  const buttons = [...document.querySelectorAll(".cart-remove")];
+  const index = buttons.indexOf(document.activeElement);
+  cart = cart.filter((id) => id !== productId);
+  renderCart();
+  const remaining = document.querySelectorAll(".cart-remove");
+  const target =
+    remaining[Math.min(Math.max(index, 0), remaining.length - 1)] ||
+    document.getElementById("cart-title");
+  target.focus();
+}
+
+function closeCart() {
+  document.getElementById("cart-panel").hidden = true;
+  const title = document.querySelector(".products .section-title");
+  title.tabIndex = -1;
+  title.focus();
+  title.scrollIntoView({ block: "start", behavior: "instant" });
+  if (typeof updateCurrentPage === "function") updateCurrentPage("products");
+}
