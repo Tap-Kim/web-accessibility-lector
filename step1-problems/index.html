@@ -1,17 +1,26 @@
 <!doctype html>
-<!-- TODO: 문서의 언어를 지정하는 속성이 없습니다 -->
-<html>
+<!-- 문서의 기본 언어를 한국어로 지정해 보조기술의 발음을 돕습니다. -->
+<html lang="ko">
   <head>
-    <title>쇼핑몰</title>
-    <!-- TODO: 문자 인코딩과 뷰포트 설정을 위한 메타태그가 없습니다 -->
+    <!-- 한글을 포함한 문자를 UTF-8로 해석합니다. -->
+    <meta charset="UTF-8" />
+    <!-- 화면 너비를 기기에 맞추고 초기 배율을 설정합니다. 확대는 제한하지 않습니다. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 검색 결과 등에서 페이지의 목적을 설명하는 요약입니다. -->
+    <meta
+      name="description"
+      content="상품 탐색, 장바구니, 로그인을 예제로 웹 접근성을 점검하는 1단계 실습 페이지입니다."
+    />
+    <!-- 브라우저 탭과 페이지 탐색에서 구분할 수 있는 문서 이름입니다. -->
+    <title>웹 접근성 실습 1단계 - 문제 찾기</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- 헤더 영역 -->
-    <!-- TODO: 헤더 영역을 나타내는 시맨틱 태그를 사용해야 합니다 -->
+    <!-- TODO: 시각적 배치 없이도 페이지 상단 영역의 역할을 구분할 수 있는지 확인해보세요. -->
     <div class="header">
       <div class="header-container">
-        <!-- TODO: 클릭 가능한 요소는 div 대신 button 태그를 사용해야 합니다 -->
+        <!-- TODO: 마우스 없이 로고에 접근하고 같은 기능을 실행할 수 있는지 확인해보세요. -->
         <div class="brand">
           <div onclick="goHome()" class="logo logo-btn">
             <svg
@@ -27,16 +36,16 @@
           </div>
           <span class="brand-name">A11Y STORE</span>
         </div>
-        <!-- TODO: 내비게이션 영역을 나타내는 시맨틱 태그를 사용해야 합니다 -->
+        <!-- TODO: 보조기술로 주요 메뉴 영역을 찾아 이동할 수 있는지 확인해보세요. -->
         <div class="primary-nav">
           <div class="nav nav-list">
-            <!-- TODO: 메뉴 항목들은 div+onclick 대신 button 태그를 사용해야 합니다 -->
+            <!-- TODO: 키보드로 각 메뉴 항목을 찾아 실행할 수 있는지 확인해보세요. -->
             <div class="nav-link" onclick="showProducts()">상품</div>
             <div class="nav-link" onclick="showCart()">장바구니</div>
             <div class="nav-link" onclick="showMyPage()">마이페이지</div>
           </div>
         </div>
-        <!-- TODO: 검색 버튼은 div 대신 button 태그를 사용하고 접근성 레이블이 필요합니다 -->
+        <!-- TODO: 검색 아이콘을 보지 않고도 기능을 알 수 있는지, 키보드로 실행할 수 있는지 확인해보세요. -->
         <div onclick="toggleSearch()" class="search-btn">
           <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="10.5" cy="10.5" r="6.5" />
@@ -46,21 +55,23 @@
       </div>
     </div>
 
+    <!-- TODO: 반복되는 메뉴를 지나 본문을 바로 찾아갈 수 있는지 확인해보세요. -->
     <div class="main-content">
       <!-- 메인 배너 -->
       <div class="banner">
         <div class="banner-content">
-          <!-- TODO: 제목 텍스트는 div 대신 적절한 heading 태그(h1~h6)를 사용해야 합니다 -->
+          <!-- TODO: 글자 크기와 관계없이 페이지의 제목 구조를 파악할 수 있는지 확인해보세요. -->
           <div class="banner-title">
             일상에 필요한 기기, 한곳에서 만나보세요
           </div>
+          <!-- TODO: 배경과 글자색을 비교해 내용을 읽기 편한지 확인해보세요. -->
           <div class="banner-description">
             iPhone, MacBook, iPad를 둘러보고 나에게 맞는 제품을 골라보세요.
           </div>
         </div>
         <img class="hero-image" src="images/macbook.jpg" alt="" />
         <div class="banner-actions">
-          <!-- TODO: 클릭 유도 버튼은 div 대신 button 태그를 사용하고 명확한 텍스트가 필요합니다 -->
+          <!-- TODO: 이 문구만 읽고 실행 결과를 예상할 수 있는지, 마우스 없이도 실행할 수 있는지 확인해보세요. -->
           <div class="sale-btn" onclick="showSale()">여기 클릭</div>
         </div>
       </div>
@@ -68,16 +79,17 @@
       <!-- 상품 목록 -->
       <div class="products">
         <div class="section-header">
-          <!-- TODO: 섹션 제목은 heading 태그를 사용해야 합니다 -->
+          <!-- TODO: 제목만 탐색할 때 상품 목록의 시작을 찾을 수 있는지 확인해보세요. -->
           <div class="section-title">인기 상품</div>
         </div>
         <div class="product-grid">
+          <!-- TODO: 키보드로 상품 정보를 찾아 상세 내용을 확인할 수 있는지 점검해보세요. -->
           <div class="product-item" onclick="showProduct(1)">
-            <!-- TODO: 이미지에 내용을 설명하는 alt 속성이 없습니다 -->
+            <!-- TODO: 이미지를 볼 수 없을 때도 어떤 상품인지 알 수 있는지 확인해보세요. -->
             <img class="product-image" src="images/iphone.jpg" />
             <div class="product-title">iPhone 16 Pro</div>
             <div class="price">1,550,000원</div>
-            <!-- TODO: 장바구니 담기는 div 대신 button 태그를 사용해야 합니다 -->
+            <!-- TODO: 마우스를 쓰지 않고 상품을 장바구니에 담을 수 있는지 확인해보세요. -->
             <div
               class="add-cart-btn"
               onclick="addToCart(1); event.stopPropagation();"
@@ -94,6 +106,8 @@
               장바구니 보기
             </button>
           </div>
+
+          <!-- TODO: 키보드로 상품 정보를 찾아 상세 내용을 확인할 수 있는지 점검해보세요. -->
 
           <div class="product-item" onclick="showProduct(2)">
             <img class="product-image" src="images/macbook.jpg" />
@@ -115,6 +129,8 @@
               장바구니 보기
             </button>
           </div>
+
+          <!-- TODO: 키보드로 상품 정보를 찾아 상세 내용을 확인할 수 있는지 점검해보세요. -->
 
           <div class="product-item" onclick="showProduct(3)">
             <img class="product-image" src="images/ipad.jpg" />
@@ -167,12 +183,12 @@
       <!-- 로그인 폼 -->
       <div class="login-section">
         <div class="login-header">
-          <!-- TODO: 폼 제목은 heading 태그를 사용해야 합니다 -->
+          <!-- TODO: 문서 구조를 탐색할 때 로그인 영역의 제목을 찾을 수 있는지 확인해보세요. -->
           <div class="section-title">로그인</div>
         </div>
         <div class="form">
           <div class="form-group">
-            <!-- TODO: 입력 필드의 레이블은 div 대신 label 태그를 사용하고 입력 필드와 연결해야 합니다 -->
+            <!-- TODO: 입력칸에 접근했을 때 무엇을 입력해야 하는지 안내되는지 확인해보세요. -->
             <div class="form-label">아이디</div>
             <input class="form-input" type="text" />
           </div>
@@ -180,18 +196,18 @@
             <div class="form-label">비밀번호</div>
             <input class="form-input" type="password" />
           </div>
-          <!-- TODO: 폼 제출 버튼은 div 대신 button 태그를 사용해야 합니다 -->
+          <!-- TODO: 키보드만으로 입력부터 로그인 실행까지 이어갈 수 있는지 확인해보세요. -->
           <div class="login-btn" onclick="login()">로그인</div>
         </div>
       </div>
     </div>
 
     <!-- 푸터 -->
-    <!-- TODO: 푸터 영역을 나타내는 시맨틱 태그를 사용해야 합니다 -->
+    <!-- TODO: 페이지 하단의 정책과 고객지원 정보가 어떤 영역에 속하는지 구분할 수 있는지 확인해보세요. -->
     <div class="footer">
       <div class="footer-container">
         <div class="footer-links">
-          <!-- TODO: 링크 역할의 요소는 div+onclick 대신 a 또는 button 태그를 사용해야 합니다 -->
+          <!-- TODO: 각 항목의 기능이 어떻게 전달되는지, 키보드로 접근하고 실행할 수 있는지 확인해보세요. -->
           <div class="footer-link" onclick="showTerms()">이용약관</div>
           <div class="footer-link" onclick="showPrivacy()">
             개인정보처리방침

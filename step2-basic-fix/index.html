@@ -1,10 +1,18 @@
 <!doctype html>
+<!-- 문서의 기본 언어를 한국어로 지정해 보조기술의 발음을 돕습니다. -->
 <html lang="ko">
   <head>
+    <!-- 한글을 포함한 문자를 UTF-8로 해석합니다. -->
     <meta charset="UTF-8" />
+    <!-- 화면 너비를 기기에 맞추고 초기 배율을 설정합니다. 확대는 제한하지 않습니다. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: 페이지 설명을 제공하는 메타태그가 빠져있습니다(description,content) -->
-    <title>접근성 개선 쇼핑몰</title>
+    <!-- 검색 결과 등에서 페이지의 목적을 설명하는 요약입니다. -->
+    <meta
+      name="description"
+      content="상품 탐색, 장바구니, 로그인을 예제로 웹 접근성을 점검하는 2단계 실습 페이지입니다."
+    />
+    <!-- 브라우저 탭과 페이지 탐색에서 구분할 수 있는 문서 이름입니다. -->
+    <title>웹 접근성 실습 2단계 - 기본 개선</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -12,11 +20,11 @@
     <a href="#main-content" class="skip-link">메인 콘텐츠로 바로가기</a>
 
     <!-- 헤더 영역 -->
-    <!-- TODO: 페이지 상단 영역을 나타내는 시맨틱 태그를 사용해야 합니다 -->
+    <!-- TODO: 화면 배치 없이도 페이지 상단의 역할을 파악할 수 있는지 확인해보세요. -->
     <div class="header">
       <div class="header-container">
         <div class="logo brand">
-          <!-- TODO: 버튼의 기능을 설명하는 ARIA 속성이 없습니다 -->
+          <!-- TODO: 로고 그림을 보지 않고도 이 기능의 목적을 알 수 있는지 확인해보세요. -->
           <button onclick="goHome()" class="logo-btn">
             <svg
               height="44"
@@ -31,7 +39,7 @@
           </button>
           <span class="brand-name">A11Y STORE</span>
         </div>
-        <!-- TODO: 내비게이션 역할과 레이블을 나타내는 ARIA 속성들이 필요합니다 -->
+        <!-- TODO: 보조기술로 주요 메뉴를 찾고 다른 메뉴 영역과 구분할 수 있는지 확인해보세요. -->
         <div class="primary-nav">
           <div class="nav nav-list">
             <button class="nav-link" onclick="showProducts()">상품</button>
@@ -39,16 +47,16 @@
             <button class="nav-link" onclick="showMyPage()">마이페이지</button>
           </div>
         </div>
-        <!-- TODO: 검색 기능을 설명하는 접근성 레이블이 없습니다 -->
+        <!-- TODO: 아이콘을 보지 않고도 어떤 기능을 실행하는지 알 수 있는지 확인해보세요. -->
         <button onclick="toggleSearch()" class="search-btn">🔍</button>
       </div>
     </div>
 
     <!-- 메인 콘텐츠 -->
-    <!-- TODO: 페이지의 주요 콘텐츠 영역임을 나타내는 시맨틱 태그가 필요합니다 -->
+    <!-- TODO: 반복되는 메뉴를 건너뛰고 본문을 바로 찾아갈 수 있는지 확인해보세요. -->
     <div id="main-content" class="main-content">
       <!-- 메인 배너 -->
-      <!-- TODO: 독립적인 콘텐츠 섹션임을 나타내는 태그와 제목 연결이 필요합니다 -->
+      <!-- TODO: 이 영역을 따로 탐색해도 어떤 내용을 다루는지 알 수 있는지 확인해보세요. -->
       <div class="banner">
         <div class="banner-content">
           <h2 id="banner-title" class="banner-title">
@@ -65,23 +73,23 @@
       </div>
 
       <!-- 상품 목록 -->
-      <!-- TODO: 상품 목록을 감싸는 섹션 태그와 제목 연결이 필요합니다 -->
+      <!-- TODO: 상품 목록 영역을 찾았을 때 그 제목도 함께 파악할 수 있는지 확인해보세요. -->
       <div class="products">
         <div class="section-header">
           <h2 id="products-title" class="section-title">인기 상품</h2>
         </div>
 
         <div class="product-grid" role="list">
-          <!-- TODO: 개별 상품을 나타내는 독립적인 콘텐츠 태그가 필요합니다 -->
+          <!-- TODO: 이 상품을 주변 내용과 구분해 하나의 정보 단위로 탐색할 수 있는지 확인해보세요. -->
           <div class="product-item" role="listitem">
-            <!-- TODO: 상품 상세 정보로 이동하는 링크에 설명이 필요합니다 -->
+            <!-- TODO: 이 항목을 실행하면 어떤 상품의 정보를 보게 되는지 알 수 있는지 확인해보세요. -->
             <button onclick="showProduct(1)" class="product-link">
-              <!-- TODO: 이미지를 설명하는 대체 텍스트가 없습니다 -->
+              <!-- TODO: 이미지를 볼 수 없을 때도 어떤 상품인지 알 수 있는지 확인해보세요. -->
               <img class="product-image" src="images/iphone.jpg" />
               <h3 class="product-title">iPhone 16 Pro</h3>
               <p class="price">1,550,000원</p>
             </button>
-            <!-- TODO: 장바구니 담기 기능을 설명하는 레이블이 없습니다 -->
+            <!-- TODO: 같은 문구의 기능이 여러 개일 때 어느 상품을 담는지 구분할 수 있는지 확인해보세요. -->
             <button onclick="addToCart(1)" class="add-cart-btn">
               장바구니 담기
             </button>
@@ -96,16 +104,16 @@
             </button>
           </div>
 
-          <!-- TODO: 상품 아티클 태그가 필요합니다 -->
+          <!-- TODO: 노트북 정보를 주변 상품과 구분해 탐색할 수 있는지 확인해보세요. -->
           <div class="product-item" role="listitem">
-            <!-- TODO: 노트북 상품 링크 설명이 필요합니다 -->
+            <!-- TODO: 이 항목만 읽어도 어떤 상품의 상세 정보를 여는지 알 수 있는지 확인해보세요. -->
             <button onclick="showProduct(2)" class="product-link">
-              <!-- TODO: 노트북 이미지 설명이 없습니다 -->
+              <!-- TODO: 사진이 보이지 않아도 노트북에 관한 정보를 이해할 수 있는지 확인해보세요. -->
               <img class="product-image" src="images/macbook.jpg" />
               <h3 class="product-title">MacBook Pro14</h3>
               <p class="price">2,390,000원</p>
             </button>
-            <!-- TODO: 노트북 장바구니 담기 설명이 필요합니다 -->
+            <!-- TODO: 이 기능이 노트북을 장바구니에 담는다는 점을 구분할 수 있는지 확인해보세요. -->
             <button onclick="addToCart(2)" class="add-cart-btn">
               장바구니 담기
             </button>
@@ -120,16 +128,16 @@
             </button>
           </div>
 
-          <!-- TODO: 태블릿 상품을 위한 아티클 태그가 필요합니다 -->
+          <!-- TODO: 태블릿 정보를 주변 상품과 구분해 탐색할 수 있는지 확인해보세요. -->
           <div class="product-item" role="listitem">
-            <!-- TODO: 태블릿 상품 링크에 설명이 필요합니다 -->
+            <!-- TODO: 이 항목만 읽어도 태블릿의 상세 정보를 여는지 알 수 있는지 확인해보세요. -->
             <button onclick="showProduct(3)" class="product-link">
-              <!-- TODO: 태블릿 이미지 대체 텍스트가 필요합니다 -->
+              <!-- TODO: 사진이 보이지 않아도 태블릿에 관한 정보를 이해할 수 있는지 확인해보세요. -->
               <img class="product-image" src="images/ipad.jpg" />
               <h3 class="product-title">iPad Pro 11</h3>
               <p class="price">1,599,000원</p>
             </button>
-            <!-- TODO: 태블릿 장바구니 버튼 설명이 필요합니다 -->
+            <!-- TODO: 이 기능이 태블릿을 장바구니에 담는다는 점을 구분할 수 있는지 확인해보세요. -->
             <button onclick="addToCart(3)" class="add-cart-btn">
               장바구니 담기
             </button>
@@ -172,16 +180,16 @@
       </section>
 
       <!-- 로그인 폼 -->
-      <!-- TODO: 로그인 섹션과 제목 연결이 필요합니다 -->
+      <!-- TODO: 로그인 영역을 따로 탐색할 때 그 목적을 알 수 있는지 확인해보세요. -->
       <div class="login-section">
         <div class="login-header">
           <h2 id="login-title" class="section-title">로그인</h2>
         </div>
         <form class="form" onsubmit="return handleLogin(event)">
           <div class="form-group">
-            <!-- TODO: 레이블과 입력 필드를 연결하는 속성이 필요합니다 -->
+            <!-- TODO: 입력칸으로 이동했을 때 무엇을 입력해야 하는지 안내되는지 확인해보세요. -->
             <label class="form-label">아이디</label>
-            <!-- TODO: 입력 도움말을 연결하는 속성이 필요합니다 -->
+            <!-- TODO: 입력칸에 접근할 때 바로 아래의 도움말도 함께 전달되는지 확인해보세요. -->
             <input
               class="form-input"
               type="text"
@@ -189,15 +197,15 @@
               name="username"
               required
             />
-            <!-- TODO: 도움말 텍스트를 식별할 수 있는 ID가 유지되어야 합니다 -->
+            <!-- TODO: 이 도움말이 어느 입력칸을 위한 것인지 보조기술로 확인해보세요. -->
             <small class="form-help" id="username-help"
               >등록된 아이디를 입력하세요</small
             >
           </div>
           <div class="form-group">
-            <!-- TODO: 비밀번호 레이블과 입력 필드 연결이 필요합니다 -->
+            <!-- TODO: 입력칸을 따로 탐색해도 비밀번호를 입력하는 곳임을 알 수 있는지 확인해보세요. -->
             <label class="form-label">비밀번호</label>
-            <!-- TODO: 비밀번호 도움말 연결 속성이 필요합니다 -->
+            <!-- TODO: 비밀번호를 입력하기 전에 입력 조건을 안내받을 수 있는지 확인해보세요. -->
             <input
               class="form-input"
               type="password"
@@ -205,7 +213,7 @@
               name="password"
               required
             />
-            <!-- TODO: 비밀번호 도움말을 위한 ID가 유지되어야 합니다 -->
+            <!-- TODO: 이 입력 조건이 어느 입력칸에 해당하는지 보조기술로 확인해보세요. -->
             <small class="form-help" id="password-help"
               >8자 이상의 비밀번호를 입력하세요</small
             >
@@ -216,10 +224,10 @@
     </div>
 
     <!-- 푸터 -->
-    <!-- TODO: 페이지 하단 정보 영역임을 나타내는 시맨틱 태그가 필요합니다 -->
+    <!-- TODO: 페이지 하단 정보를 본문과 구분해 찾아갈 수 있는지 확인해보세요. -->
     <div class="footer">
       <div class="footer-container">
-        <!-- TODO: 푸터 내비게이션 역할과 설명이 필요합니다 -->
+        <!-- TODO: 하단 메뉴를 찾고 상단 메뉴와 구분할 수 있는지 확인해보세요. -->
         <div>
           <ul class="footer-links">
             <li>
@@ -241,7 +249,7 @@
       </div>
     </div>
 
-    <!-- TODO: 동적 콘텐츠 변경사항을 알리는 영역이 필요합니다 -->
+    <!-- TODO: 화면을 보지 않고도 상품을 담은 결과를 알 수 있는지 확인해보세요. -->
 
     <div class="exercise-footer-note">웹 접근성 교육용 쇼핑몰 예제 - 2단계</div>
 

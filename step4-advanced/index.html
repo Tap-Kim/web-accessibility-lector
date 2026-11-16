@@ -1,10 +1,18 @@
 <!doctype html>
+<!-- 문서의 기본 언어를 한국어로 지정해 보조기술의 발음을 돕습니다. -->
 <html lang="ko">
   <head>
+    <!-- 한글을 포함한 문자를 UTF-8로 해석합니다. -->
     <meta charset="UTF-8" />
+    <!-- 화면 너비를 기기에 맞추고 초기 배율을 설정합니다. 확대는 제한하지 않습니다. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>고급 접근성 쇼핑몰 - 모든 사용자를 위한 완벽한 쇼핑 경험</title>
-
+    <!-- 검색 결과 등에서 페이지의 목적을 설명하는 요약입니다. -->
+    <meta
+      name="description"
+      content="상품 탐색, 장바구니, 로그인을 예제로 웹 접근성을 점검하는 4단계 실습 페이지입니다."
+    />
+    <!-- 브라우저 탭과 페이지 탐색에서 구분할 수 있는 문서 이름입니다. -->
+    <title>웹 접근성 실습 4단계 - 고급 기능</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -21,7 +29,6 @@
         aria-pressed="false"
         title="고대비 모드 전환"
       >
-        <!-- <span aria-hidden="true">🌓</span> -->
         <span class="btn-text">고대비</span>
       </button>
       <button
@@ -30,7 +37,6 @@
         aria-pressed="false"
         title="큰 글씨 모드 전환"
       >
-        <!-- <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg> -->
         <span class="btn-text">큰글씨</span>
       </button>
       <button
@@ -39,7 +45,6 @@
         aria-pressed="false"
         title="포커스 표시 강화"
       >
-        <!-- <span aria-hidden="true">🎯</span> -->
         <span class="btn-text">포커스</span>
       </button>
       <button
@@ -48,7 +53,6 @@
         aria-pressed="false"
         title="스크린 리더 최적화 모드"
       >
-        <!-- <span aria-hidden="true">👁️</span> -->
         <span class="btn-text">리더모드</span>
       </button>
     </div>
@@ -63,9 +67,11 @@
     </nav>
 
     <!-- 헤더 영역 -->
+    <!-- TODO: 화면 배치 없이도 페이지 상단 영역의 역할을 구분할 수 있는지 확인해보세요. -->
     <div class="header">
       <div class="header-container">
         <div class="logo brand">
+          <!-- TODO: 로고 그림 없이도 이 기능을 실행한 결과를 예상할 수 있는지 확인해보세요. -->
           <button onclick="goHome()" class="logo-btn">
             <svg
               height="44"
@@ -81,6 +87,7 @@
           <span class="brand-name">A11Y STORE</span>
         </div>
 
+        <!-- TODO: 주요 메뉴를 하나의 영역으로 찾아가고 항목 간 관계를 파악할 수 있는지 확인해보세요. -->
         <div id="primary-nav" class="primary-nav">
           <div class="nav-list">
             <div class="nav-item">
@@ -111,6 +118,7 @@
           </div>
         </div>
 
+        <!-- TODO: 검색창을 열기 전과 후에 현재 상태와 열리는 대상을 알 수 있는지 확인해보세요. -->
         <div class="search-area">
           <button
             id="search"
@@ -150,6 +158,7 @@
                 검색
               </button>
             </div>
+            <!-- TODO: 검색 입력칸에 접근했을 때 이 사용 안내도 함께 전달되는지 확인해보세요. -->
             <div id="search-help" class="search-help">
               Enter 키를 누르거나 검색 버튼을 클릭하세요. ESC 키로 검색창을 닫을
               수 있습니다.
@@ -159,25 +168,17 @@
               class="form-error"
               aria-live="polite"
             ></div>
-
-            <!-- 
-            <ul
-              id="search-suggestions"
-              class="search-suggestions"
-              role="listbox"
-              aria-label="검색 제안"
-              hidden
-            >
-            </ul>
-            -->
+            <!-- TODO: 검색 제안을 제공할 때 선택 항목과 이동 방법을 알 수 있는지 살펴보세요. -->
           </div>
         </div>
       </div>
     </div>
 
     <!-- 메인 콘텐츠 -->
+    <!-- TODO: 반복되는 메뉴를 건너뛰고 본문 영역을 찾아갈 수 있는지 확인해보세요. -->
     <div id="main-content" class="main-content">
       <!-- 메인 배너 -->
+      <!-- TODO: 배너를 따로 탐색할 때 제목과 실행 기능의 목적을 파악할 수 있는지 확인해보세요. -->
       <div class="banner">
         <div class="banner-content">
           <h1 id="banner-title" class="banner-title">
@@ -187,6 +188,7 @@
             iPhone, MacBook, iPad를 둘러보고 나에게 맞는 제품을 골라보세요.
           </p>
 
+          <!-- TODO: 이 설명이 필요한 순간에 실행 기능과 함께 전달되는지 확인해보세요. -->
           <div id="sale-description" class="visually-hidden">
             특가 상품 페이지로 이동하여 할인된 상품들을 확인할 수 있습니다
           </div>
@@ -206,6 +208,7 @@
       </div>
 
       <!-- 실시간 알림 영역 -->
+      <!-- TODO: 할인이나 재고 정보가 바뀔 때 화면을 보지 않아도 변화를 알 수 있는지 확인해보세요. -->
       <div id="live-notifications" class="live-notifications">
         <div class="notification-item">
           <span class="notification-icon" aria-hidden="true">📢</span>
@@ -214,6 +217,7 @@
       </div>
 
       <!-- 상품 필터 및 정렬 -->
+      <!-- TODO: 필터와 정렬을 각각 어떤 목적으로 사용하는지 구분할 수 있는지 확인해보세요. -->
       <div class="product-controls">
         <h2 id="controls-title" class="visually-hidden">상품 필터 및 정렬</h2>
 
@@ -223,6 +227,7 @@
             <fieldset class="filter-fieldset">
               <legend class="filter-legend">가격대 선택</legend>
               <div class="price-range-container">
+                <!-- TODO: 가격 입력칸에 접근했을 때 최소 가격과 최대 가격을 구분할 수 있는지 확인해보세요. -->
                 <label class="filter-label">최소 가격</label>
                 <input
                   class="form-input"
@@ -232,6 +237,7 @@
                   min="0"
                   step="10000"
                 />
+                <!-- TODO: 가격 입력칸에 접근했을 때 최소 가격과 최대 가격을 구분할 수 있는지 확인해보세요. -->
                 <label class="filter-label">최대 가격</label>
                 <input
                   class="form-input"
@@ -241,6 +247,7 @@
                   min="0"
                   step="10000"
                 />
+                <!-- TODO: 가격을 입력할 때 단위와 입력 예시를 함께 안내받을 수 있는지 확인해보세요. -->
                 <div id="price-help" class="filter-help">
                   원 단위로 입력해주세요 (예: 100000)
                 </div>
@@ -281,6 +288,7 @@
                 >높은 가격순</label
               >
 
+              <!-- TODO: 정렬 기준을 선택할 때 목록에 미치는 영향을 안내받을 수 있는지 확인해보세요. -->
               <div id="sort-help" class="filter-help">
                 정렬 기준을 선택하면 즉시 상품 목록이 업데이트됩니다
               </div>
@@ -290,6 +298,7 @@
       </div>
 
       <!-- 상품 목록 -->
+      <!-- TODO: 상품 목록의 범위와 제목을 보조기술로 파악할 수 있는지 확인해보세요. -->
       <div id="products-section" class="products">
         <header class="section-header">
           <h2 id="products-title" class="section-title">인기 상품</h2>
@@ -301,6 +310,7 @@
 
         <!-- 상품 그리드 -->
         <div class="product-grid" role="list">
+          <!-- TODO: 상품 목록에 접근했을 때 이 이동 안내를 알 수 있는지, 안내한 조작이 실제로 되는지 확인해보세요. -->
           <div id="product-grid-help" class="visually-hidden">
             화살표 키로 상품 간 이동, Enter 키로 상세보기, Space 키로 장바구니
             담기가 가능합니다
@@ -308,6 +318,7 @@
 
           <!-- 상품 1: 스마트폰 -->
           <div class="product-item" role="listitem" data-product-id="1">
+            <!-- TODO: 색상이나 위치에 의존하지 않고 재고 상태를 파악할 수 있는지 확인해보세요. -->
             <div class="product-status">
               <span class="stock-status in-stock" aria-label="재고 있음"
                 >재고 있음</span
@@ -315,13 +326,16 @@
             </div>
 
             <div class="product-image-container">
+              <!-- TODO: 이미지를 볼 수 없을 때도 이 상품을 이해할 수 있는지 확인해보세요. -->
               <img src="images/iphone.jpg" class="product-image" />
+              <!-- TODO: 상품 표식의 의미를 색상이나 그림 없이도 이해할 수 있는지 확인해보세요. -->
               <div class="product-badges">
                 <span class="product-badge new-badge">NEW</span>
                 <span class="product-badge eco-badge">🌱 ECO</span>
               </div>
 
               <!-- 상품 이미지 갤러리 썸네일 -->
+              <!-- TODO: 각 썸네일의 의미와 현재 선택 상태를 그림 없이도 구분할 수 있는지 확인해보세요. -->
               <div
                 class="image-thumbnails"
                 role="group"
@@ -347,6 +361,7 @@
             </div>
 
             <div class="product-info">
+              <!-- TODO: 제목을 탐색할 때 각 상품명을 찾을 수 있는지 확인해보세요. -->
               <div id="product-1-title" class="product-title">
                 <a href="#" onclick="showProduct(1)" class="product-link">
                   iPhone 16 Pro 256GB
@@ -375,6 +390,7 @@
                 </dl>
               </div>
 
+              <!-- TODO: 화면의 위치나 글자 꾸밈 없이도 원래 가격과 판매 가격을 구분할 수 있는지 확인해보세요. -->
               <div class="price-info">
                 <div id="product-1-price-title" class="visually-hidden">
                   가격 정보
@@ -391,6 +407,7 @@
                 </div>
               </div>
 
+              <!-- TODO: 별 모양을 보지 않고도 평점과 리뷰 수를 이해할 수 있는지 확인해보세요. -->
               <div class="product-rating">
                 <div id="product-1-rating-title" class="visually-hidden">
                   고객 평점
@@ -413,6 +430,7 @@
               </div>
             </div>
 
+            <!-- TODO: 같은 문구의 기능이 여러 개일 때 어느 상품에 해당하는지 구분할 수 있는지 확인해보세요. -->
             <div class="product-actions" role="group" aria-label="상품 액션">
               <button
                 onclick="toggleWishlist(1)"
@@ -455,12 +473,15 @@
             role="listitem"
             data-product-id="2"
           >
+            <!-- TODO: 색상이나 위치에 의존하지 않고 재고 상태를 파악할 수 있는지 확인해보세요. -->
             <div class="product-status">
               <span class="stock-status out-of-stock">품절</span>
             </div>
 
             <div class="product-image-container">
+              <!-- TODO: 이미지를 볼 수 없을 때도 이 상품을 이해할 수 있는지 확인해보세요. -->
               <img src="images/macbook.jpg" class="product-image" />
+              <!-- TODO: 상품 표식의 의미를 색상이나 그림 없이도 이해할 수 있는지 확인해보세요. -->
               <div class="product-badges">
                 <span class="product-badge sale-badge">SALE</span>
                 <span class="product-badge premium-badge">PREMIUM</span>
@@ -471,6 +492,7 @@
             </div>
 
             <div class="product-info">
+              <!-- TODO: 제목을 탐색할 때 각 상품명을 찾을 수 있는지 확인해보세요. -->
               <div id="product-2-title" class="product-title">
                 <a href="#" onclick="showProduct(2)" class="product-link">
                   MacBook Pro14
@@ -486,6 +508,7 @@
                 현재 품절된 상품입니다. 재입고 알림을 신청하실 수 있습니다.
               </div>
 
+              <!-- TODO: 화면의 위치나 글자 꾸밈 없이도 원래 가격과 판매 가격을 구분할 수 있는지 확인해보세요. -->
               <div class="price-info">
                 <div class="price-display">
                   <span class="original-price">2,390,000원</span>
@@ -494,6 +517,7 @@
                 </div>
               </div>
 
+              <!-- TODO: 별 모양을 보지 않고도 평점과 리뷰 수를 이해할 수 있는지 확인해보세요. -->
               <div class="product-rating">
                 <div class="stars-container">
                   <span class="stars filled" aria-hidden="true">★★★★★</span>
@@ -503,6 +527,7 @@
               </div>
             </div>
 
+            <!-- TODO: 같은 문구의 기능이 여러 개일 때 어느 상품에 해당하는지 구분할 수 있는지 확인해보세요. -->
             <div class="product-actions">
               <button onclick="toggleWishlist(2)" class="wishlist-btn">
                 <span aria-hidden="true">♡</span>
@@ -525,18 +550,22 @@
 
           <!-- 상품 3: 태블릿 -->
           <div class="product-item" role="listitem" data-product-id="3">
+            <!-- TODO: 색상이나 위치에 의존하지 않고 재고 상태를 파악할 수 있는지 확인해보세요. -->
             <div class="product-status">
               <span class="stock-status low-stock">재고 부족</span>
             </div>
 
             <div class="product-image-container">
+              <!-- TODO: 이미지를 볼 수 없을 때도 이 상품을 이해할 수 있는지 확인해보세요. -->
               <img src="images/ipad.jpg" class="product-image" />
+              <!-- TODO: 상품 표식의 의미를 색상이나 그림 없이도 이해할 수 있는지 확인해보세요. -->
               <div class="product-badges">
                 <span class="product-badge bestseller-badge">BEST</span>
               </div>
             </div>
 
             <div class="product-info">
+              <!-- TODO: 제목을 탐색할 때 각 상품명을 찾을 수 있는지 확인해보세요. -->
               <div id="product-3-title" class="product-title">
                 <a href="#" onclick="showProduct(3)" class="product-link">
                   iPad Pro 12.9 M2
@@ -548,12 +577,14 @@
                 Apple Pencil 호환
               </p>
 
+              <!-- TODO: 화면의 위치나 글자 꾸밈 없이도 원래 가격과 판매 가격을 구분할 수 있는지 확인해보세요. -->
               <div class="price-info">
                 <div class="price-display">
                   <span class="sale-price">1,199,000원</span>
                 </div>
               </div>
 
+              <!-- TODO: 별 모양을 보지 않고도 평점과 리뷰 수를 이해할 수 있는지 확인해보세요. -->
               <div class="product-rating">
                 <div class="stars-container">
                   <span class="stars filled" aria-hidden="true">★★★★★</span>
@@ -565,6 +596,7 @@
               <div class="urgency-notice">⚡ 한정 수량! 7개 남음</div>
             </div>
 
+            <!-- TODO: 같은 문구의 기능이 여러 개일 때 어느 상품에 해당하는지 구분할 수 있는지 확인해보세요. -->
             <div class="product-actions">
               <button onclick="toggleWishlist(3)" class="wishlist-btn">
                 <span aria-hidden="true">♡</span>
@@ -666,6 +698,7 @@
       </section>
 
       <!-- 로그인 폼 -->
+      <!-- TODO: 로그인 영역을 따로 탐색할 때 그 제목과 목적을 알 수 있는지 확인해보세요. -->
       <div class="login-section">
         <header class="login-header">
           <h2 id="login-title" class="section-title">로그인</h2>
@@ -679,6 +712,7 @@
 
         <!-- 소셜 로그인 -->
         <div class="social-login" role="group">
+          <!-- TODO: 탐색 중 소셜 로그인 영역의 시작과 목적을 파악할 수 있는지 확인해보세요. -->
           <div id="social-login-title" class="subsection-title">
             소셜 로그인
           </div>
@@ -699,6 +733,7 @@
         </div>
 
         <form class="login-form" onsubmit="return handleLogin(event)">
+          <!-- TODO: 이메일 로그인 영역을 앞의 다른 로그인 방식과 구분할 수 있는지 확인해보세요. -->
           <div id="email-login-title" class="subsection-title">
             이메일 로그인
           </div>
@@ -707,6 +742,7 @@
             <legend class="visually-hidden">로그인 정보 입력</legend>
 
             <div class="form-group">
+              <!-- TODO: 입력칸을 따로 탐색해도 무엇을 입력해야 하는지 안내되는지 확인해보세요. -->
               <label class="form-label">
                 이메일 주소
                 <span class="required-mark" aria-label="필수 입력">*</span>
@@ -722,13 +758,16 @@
                 />
                 <span class="input-icon" aria-hidden="true">📧</span>
               </div>
+              <!-- TODO: 입력칸에 접근했을 때 이 도움말도 함께 전달되는지 확인해보세요. -->
               <div id="username-help" class="form-help">
                 가입시 사용한 이메일 주소를 입력하세요
               </div>
+              <!-- TODO: 입력 오류가 생겼을 때 해당 입력칸과 수정 방법을 알 수 있는지 확인해보세요. -->
               <div id="username-error" class="form-error"></div>
             </div>
 
             <div class="form-group">
+              <!-- TODO: 입력칸을 따로 탐색해도 무엇을 입력해야 하는지 안내되는지 확인해보세요. -->
               <label class="form-label">
                 비밀번호
                 <span class="required-mark" aria-label="필수 입력">*</span>
@@ -742,6 +781,7 @@
                   class="form-input"
                   placeholder="비밀번호를 입력하세요"
                 />
+                <!-- TODO: 비밀번호 표시 기능의 목적과 현재 상태를 실행 전에도 알 수 있는지 확인해보세요. -->
                 <button
                   type="button"
                   class="password-toggle"
@@ -750,9 +790,11 @@
                   <span id="password-toggle-icon" aria-hidden="true">👁️</span>
                 </button>
               </div>
+              <!-- TODO: 입력칸에 접근했을 때 이 도움말도 함께 전달되는지 확인해보세요. -->
               <div id="password-help" class="form-help">
                 8자 이상의 비밀번호를 입력하세요
               </div>
+              <!-- TODO: 입력 오류가 생겼을 때 해당 입력칸과 수정 방법을 알 수 있는지 확인해보세요. -->
               <div id="password-error" class="form-error"></div>
             </div>
 
@@ -767,6 +809,7 @@
                 <span class="checkbox-custom" aria-hidden="true"></span>
                 로그인 상태 유지
               </label>
+              <!-- TODO: 이 선택 항목을 조작할 때 주의사항도 함께 안내받을 수 있는지 확인해보세요. -->
               <div id="remember-help" class="form-help">
                 공용 컴퓨터에서는 선택하지 마세요
               </div>
@@ -776,6 +819,7 @@
               <button type="submit" class="btn-primary login-btn">
                 로그인
               </button>
+              <!-- TODO: 로그인을 실행할 때 이 조작 안내도 필요한 사용자에게 전달되는지 확인해보세요. -->
               <div id="login-btn-help" class="visually-hidden">
                 Enter 키를 눌러도 로그인할 수 있습니다
               </div>
@@ -796,10 +840,13 @@
     </div>
 
     <!-- 푸터 -->
+    <!-- TODO: 하단의 정책과 지원 정보를 본문과 구분해 찾아갈 수 있는지 확인해보세요. -->
     <div class="footer">
       <div class="footer-container">
+        <!-- TODO: 하단 메뉴를 주요 메뉴와 구분하고 각 묶음의 목적을 파악할 수 있는지 확인해보세요. -->
         <div id="footer-nav" class="footer-nav">
           <div class="footer-section">
+            <!-- TODO: 제목만 탐색할 때 하단 정보의 각 묶음을 찾을 수 있는지 확인해보세요. -->
             <div class="footer-title">고객 서비스</div>
             <ul class="footer-links">
               <li>
@@ -826,6 +873,7 @@
           </div>
 
           <div class="footer-section">
+            <!-- TODO: 제목만 탐색할 때 하단 정보의 각 묶음을 찾을 수 있는지 확인해보세요. -->
             <div class="footer-title">쇼핑 가이드</div>
             <ul class="footer-links">
               <li>
@@ -852,6 +900,7 @@
           </div>
 
           <div class="footer-section">
+            <!-- TODO: 제목만 탐색할 때 하단 정보의 각 묶음을 찾을 수 있는지 확인해보세요. -->
             <div class="footer-title">접근성 지원</div>
             <ul class="footer-links">
               <li>
@@ -900,7 +949,9 @@
             >
           </address>
 
+          <!-- TODO: 그림을 볼 수 없을 때도 학습 참고 자료의 의미를 이해할 수 있는지 확인해보세요. -->
           <div class="certifications">
+            <!-- TODO: 제목만 탐색할 때 하단 정보의 각 묶음을 찾을 수 있는지 확인해보세요. -->
             <div class="footer-title">학습 참고 예시</div>
             <ul class="cert-list">
               <li class="cert-item">
