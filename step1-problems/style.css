@@ -122,7 +122,11 @@ body {
   min-height: 44px;
 }
 .primary-nav {
+  order: 1;
   margin-left: auto;
+}
+.header-container > .search-btn {
+  order: 2;
 }
 .nav-list {
   display: flex;
@@ -660,6 +664,9 @@ body {
   }
 }
 @media (max-width: 640px) {
+  .header-container > .search-btn {
+    order: 0;
+  }
   .header-container {
     padding: 16px 20px;
     gap: 12px;
@@ -668,7 +675,6 @@ body {
     margin-right: auto;
   }
   .primary-nav {
-    order: 3;
     flex-basis: 100%;
     margin: 0;
   }
