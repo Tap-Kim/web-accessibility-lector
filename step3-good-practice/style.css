@@ -900,3 +900,13 @@ body {
   margin-top: 0;
   border-radius: 0;
 }
+
+/* 본문 바로가기 아이콘도 충분한 터치 영역을 유지합니다. */
+.skip-link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 12px;
+}
